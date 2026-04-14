@@ -23,269 +23,382 @@
   --dim:#6A6760;
   --f:'Geist',system-ui,sans-serif;
   --ease:cubic-bezier(.22,1,.36,1);
+  --max:1360px;
+  --pad:56px;
 }
 *,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
 html{scroll-behavior:smooth}
 body{font-family:var(--f);background:var(--paper);color:var(--ink);-webkit-font-smoothing:antialiased;overflow-x:hidden}
 
-/* ═══ NAV ═══ */
-nav{position:fixed;top:0;left:0;right:0;z-index:999;transition:all .3s var(--ease)}
-nav.scrolled{background:rgba(248,247,243,.95);backdrop-filter:blur(24px);border-bottom:1px solid rgba(226,223,215,.8);box-shadow:0 2px 20px rgba(13,13,11,.04)}
-.nw{max-width:1400px;margin:0 auto;padding:0 52px;height:68px;display:flex;align-items:center;justify-content:space-between}
-.n-logo{display:flex;align-items:center;gap:10px;text-decoration:none}
-.n-mark{width:34px;height:34px;background:var(--ink);border-radius:10px;display:grid;place-items:center;flex-shrink:0}
+/* ══════════════════════════════
+   NAV — always full-width, centered content
+══════════════════════════════ */
+nav{
+  position:fixed;top:0;left:0;right:0;z-index:999;
+  background:rgba(248,247,243,0);
+  transition:background .35s var(--ease),border-color .35s,box-shadow .35s;
+  border-bottom:1px solid transparent;
+}
+nav.scrolled{
+  background:rgba(248,247,243,.96);
+  backdrop-filter:blur(24px);
+  border-bottom-color:var(--stone2);
+  box-shadow:0 2px 24px rgba(13,13,11,.05);
+}
+.nw{
+  max-width:var(--max);margin:0 auto;
+  padding:0 var(--pad);height:68px;
+  display:flex;align-items:center;justify-content:space-between;
+}
+.n-logo{display:flex;align-items:center;gap:11px;text-decoration:none;flex-shrink:0}
+.n-mark{width:34px;height:34px;background:var(--ink);border-radius:10px;display:grid;place-items:center}
 .n-mark svg{width:17px;height:17px}
-.n-brand{font-size:16px;font-weight:800;color:var(--ink);letter-spacing:-.3px;line-height:1}
-.n-sub{font-size:10px;font-weight:500;color:var(--muted);line-height:1}
+.n-wordmark{font-size:16px;font-weight:800;color:var(--ink);letter-spacing:-.3px;line-height:1.1}
+.n-sub{font-size:10px;font-weight:500;color:var(--muted)}
 .n-links{display:flex;align-items:center;gap:2px}
 .n-a{font-size:14px;font-weight:600;color:var(--dim);text-decoration:none;padding:7px 14px;border-radius:8px;transition:all .15s}
-.n-a:hover{background:rgba(226,223,215,.6);color:var(--ink)}
+.n-a:hover{background:rgba(226,223,215,.7);color:var(--ink)}
 .n-r{display:flex;gap:10px;align-items:center}
-.n-ghost{font-size:14px;font-weight:700;color:var(--ink);text-decoration:none;padding:8px 18px;border:1.5px solid var(--stone2);border-radius:10px;background:transparent;transition:all .18s}
+.n-ghost{font-size:14px;font-weight:700;color:var(--ink);text-decoration:none;padding:8px 18px;border:1.5px solid var(--stone2);border-radius:10px;transition:border-color .18s}
 .n-ghost:hover{border-color:var(--ink)}
-.n-cta{font-size:14px;font-weight:700;color:#fff;text-decoration:none;padding:9px 20px;background:var(--ink);border-radius:10px;transition:all .22s var(--ease);white-space:nowrap}
+.n-cta{font-size:14px;font-weight:700;color:#fff;text-decoration:none;padding:9px 20px;background:var(--ink);border-radius:10px;transition:all .22s var(--ease)}
 .n-cta:hover{background:var(--orange);transform:translateY(-1px);box-shadow:0 8px 24px rgba(224,90,20,.3)}
 
-/* ═══ HERO ═══ */
-.hero{padding:100px 52px 0;max-width:1400px;margin:0 auto}
-.hero-tag{display:inline-flex;align-items:center;gap:8px;padding:6px 14px 6px 8px;border:1px solid var(--stone2);border-radius:40px;font-size:11.5px;font-weight:600;color:var(--dim);letter-spacing:.3px;margin-bottom:36px;background:var(--white)}
+/* ══════════════════════════════
+   HERO — two-column, equal breathing room
+══════════════════════════════ */
+.hero-wrap{
+  padding-top:68px; /* offset for fixed nav */
+  background:var(--paper);
+}
+.hero-inner{
+  max-width:var(--max);margin:0 auto;
+  padding:80px var(--pad) 0;
+  display:grid;
+  grid-template-columns:1fr 480px;
+  gap:56px;
+  align-items:center;
+  min-height:calc(100vh - 68px);
+  padding-bottom:0;
+}
+/* LEFT */
+.hero-left{padding-bottom:80px}
+.hero-tag{
+  display:inline-flex;align-items:center;gap:8px;
+  padding:6px 14px 6px 8px;border:1px solid var(--stone2);
+  border-radius:40px;font-size:11.5px;font-weight:600;color:var(--dim);
+  letter-spacing:.3px;margin-bottom:36px;background:var(--white);
+}
 .hero-tag-dot{width:7px;height:7px;border-radius:50%;background:var(--orange);flex-shrink:0}
-.hero h1{font-size:92px;font-weight:800;line-height:.98;letter-spacing:-4.5px;color:var(--ink);max-width:960px;margin-bottom:32px}
-.hero h1 .thin{font-weight:300;color:var(--orange);letter-spacing:-3px}
-.hero-sub{font-size:19px;font-weight:400;color:var(--dim);line-height:1.72;max-width:560px;margin-bottom:44px}
-.hero-btns{display:flex;align-items:center;gap:14px;margin-bottom:20px}
-.btn-fill{display:inline-flex;align-items:center;gap:8px;padding:14px 30px;background:var(--ink);color:#fff;border-radius:12px;font-size:15px;font-weight:700;text-decoration:none;transition:all .22s var(--ease);border:1.5px solid transparent}
-.btn-fill:hover{background:var(--orange);transform:translateY(-2px);box-shadow:0 14px 36px rgba(224,90,20,.28)}
-.btn-ghost{display:inline-flex;align-items:center;gap:8px;padding:13px 28px;background:transparent;color:var(--ink);border-radius:12px;font-size:15px;font-weight:700;text-decoration:none;border:1.5px solid var(--stone2);transition:all .18s}
+.hero-h1{
+  font-size:76px;font-weight:800;line-height:1.0;
+  letter-spacing:-4px;color:var(--ink);margin-bottom:28px;
+}
+.hero-h1 .thin{font-weight:300;color:var(--orange);letter-spacing:-2.5px}
+.hero-sub{font-size:18px;font-weight:400;color:var(--dim);line-height:1.72;max-width:520px;margin-bottom:40px}
+.hero-btns{display:flex;align-items:center;gap:14px;margin-bottom:18px}
+.btn-fill{
+  display:inline-flex;align-items:center;gap:8px;
+  padding:14px 28px;background:var(--ink);color:#fff;
+  border-radius:12px;font-size:15px;font-weight:700;text-decoration:none;
+  transition:all .22s var(--ease);
+}
+.btn-fill:hover{background:var(--orange);transform:translateY(-2px);box-shadow:0 12px 32px rgba(224,90,20,.28)}
+.btn-ghost{
+  display:inline-flex;align-items:center;gap:8px;
+  padding:13px 26px;background:transparent;color:var(--ink);
+  border-radius:12px;font-size:15px;font-weight:700;text-decoration:none;
+  border:1.5px solid var(--stone2);transition:border-color .18s;
+}
 .btn-ghost:hover{border-color:var(--ink)}
 .hero-note{font-size:12px;color:var(--muted);font-weight:500}
 
-/* HERO visual band */
-.hero-visual{margin-top:72px;display:grid;grid-template-columns:1.6fr 1fr;gap:20px;padding-bottom:0}
+/* RIGHT — stat cards column */
+.hero-right{
+  display:flex;flex-direction:column;gap:14px;
+  padding-bottom:80px;align-self:center;
+}
+.hstat{background:var(--white);border-radius:22px;border:1px solid var(--stone2);padding:28px;transition:all .25s var(--ease)}
+.hstat:hover{box-shadow:0 12px 36px rgba(13,13,11,.08);transform:translateY(-3px)}
+.hstat.dark{background:var(--ink);border-color:transparent}
+.hstat-lbl{font-size:10px;font-weight:700;color:var(--muted);text-transform:uppercase;letter-spacing:.7px;margin-bottom:10px}
+.hstat.dark .hstat-lbl{color:rgba(255,255,255,.38)}
+.hstat-val{font-size:54px;font-weight:800;letter-spacing:-3px;line-height:1;color:var(--ink);margin-bottom:6px}
+.hstat.dark .hstat-val{color:#fff}
+.hstat-val em{font-style:normal;font-weight:300;color:var(--orange)}
+.hstat.dark .hstat-val em{color:var(--orange-lt)}
+.hstat-desc{font-size:13px;color:var(--dim);line-height:1.55}
+.hstat.dark .hstat-desc{color:rgba(255,255,255,.4)}
+.hstat-mini-row{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.hstat-mini{background:var(--stone);border-radius:16px;padding:20px}
+.hm-v{font-size:34px;font-weight:800;letter-spacing:-1.5px;color:var(--ink);margin-bottom:2px}
+.hm-v.or{color:var(--orange)}
+.hm-l{font-size:10px;font-weight:600;color:var(--muted)}
+/* Partner list inside right card */
+.partner-list{display:flex;flex-direction:column;gap:8px;margin-top:12px}
+.pl-item{
+  display:flex;align-items:center;justify-content:space-between;
+  padding:10px 14px;border:1px solid var(--stone2);border-radius:10px;
+  transition:border-color .18s;
+}
+.pl-item:hover{border-color:var(--orange-mid)}
+.pl-name{font-size:14px;font-weight:700;color:var(--ink)}
+.pl-tag{font-size:10.5px;font-weight:700;color:var(--orange);background:var(--orange-pale);padding:3px 10px;border-radius:20px}
 
-/* Dashboard card */
-.hv-dash{background:var(--white);border-radius:20px;border:1px solid var(--stone2);overflow:hidden;box-shadow:0 20px 60px rgba(13,13,11,.07)}
-.hv-chrome{height:38px;background:var(--stone);border-bottom:1px solid var(--stone2);display:flex;align-items:center;padding:0 14px;gap:6px}
-.hv-dot{width:10px;height:10px;border-radius:50%}
-.hv-url{flex:1;height:22px;background:var(--white);border-radius:6px;border:1px solid var(--stone2);margin:0 10px;display:flex;align-items:center;padding:0 10px;font-size:10.5px;color:var(--muted);font-weight:500}
-.hv-body{padding:20px}
-.hv-head{display:flex;align-items:center;justify-content:space-between;margin-bottom:14px}
-.hv-title{font-size:14px;font-weight:800;color:var(--ink);letter-spacing:-.2px}
-.hv-live{display:flex;align-items:center;gap:5px;font-size:10px;font-weight:700;color:var(--orange);background:var(--orange-pale);padding:4px 10px;border-radius:20px}
-.hv-live-dot{width:5px;height:5px;border-radius:50%;background:var(--orange);animation:blink 1.4s ease infinite}
+/* ══════════════════════════════
+   DASHBOARD — full-width section below hero
+══════════════════════════════ */
+.dash-section{background:var(--white);border-top:1px solid var(--stone2);border-bottom:1px solid var(--stone2)}
+.dash-inner{max-width:var(--max);margin:0 auto;padding:64px var(--pad)}
+.dash-lbl{display:flex;align-items:center;gap:14px;margin-bottom:28px}
+.dl-line{flex:1;height:1px;background:var(--stone2)}
+.dl-txt{font-size:11px;font-weight:700;letter-spacing:.8px;text-transform:uppercase;color:var(--muted);white-space:nowrap}
+.dash-frame{background:var(--paper);border-radius:20px;border:1px solid var(--stone2);overflow:hidden;box-shadow:0 16px 56px rgba(13,13,11,.07)}
+.df-chrome{height:40px;background:var(--stone);border-bottom:1px solid var(--stone2);display:flex;align-items:center;padding:0 16px;gap:7px}
+.df-dot{width:11px;height:11px;border-radius:50%}
+.df-url{flex:1;height:24px;background:var(--white);border-radius:7px;border:1px solid var(--stone2);margin:0 12px;display:flex;align-items:center;padding:0 12px;font-size:11px;color:var(--muted);font-weight:500}
+.df-body{display:flex;min-height:320px}
+.df-side{width:196px;flex-shrink:0;border-right:1px solid var(--stone2);padding:14px 0;background:var(--stone)}
+.ds-lbl{padding:3px 14px;font-size:9.5px;font-weight:700;color:var(--muted);letter-spacing:.7px;text-transform:uppercase;margin-top:10px;margin-bottom:2px}
+.ds-it{display:flex;align-items:center;gap:9px;padding:8px 16px;font-size:12.5px;font-weight:600;color:var(--dim);cursor:pointer;border-right:2.5px solid transparent;transition:all .15s}
+.ds-it.on{background:var(--white);color:var(--orange);border-right-color:var(--orange)}
+.ds-it:hover:not(.on){background:rgba(255,255,255,.5);color:var(--ink)}
+.df-main{flex:1;padding:22px 26px}
+.df-top{display:flex;align-items:center;justify-content:space-between;margin-bottom:18px;padding-bottom:18px;border-bottom:1px solid var(--stone2)}
+.df-title{font-size:16px;font-weight:800;letter-spacing:-.3px;color:var(--ink)}
+.df-live{display:flex;align-items:center;gap:6px;font-size:11px;font-weight:700;color:var(--orange);background:var(--orange-pale);padding:5px 12px;border-radius:20px}
+.df-ld{width:6px;height:6px;border-radius:50%;background:var(--orange);animation:blink 1.4s ease infinite}
 @keyframes blink{0%,100%{opacity:1}50%{opacity:.2}}
-.hv-kpis{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin-bottom:14px}
-.hk{background:var(--stone);border-radius:10px;padding:10px 12px}
-.hk-v{font-size:18px;font-weight:800;color:var(--ink);letter-spacing:-.6px}
-.hk-v.or{color:var(--orange)}
-.hk-l{font-size:9.5px;font-weight:600;color:var(--muted);margin-top:1px}
-.hv-table{width:100%;border-collapse:collapse}
-.hv-table th{text-align:left;font-size:9.5px;font-weight:700;color:var(--muted);text-transform:uppercase;letter-spacing:.4px;padding:5px 8px;border-bottom:1px solid var(--stone2)}
-.hv-table td{padding:8px 8px;font-size:11.5px;border-bottom:1px solid var(--stone);vertical-align:middle}
-.hv-table tr:last-child td{border:none}
-.hv-table tr:hover td{background:var(--stone)}
-.td-b{font-weight:700;color:var(--ink)}
-.td-s{font-size:10px;color:var(--muted)}
-.bdg{display:inline-block;padding:2px 8px;border-radius:20px;font-size:10px;font-weight:700}
+.kpi-row{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin-bottom:18px}
+.kpi{background:var(--stone);border-radius:11px;padding:12px 14px}
+.kv{font-size:20px;font-weight:800;letter-spacing:-.6px;color:var(--ink);margin-bottom:1px}
+.kv.or{color:var(--orange)}
+.kl{font-size:9.5px;font-weight:600;color:var(--muted)}
+.dft{width:100%;border-collapse:collapse}
+.dft th{text-align:left;font-size:9.5px;font-weight:700;color:var(--muted);text-transform:uppercase;letter-spacing:.4px;padding:6px 8px;border-bottom:1px solid var(--stone2)}
+.dft td{padding:9px 8px;font-size:12.5px;border-bottom:1px solid var(--stone);vertical-align:middle}
+.dft tr:last-child td{border:none}
+.dft tr:hover td{background:var(--stone)}
+.tb{font-weight:700;color:var(--ink)}
+.ts{font-size:10.5px;color:var(--muted);margin-top:1px}
+.bdg{display:inline-block;padding:2px 9px;border-radius:20px;font-size:10px;font-weight:700}
 .bd{background:#E2F5EA;color:#177A3A}
 .bp{background:#FEF0E0;color:#B55800}
 .bn{background:var(--stone);color:var(--muted)}
-.pbar{height:3px;border-radius:2px;background:var(--stone2);overflow:hidden;min-width:56px}
+.pb{height:4px;border-radius:2px;background:var(--stone2);overflow:hidden;min-width:60px}
 .pf{height:100%;border-radius:2px;background:var(--orange)}
-.av{width:20px;height:20px;border-radius:50%;display:inline-flex;align-items:center;justify-content:center;font-size:8px;font-weight:800;color:#fff}
+.av{width:22px;height:22px;border-radius:50%;display:inline-flex;align-items:center;justify-content:center;font-size:8.5px;font-weight:800;color:#fff}
 
-/* Right stat cards */
-.hv-right{display:flex;flex-direction:column;gap:16px}
-.hv-stat{background:var(--white);border-radius:20px;border:1px solid var(--stone2);padding:28px 24px;transition:all .25s var(--ease)}
-.hv-stat:hover{box-shadow:0 12px 36px rgba(13,13,11,.08);transform:translateY(-3px)}
-.hv-stat.featured{background:var(--ink)}
-.hs-label{font-size:10.5px;font-weight:700;color:var(--muted);text-transform:uppercase;letter-spacing:.6px;margin-bottom:8px}
-.hv-stat.featured .hs-label{color:rgba(255,255,255,.4)}
-.hs-val{font-size:52px;font-weight:800;letter-spacing:-3px;line-height:1;color:var(--ink)}
-.hv-stat.featured .hs-val{color:#fff}
-.hs-val em{font-style:normal;font-weight:300;color:var(--orange)}
-.hv-stat.featured .hs-val em{color:var(--orange-lt)}
-.hs-desc{font-size:13px;color:var(--dim);margin-top:6px;line-height:1.55}
-.hv-stat.featured .hs-desc{color:rgba(255,255,255,.45)}
-.hs-row{display:grid;grid-template-columns:1fr 1fr;gap:12px}
-.hs-mini{background:var(--stone);border-radius:14px;padding:18px}
-.hs-mini-v{font-size:32px;font-weight:800;letter-spacing:-1.5px;color:var(--ink);margin-bottom:2px}
-.hs-mini-l{font-size:10.5px;font-weight:600;color:var(--muted)}
+/* ══════════════════════════════
+   PARTNER BAND — standalone, clean
+══════════════════════════════ */
+.partner-band{
+  background:var(--white);
+  border-bottom:1px solid var(--stone2);
+  padding:32px var(--pad);
+}
+.pb-in{
+  max-width:var(--max);margin:0 auto;
+  display:flex;align-items:center;
+}
+.pb-label{
+  font-size:12px;font-weight:600;color:var(--muted);
+  white-space:nowrap;flex-shrink:0;
+  padding-right:40px;margin-right:40px;
+  border-right:1px solid var(--stone2);
+}
+.pb-logos{
+  display:flex;align-items:center;
+  justify-content:space-between;flex:1;
+}
+.pb-logo{
+  font-size:20px;font-weight:900;
+  color:rgba(13,13,11,.15);
+  letter-spacing:-.8px;
+  transition:color .2s;cursor:default;user-select:none;
+}
+.pb-logo:hover{color:rgba(13,13,11,.5)}
 
-/* ═══ PARTNER BAND ═══ */
-.partner-band{border-top:1px solid var(--stone2);border-bottom:1px solid var(--stone2);padding:28px 52px;background:var(--white)}
-.pb-in{max-width:1400px;margin:0 auto;display:flex;align-items:center;gap:0}
-.pb-label{font-size:12px;font-weight:600;color:var(--muted);white-space:nowrap;padding-right:48px;border-right:1px solid var(--stone2);margin-right:48px;letter-spacing:.2px}
-.pb-logos{display:flex;align-items:center;gap:52px;flex:1;justify-content:space-between}
-.pb-logo{font-size:22px;font-weight:900;color:rgba(13,13,11,.18);letter-spacing:-1px;transition:color .2s;cursor:default;user-select:none}
-.pb-logo:hover{color:rgba(13,13,11,.45)}
-
-/* ═══ SECTIONS ═══ */
-.sec{padding:96px 52px;max-width:1400px;margin:0 auto}
-.full-bg{padding:96px 52px}
+/* ══════════════════════════════
+   SHARED SECTION STYLES
+══════════════════════════════ */
+.sec{padding:96px var(--pad);max-width:var(--max);margin:0 auto}
+.full-pad{padding:96px var(--pad)}
 .eyebrow{font-size:11px;font-weight:700;letter-spacing:1.3px;text-transform:uppercase;color:var(--orange);margin-bottom:14px}
-.sh{font-size:58px;font-weight:800;letter-spacing:-2.8px;line-height:1.04;color:var(--ink);margin-bottom:18px}
+.sh{font-size:56px;font-weight:800;letter-spacing:-2.5px;line-height:1.05;color:var(--ink);margin-bottom:18px}
 .sh em{font-style:normal;font-weight:300;color:var(--orange);letter-spacing:-1.5px}
 .ss{font-size:17px;font-weight:400;color:var(--dim);line-height:1.75;max-width:520px}
-hr.rule{border:none;border-top:1px solid var(--stone2);max-width:1400px;margin:0 auto}
+.rule{border:none;border-top:1px solid var(--stone2);max-width:var(--max);margin:0 auto}
 
-/* ═══ SERVICES ═══ */
+/* ══════════════════════════════
+   SERVICES
+══════════════════════════════ */
 .svc-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:56px}
-.svc-card{border-radius:26px;padding:44px 38px;transition:transform .4s var(--ease),box-shadow .4s var(--ease);cursor:default;overflow:hidden;position:relative}
+.svc-card{border-radius:26px;padding:44px 36px;transition:transform .4s var(--ease),box-shadow .4s var(--ease);cursor:default;position:relative;overflow:hidden}
 .svc-card:hover{transform:translateY(-10px)}
-.sc-dark{background:var(--ink2);box-shadow:0 16px 48px rgba(13,13,11,.15)}
-.sc-dark:hover{box-shadow:0 32px 72px rgba(13,13,11,.22)}
+.sc-dark{background:var(--ink2)}
+.sc-dark:hover{box-shadow:0 28px 64px rgba(13,13,11,.22)}
 .sc-orange{background:var(--orange)}
-.sc-orange:hover{box-shadow:0 32px 72px rgba(224,90,20,.35)}
+.sc-orange:hover{box-shadow:0 28px 64px rgba(224,90,20,.35)}
 .sc-light{background:var(--white);border:1px solid var(--stone2)}
-.sc-light:hover{box-shadow:0 32px 72px rgba(13,13,11,.1);border-color:var(--stone2)}
-.svc-n{font-size:12px;font-weight:700;letter-spacing:.8px;text-transform:uppercase;opacity:.3;color:#fff;margin-bottom:40px}
-.sc-light .svc-n{color:var(--ink);opacity:.25}
-.svc-ico{font-size:38px;margin-bottom:22px;display:block}
-.svc-title{font-size:26px;font-weight:800;letter-spacing:-.5px;margin-bottom:14px;line-height:1.2;color:#fff}
+.sc-light:hover{box-shadow:0 28px 64px rgba(13,13,11,.1)}
+.svc-n{font-size:11px;font-weight:700;letter-spacing:.7px;text-transform:uppercase;opacity:.25;color:#fff;margin-bottom:40px}
+.sc-light .svc-n{color:var(--ink)}
+.svc-ico{font-size:36px;margin-bottom:20px;display:block}
+.svc-title{font-size:25px;font-weight:800;letter-spacing:-.5px;margin-bottom:14px;line-height:1.2;color:#fff}
 .sc-light .svc-title{color:var(--ink)}
-.svc-body{font-size:15px;line-height:1.75;color:rgba(255,255,255,.6);margin-bottom:32px}
+.svc-body{font-size:14.5px;line-height:1.75;color:rgba(255,255,255,.58);margin-bottom:30px}
 .sc-light .svc-body{color:var(--dim)}
 .svc-pills{display:flex;flex-wrap:wrap;gap:8px}
-.svc-pill{padding:6px 14px;border-radius:20px;font-size:12px;font-weight:700}
-.sc-dark .svc-pill{background:rgba(255,255,255,.1);color:rgba(255,255,255,.7)}
-.sc-orange .svc-pill{background:rgba(255,255,255,.18);color:#fff}
+.svc-pill{padding:6px 13px;border-radius:20px;font-size:11.5px;font-weight:700}
+.sc-dark .svc-pill{background:rgba(255,255,255,.1);color:rgba(255,255,255,.65)}
+.sc-orange .svc-pill{background:rgba(255,255,255,.2);color:#fff}
 .sc-light .svc-pill{background:var(--stone);color:var(--dim);border:1px solid var(--stone2)}
 
-/* ═══ DARK BAND — why ═══ */
+/* ══════════════════════════════
+   WHY DARK
+══════════════════════════════ */
 .dark-bg{background:var(--ink2)}
-.dark-in{max-width:1400px;margin:0 auto;padding:96px 52px}
+.dark-in{max-width:var(--max);margin:0 auto;padding:96px var(--pad)}
 .dark-top{display:flex;align-items:flex-end;justify-content:space-between;margin-bottom:56px;padding-bottom:48px;border-bottom:1px solid rgba(255,255,255,.07)}
-.dark-h{font-size:58px;font-weight:800;letter-spacing:-2.8px;line-height:1.04;color:#fff}
+.dark-h{font-size:56px;font-weight:800;letter-spacing:-2.5px;line-height:1.05;color:#fff}
 .dark-h em{font-style:normal;font-weight:300;color:var(--orange-lt)}
-.dark-note{font-size:15px;color:rgba(255,255,255,.35);max-width:280px;line-height:1.7;text-align:right}
+.dark-note{font-size:15px;color:rgba(255,255,255,.32);max-width:260px;text-align:right;line-height:1.7}
 .why-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
-.why-card{border-radius:24px;padding:44px 38px;transition:transform .35s var(--ease);cursor:default}
-.why-card:hover{transform:translateY(-7px)}
+.wc{border-radius:24px;padding:44px 36px;transition:transform .35s var(--ease);cursor:default}
+.wc:hover{transform:translateY(-7px)}
 .wc1{background:var(--orange)}
-.wc2{background:#222220;border:1px solid #2E2E2A}
-.wc3{background:#1C1C1A;border:1px solid #2E2E2A}
+.wc2{background:#222220;border:1px solid #2A2A26}
+.wc3{background:#1C1C1A;border:1px solid #2A2A26}
 .wc-n{font-size:60px;font-weight:800;letter-spacing:-3px;line-height:1;color:#fff;opacity:.12;margin-bottom:22px}
 .wc1 .wc-n{opacity:.2}
 .wc-ico{font-size:28px;margin-bottom:18px}
-.wc-title{font-size:22px;font-weight:800;color:#fff;letter-spacing:-.4px;margin-bottom:12px;line-height:1.25}
-.wc-body{font-size:14.5px;color:rgba(255,255,255,.52);line-height:1.75}
+.wc-title{font-size:21px;font-weight:800;color:#fff;letter-spacing:-.4px;margin-bottom:12px;line-height:1.25}
+.wc-body{font-size:14px;color:rgba(255,255,255,.5);line-height:1.75}
 .wc1 .wc-body{color:rgba(255,255,255,.8)}
 
-/* ═══ NUMBERS STRIP ═══ */
+/* ══════════════════════════════
+   NUMBERS
+══════════════════════════════ */
 .nums-bg{background:var(--white);border-top:1px solid var(--stone2);border-bottom:1px solid var(--stone2)}
-.nums-in{max-width:1400px;margin:0 auto;display:grid;grid-template-columns:repeat(3,1fr)}
-.num-cell{padding:72px 56px;border-right:1px solid var(--stone2);transition:background .2s}
-.num-cell:last-child{border-right:none}
-.num-cell:hover{background:var(--stone)}
-.num-ico{font-size:24px;margin-bottom:22px;display:block}
-.num-v{font-size:80px;font-weight:800;letter-spacing:-4.5px;line-height:1;color:var(--ink);margin-bottom:6px}
-.num-v em{font-style:normal;font-weight:300;color:var(--orange)}
-.num-l{font-size:10.5px;font-weight:700;letter-spacing:.8px;text-transform:uppercase;color:var(--muted);margin-bottom:16px}
-.num-d{font-size:14px;color:var(--dim);line-height:1.7;max-width:230px}
+.nums-in{max-width:var(--max);margin:0 auto;display:grid;grid-template-columns:repeat(3,1fr)}
+.nc{padding:72px 56px;border-right:1px solid var(--stone2);transition:background .2s}
+.nc:last-child{border-right:none}
+.nc:hover{background:var(--stone)}
+.nc-ico{font-size:24px;margin-bottom:20px;display:block}
+.nc-v{font-size:76px;font-weight:800;letter-spacing:-4px;line-height:1;color:var(--ink);margin-bottom:6px}
+.nc-v em{font-style:normal;font-weight:300;color:var(--orange)}
+.nc-l{font-size:10px;font-weight:700;letter-spacing:.8px;text-transform:uppercase;color:var(--muted);margin-bottom:14px}
+.nc-d{font-size:14px;color:var(--dim);line-height:1.7;max-width:230px}
 
-/* ═══ TESTIMONIAL ═══ */
-.testi-wrap{display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:center}
+/* ══════════════════════════════
+   TESTIMONIAL
+══════════════════════════════ */
+.testi-grid{display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:center}
 .testi-ey{display:flex;align-items:center;gap:14px;margin-bottom:32px}
 .testi-dash{width:32px;height:2px;background:var(--orange);flex-shrink:0}
 .testi-tag{font-size:11px;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:var(--orange)}
-.testi-q{font-size:26px;font-weight:400;line-height:1.55;color:var(--ink);margin-bottom:36px;letter-spacing:-.2px}
+.testi-q{font-size:25px;font-weight:400;line-height:1.55;color:var(--ink);margin-bottom:36px;letter-spacing:-.2px}
 .testi-q strong{font-weight:700}
 .testi-who{display:flex;align-items:center;gap:14px}
-.testi-pic{width:48px;height:48px;border-radius:50%;object-fit:cover;background:var(--orange-mid);display:flex;align-items:center;justify-content:center;font-size:16px;font-weight:800;color:var(--orange);flex-shrink:0;overflow:hidden}
+.testi-av{width:46px;height:46px;border-radius:50%;background:var(--orange-mid);display:flex;align-items:center;justify-content:center;font-size:15px;font-weight:800;color:var(--orange);flex-shrink:0}
 .testi-name{font-size:14px;font-weight:700;color:var(--ink)}
 .testi-role{font-size:12px;color:var(--muted)}
-.testi-right{display:flex;flex-direction:column;gap:14px}
-.tcard{background:var(--white);border-radius:20px;padding:30px;border:1px solid var(--stone2);transition:all .25s}
-.tcard:hover{border-color:var(--orange-mid);box-shadow:0 8px 28px rgba(224,90,20,.08)}
-.tcard.feat{background:var(--orange);border-color:transparent}
-.tc-v{font-size:52px;font-weight:800;letter-spacing:-3px;line-height:1;color:var(--ink);margin-bottom:5px}
-.tcard.feat .tc-v{color:#fff}
+.testi-cards{display:flex;flex-direction:column;gap:14px}
+.tc{background:var(--white);border-radius:20px;padding:28px;border:1px solid var(--stone2);transition:all .22s}
+.tc:hover{border-color:var(--orange-mid);box-shadow:0 8px 28px rgba(224,90,20,.08)}
+.tc.feat{background:var(--orange);border-color:transparent}
+.tc-v{font-size:50px;font-weight:800;letter-spacing:-2.5px;line-height:1;color:var(--ink);margin-bottom:5px}
+.tc.feat .tc-v{color:#fff}
 .tc-l{font-size:13px;font-weight:500;color:var(--dim)}
-.tcard.feat .tc-l{color:rgba(255,255,255,.72)}
-.t-row{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.tc.feat .tc-l{color:rgba(255,255,255,.7)}
+.tc-row{display:grid;grid-template-columns:1fr 1fr;gap:14px}
 
-/* ═══ TEAM ═══ */
+/* ══════════════════════════════
+   TEAM
+══════════════════════════════ */
 .team-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:18px;margin-top:56px}
-.tm-card{background:var(--white);border-radius:22px;overflow:hidden;border:1px solid var(--stone2);transition:all .3s var(--ease)}
-.tm-card:hover{transform:translateY(-8px);box-shadow:0 24px 56px rgba(13,13,11,.1);border-color:transparent}
-.tm-photo{width:100%;aspect-ratio:1/1;position:relative;overflow:hidden;background:var(--stone)}
-.tm-photo-inner{width:100%;height:100%;display:flex;align-items:flex-end;justify-content:center;background:linear-gradient(160deg,var(--stone) 0%,var(--stone2) 100%);position:relative}
-/* Avatar SVG silhouette per person */
-.tm-avatar{position:absolute;bottom:0;left:50%;transform:translateX(-50%);opacity:.5}
-.tm-photo-overlay{position:absolute;bottom:0;left:0;right:0;height:50%;background:linear-gradient(to top,rgba(13,13,11,.05),transparent)}
-.tm-info{padding:22px 22px 24px}
-.tm-role{font-size:16px;font-weight:800;color:var(--ink);letter-spacing:-.2px;margin-bottom:6px}
-.tm-title{font-size:12px;font-weight:600;color:var(--orange);margin-bottom:10px;text-transform:uppercase;letter-spacing:.4px}
+.tm{background:var(--white);border-radius:22px;overflow:hidden;border:1px solid var(--stone2);transition:all .3s var(--ease)}
+.tm:hover{transform:translateY(-8px);box-shadow:0 24px 56px rgba(13,13,11,.1);border-color:transparent}
+.tm-photo{width:100%;aspect-ratio:4/3;position:relative;overflow:hidden;display:flex;align-items:flex-end;justify-content:center}
+.tm-photo svg{position:absolute;bottom:0;left:50%;transform:translateX(-50%);opacity:.35}
+.tm-photo-overlay{position:absolute;inset:0}
+.tm-info{padding:22px 22px 26px}
+.tm-role{font-size:16px;font-weight:800;color:var(--ink);letter-spacing:-.2px;margin-bottom:4px}
+.tm-title{font-size:11px;font-weight:700;color:var(--orange);text-transform:uppercase;letter-spacing:.5px;margin-bottom:10px}
 .tm-desc{font-size:13px;color:var(--dim);line-height:1.6}
 
-/* Photo placeholder — stylized gradient avatars */
-.avatar-1{background:linear-gradient(135deg,#2D1B0E 0%,#8B4513 100%)}
-.avatar-2{background:linear-gradient(135deg,#1A1A2E 0%,#4A4A7A 100%)}
-.avatar-3{background:linear-gradient(135deg,#0D2818 0%,#2D7A4A 100%)}
-.avatar-4{background:linear-gradient(135deg,#2A1A00 0%,#8B6914 100%)}
-
-/* ═══ CONTACT ═══ */
-.contact-bg{background:var(--ink2);padding:96px 52px}
+/* ══════════════════════════════
+   CONTACT
+══════════════════════════════ */
+.contact-bg{background:var(--ink2);padding:96px var(--pad)}
 .contact-in{max-width:1100px;margin:0 auto}
 .contact-head{text-align:center;margin-bottom:56px}
-.contact-box{background:var(--white);border-radius:28px;overflow:hidden;display:grid;grid-template-columns:1.15fr 1fr;box-shadow:0 40px 96px rgba(0,0,0,.32)}
+.cbox{background:var(--white);border-radius:28px;overflow:hidden;display:grid;grid-template-columns:1.15fr 1fr;box-shadow:0 40px 96px rgba(0,0,0,.3)}
 .cf{padding:52px 48px}
-.cf h3{font-size:24px;font-weight:800;letter-spacing:-.5px;color:var(--ink);margin-bottom:8px}
-.cf p{font-size:14.5px;color:var(--dim);line-height:1.65;margin-bottom:32px}
+.cf h3{font-size:23px;font-weight:800;letter-spacing:-.5px;color:var(--ink);margin-bottom:8px}
+.cf p{font-size:14px;color:var(--dim);line-height:1.65;margin-bottom:32px}
 .fg{margin-bottom:16px}
 .fl{display:block;font-size:10.5px;font-weight:700;color:var(--ink);letter-spacing:.5px;text-transform:uppercase;margin-bottom:7px}
-.fi{width:100%;padding:12px 16px;border:1.5px solid var(--stone2);border-radius:10px;font-size:15px;font-family:var(--f);color:var(--ink);background:#fff;outline:none;transition:all .18s;-webkit-appearance:none}
+.fi{width:100%;padding:12px 15px;border:1.5px solid var(--stone2);border-radius:10px;font-size:14.5px;font-family:var(--f);color:var(--ink);background:#fff;outline:none;transition:all .18s;-webkit-appearance:none}
 .fi::placeholder{color:var(--muted)}
 .fi:focus{border-color:var(--orange);box-shadow:0 0 0 3px rgba(224,90,20,.1)}
 .fi-ta{min-height:96px;resize:vertical}
 .fg2{display:grid;grid-template-columns:1fr 1fr;gap:12px}
-.fsub{width:100%;padding:14px;background:var(--ink);color:#fff;border:none;border-radius:10px;font-size:15px;font-weight:800;cursor:pointer;font-family:var(--f);transition:all .22s var(--ease);margin-top:4px;letter-spacing:-.2px}
-.fsub:hover{background:var(--orange);transform:translateY(-2px);box-shadow:0 10px 28px rgba(224,90,20,.3)}
+.fsub{width:100%;padding:14px;background:var(--ink);color:#fff;border:none;border-radius:10px;font-size:15px;font-weight:800;cursor:pointer;font-family:var(--f);transition:all .22s var(--ease);margin-top:4px}
+.fsub:hover{background:var(--orange);transform:translateY(-2px);box-shadow:0 10px 28px rgba(224,90,20,.28)}
 .cf-r{padding:52px 44px;background:var(--stone);display:flex;flex-direction:column;justify-content:space-between}
-.cf-r h3{font-size:24px;font-weight:800;letter-spacing:-.5px;color:var(--ink);margin-bottom:10px}
-.cf-r p{font-size:14.5px;color:var(--dim);line-height:1.7;margin-bottom:36px}
+.cf-r h3{font-size:22px;font-weight:800;letter-spacing:-.5px;color:var(--ink);margin-bottom:10px}
+.cf-r p{font-size:14px;color:var(--dim);line-height:1.7;margin-bottom:36px}
 .ci{padding:15px 0;border-bottom:1px solid var(--stone2);display:flex;align-items:center;gap:14px}
 .ci:last-of-type{border-bottom:none}
-.ci-ico{width:36px;height:36px;background:var(--white);border-radius:10px;display:grid;place-items:center;font-size:15px;flex-shrink:0;box-shadow:0 2px 8px rgba(13,13,11,.07)}
-.ci-l{font-size:10px;font-weight:700;color:var(--muted);text-transform:uppercase;letter-spacing:.4px;margin-bottom:2px}
+.ci-ico{width:36px;height:36px;background:var(--white);border-radius:9px;display:grid;place-items:center;font-size:15px;flex-shrink:0;box-shadow:0 2px 8px rgba(13,13,11,.07)}
+.ci-l{font-size:9.5px;font-weight:700;color:var(--muted);text-transform:uppercase;letter-spacing:.4px;margin-bottom:2px}
 .ci-v{font-size:13.5px;font-weight:700;color:var(--ink)}
 .region-row{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-top:28px}
-.rp{background:var(--white);border-radius:12px;padding:14px 10px;text-align:center;border:1px solid var(--stone2)}
+.rp{background:var(--white);border-radius:12px;padding:13px 10px;text-align:center;border:1px solid var(--stone2)}
 .rp-ico{font-size:18px;margin-bottom:5px}
 .rp-name{font-size:12px;font-weight:700;color:var(--ink)}
 
-/* ═══ FOOTER ═══ */
-footer{background:var(--ink);padding:60px 52px 40px}
-.foot-in{max-width:1400px;margin:0 auto}
-.foot-top{display:grid;grid-template-columns:280px 1fr;gap:80px;margin-bottom:52px;padding-bottom:48px;border-bottom:1px solid rgba(255,255,255,.07)}
-.foot-brand p{font-size:13.5px;color:rgba(255,255,255,.35);line-height:1.65;margin-top:14px;max-width:220px}
-.foot-name{font-size:16px;font-weight:800;color:#fff;margin-top:10px;letter-spacing:-.2px}
+/* ══════════════════════════════
+   FOOTER
+══════════════════════════════ */
+footer{background:var(--ink);padding:60px var(--pad) 40px}
+.foot-in{max-width:var(--max);margin:0 auto}
+.foot-top{display:grid;grid-template-columns:260px 1fr;gap:80px;margin-bottom:52px;padding-bottom:48px;border-bottom:1px solid rgba(255,255,255,.07)}
+.foot-brand p{font-size:13px;color:rgba(255,255,255,.35);line-height:1.65;margin-top:12px;max-width:210px}
+.foot-name{font-size:15px;font-weight:800;color:#fff;margin-top:10px}
 .foot-links{display:grid;grid-template-columns:repeat(3,1fr);gap:40px}
 .fl-col h4{font-size:10.5px;font-weight:700;color:rgba(255,255,255,.28);text-transform:uppercase;letter-spacing:.8px;margin-bottom:18px}
-.fl-col a{display:block;font-size:14px;font-weight:500;color:rgba(255,255,255,.5);text-decoration:none;margin-bottom:12px;transition:color .15s}
+.fl-col a{display:block;font-size:13.5px;font-weight:500;color:rgba(255,255,255,.5);text-decoration:none;margin-bottom:11px;transition:color .15s}
 .fl-col a:hover{color:var(--orange-lt)}
 .foot-bot{display:flex;align-items:center;justify-content:space-between}
-.foot-copy{font-size:12.5px;color:rgba(255,255,255,.25)}
+.foot-copy{font-size:12px;color:rgba(255,255,255,.25)}
 
-@media(max-width:1024px){
-  .hero h1{font-size:52px;letter-spacing:-2.5px}
+/* ══════════════════════════════
+   RESPONSIVE
+══════════════════════════════ */
+@media(max-width:1100px){
+  :root{--pad:28px}
+  .hero-inner{grid-template-columns:1fr;min-height:auto;padding-top:60px}
+  .hero-right{display:none}
+  .hero-h1{font-size:52px;letter-spacing:-2.5px}
   .sh,.dark-h{font-size:38px;letter-spacing:-1.5px}
   .n-links{display:none}
-  .hero-visual,.svc-grid,.why-grid,.team-grid,.nums-in,.testi-wrap,.contact-box{grid-template-columns:1fr}
-  .hv-right{display:none}
-  .num-cell{border-right:none;border-bottom:1px solid var(--stone2)}
-  .num-cell:last-child{border-bottom:none}
+  .svc-grid,.why-grid,.team-grid{grid-template-columns:1fr 1fr}
+  .nums-in,.testi-grid,.cbox,.foot-top{grid-template-columns:1fr}
+  .nc{border-right:none;border-bottom:1px solid var(--stone2)}
+  .nc:last-child{border-bottom:none}
   .cf-r{display:none}
-  .foot-top{grid-template-columns:1fr}
-  .foot-links{grid-template-columns:1fr 1fr}
   .dark-top{flex-direction:column;gap:16px}
-  .dark-note{text-align:left}
+  .dark-note{text-align:left;max-width:100%}
   .fg2{grid-template-columns:1fr}
-  .hero,.sec,.full-bg,.dark-in,.contact-bg,footer{padding-left:20px;padding-right:20px}
-  .partner-band{padding:20px}
+  .foot-links{grid-template-columns:1fr 1fr}
   .pb-label{display:none}
-  .pb-logos{justify-content:center;gap:32px}
+  .pb-logos{justify-content:center;gap:40px}
+}
+@media(max-width:640px){
+  .svc-grid,.why-grid,.team-grid{grid-template-columns:1fr}
 }
 </style>
 </head>
@@ -302,16 +415,16 @@ footer{background:var(--ink);padding:60px 52px 40px}
         </svg>
       </div>
       <div>
-        <div class="n-brand">Nova Space</div>
+        <div class="n-wordmark">Nova Space</div>
         <div class="n-sub">Logistics Operations</div>
       </div>
     </a>
-    <nav class="n-links">
+    <div class="n-links">
       <a href="#overview" class="n-a">Overview</a>
       <a href="#services" class="n-a">Services</a>
       <a href="#team" class="n-a">Team</a>
       <a href="#contact" class="n-a">Contact</a>
-    </nav>
+    </div>
     <div class="n-r">
       <a href="#contact" class="n-ghost">Contact sales</a>
       <a href="#contact" class="n-cta">Get Started →</a>
@@ -320,118 +433,53 @@ footer{background:var(--ink);padding:60px 52px 40px}
 </nav>
 
 <!-- ═══ HERO ═══ -->
-<section class="hero" id="overview">
-  <div class="hero-tag"><span class="hero-tag-dot"></span>Trusted across California since 2022</div>
-  <h1>Logistics that moves<br>at <span class="thin">your</span> speed.</h1>
-  <p class="hero-sub">Scale your operations across SF, Bay Area, and LA with 200+ trained operators, real-time dashboards, and a team that responds before you even have to ask.</p>
-  <div class="hero-btns">
-    <a href="#contact" class="btn-fill">Get Started →</a>
-    <a href="#services" class="btn-ghost">Explore services ↓</a>
-  </div>
-  <p class="hero-note">No long-term commitment required &nbsp;·&nbsp; Response within 24h</p>
+<div class="hero-wrap" id="overview">
+  <div class="hero-inner">
 
-  <!-- Dashboard + stat cards -->
-  <div class="hero-visual">
-    <div class="hv-dash">
-      <div class="hv-chrome">
-        <div class="hv-dot" style="background:#FF5F57"></div>
-        <div class="hv-dot" style="background:#FEBC2E"></div>
-        <div class="hv-dot" style="background:#28C840"></div>
-        <div class="hv-url">novaspace.ops / dashboard</div>
+    <!-- LEFT: headline + CTA -->
+    <div class="hero-left">
+      <div class="hero-tag"><span class="hero-tag-dot"></span>Trusted across California since 2022</div>
+      <h1 class="hero-h1">Logistics that<br>moves at <span class="thin">your</span><br>speed.</h1>
+      <p class="hero-sub">Scale your operations across SF, Bay Area, and LA with 200+ trained operators, real-time dashboards, and a team that responds before you even have to ask.</p>
+      <div class="hero-btns">
+        <a href="#contact" class="btn-fill">Get Started →</a>
+        <a href="#services" class="btn-ghost">Explore services ↓</a>
       </div>
-      <div class="hv-body">
-        <div class="hv-head">
-          <span class="hv-title">Today's Operations — All Regions</span>
-          <span class="hv-live"><span class="hv-live-dot"></span>Live</span>
-        </div>
-        <div class="hv-kpis">
-          <div class="hk"><div class="hk-v">1,035</div><div class="hk-l">Total Packages</div></div>
-          <div class="hk"><div class="hk-v or">87%</div><div class="hk-l">Completion</div></div>
-          <div class="hk"><div class="hk-v">163</div><div class="hk-l">Active Ops</div></div>
-          <div class="hk"><div class="hk-v">99.2%</div><div class="hk-l">Accuracy</div></div>
-        </div>
-        <table class="hv-table">
-          <thead><tr>
-            <th>Task / Region</th><th>Ops</th><th>Progress</th><th>Status</th><th>Pkgs</th><th>Lead</th>
-          </tr></thead>
-          <tbody>
-            <tr>
-              <td><div class="td-b">SF Bay — Morning Sort</div><div class="td-s">San Francisco</div></td>
-              <td>42</td><td><div class="pbar"><div class="pf" style="width:100%"></div></div></td>
-              <td><span class="bdg bd">Done</span></td><td class="td-b">312</td>
-              <td><div class="av" style="background:var(--orange)">JL</div></td>
-            </tr>
-            <tr>
-              <td><div class="td-b">LA Downtown Delivery</div><div class="td-s">Los Angeles</div></td>
-              <td>38</td><td><div class="pbar"><div class="pf" style="width:72%"></div></div></td>
-              <td><span class="bdg bp">Active</span></td><td class="td-b">288</td>
-              <td><div class="av" style="background:var(--dim)">MW</div></td>
-            </tr>
-            <tr>
-              <td><div class="td-b">Bay Area Afternoon</div><div class="td-s">East Bay</div></td>
-              <td>45</td><td><div class="pbar"><div class="pf" style="width:46%"></div></div></td>
-              <td><span class="bdg bp">Active</span></td><td class="td-b">134</td>
-              <td><div class="av" style="background:var(--ink)">AK</div></td>
-            </tr>
-            <tr>
-              <td><div class="td-b">SF Mission — Final Sort</div><div class="td-s">San Francisco</div></td>
-              <td>28</td><td><div class="pbar"></div></td>
-              <td><span class="bdg bn">Pending</span></td><td style="color:var(--muted)">—</td>
-              <td><div class="av" style="background:var(--stone2);color:var(--muted)">TC</div></td>
-            </tr>
-            <tr>
-              <td><div class="td-b">LA West — Final Mile</div><div class="td-s">Los Angeles</div></td>
-              <td>10</td><td><div class="pbar"><div class="pf" style="width:100%"></div></div></td>
-              <td><span class="bdg bd">Done</span></td><td class="td-b">301</td>
-              <td><div class="av" style="background:var(--orange-lt)">SP</div></td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
+      <p class="hero-note">No long-term commitment required &nbsp;·&nbsp; Response within 24h</p>
     </div>
-    <!-- Right stat cards -->
-    <div class="hv-right">
-      <div class="hv-stat featured">
-        <div class="hs-label">Packages / Operator</div>
-        <div class="hs-val">~300<em>/day</em></div>
-        <div class="hs-desc">Consistent high-volume output across all California regions</div>
+
+    <!-- RIGHT: stat cards — balanced visual weight -->
+    <div class="hero-right">
+      <div class="hstat dark">
+        <div class="hstat-lbl">Packages / Operator</div>
+        <div class="hstat-val">~300<em>/day</em></div>
+        <div class="hstat-desc">Consistent high-volume output across all California regions</div>
       </div>
-      <div class="hs-row">
-        <div class="hs-mini">
-          <div class="hs-mini-v" style="color:var(--orange)">99%</div>
-          <div class="hs-mini-l">Accuracy</div>
+      <div class="hstat-mini-row">
+        <div class="hstat-mini">
+          <div class="hm-v or">99%</div>
+          <div class="hm-l">Accuracy Rate</div>
         </div>
-        <div class="hs-mini">
-          <div class="hs-mini-v">200+</div>
-          <div class="hs-mini-l">Operators</div>
+        <div class="hstat-mini">
+          <div class="hm-v">200+</div>
+          <div class="hm-l">Operators Ready</div>
         </div>
       </div>
-      <div class="hv-stat">
-        <div class="hs-label">Active Partners</div>
-        <div style="display:flex;flex-direction:column;gap:10px;margin-top:8px">
-          <div style="display:flex;align-items:center;justify-content:space-between;padding:10px 12px;border:1px solid var(--stone2);border-radius:10px">
-            <span style="font-size:14px;font-weight:700;color:var(--ink)">UniUni</span>
-            <span style="font-size:11px;font-weight:700;color:var(--orange);background:var(--orange-pale);padding:3px 10px;border-radius:20px">Active</span>
-          </div>
-          <div style="display:flex;align-items:center;justify-content:space-between;padding:10px 12px;border:1px solid var(--stone2);border-radius:10px">
-            <span style="font-size:14px;font-weight:700;color:var(--ink)">Yanwen</span>
-            <span style="font-size:11px;font-weight:700;color:var(--orange);background:var(--orange-pale);padding:3px 10px;border-radius:20px">Active</span>
-          </div>
-          <div style="display:flex;align-items:center;justify-content:space-between;padding:10px 12px;border:1px solid var(--stone2);border-radius:10px">
-            <span style="font-size:14px;font-weight:700;color:var(--ink)">SwiftX</span>
-            <span style="font-size:11px;font-weight:700;color:var(--orange);background:var(--orange-pale);padding:3px 10px;border-radius:20px">Active</span>
-          </div>
-          <div style="display:flex;align-items:center;justify-content:space-between;padding:10px 12px;border:1px solid var(--stone2);border-radius:10px">
-            <span style="font-size:14px;font-weight:700;color:var(--ink)">GoFo</span>
-            <span style="font-size:11px;font-weight:700;color:var(--orange);background:var(--orange-pale);padding:3px 10px;border-radius:20px">Active</span>
-          </div>
+      <div class="hstat">
+        <div class="hstat-lbl">Active Partners</div>
+        <div class="partner-list">
+          <div class="pl-item"><span class="pl-name">UniUni</span><span class="pl-tag">Active</span></div>
+          <div class="pl-item"><span class="pl-name">Yanwen</span><span class="pl-tag">Active</span></div>
+          <div class="pl-item"><span class="pl-name">SwiftX</span><span class="pl-tag">Active</span></div>
+          <div class="pl-item"><span class="pl-name">GoFo</span><span class="pl-tag">Active</span></div>
         </div>
       </div>
     </div>
-  </div>
-</section>
 
-<!-- ═══ PARTNER BAND — clean text logos like monday.com ═══ -->
+  </div>
+</div>
+
+<!-- ═══ PARTNER BAND — own full-width row ═══ -->
 <div class="partner-band">
   <div class="pb-in">
     <div class="pb-label">Trusted by</div>
@@ -440,6 +488,87 @@ footer{background:var(--ink);padding:60px 52px 40px}
       <div class="pb-logo">Yanwen</div>
       <div class="pb-logo">SwiftX</div>
       <div class="pb-logo">GoFo</div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══ DASHBOARD ═══ -->
+<div class="dash-section">
+  <div class="dash-inner">
+    <div class="dash-lbl">
+      <div class="dl-line"></div>
+      <span class="dl-txt">Live Operations Dashboard</span>
+      <div class="dl-line"></div>
+    </div>
+    <div class="dash-frame">
+      <div class="df-chrome">
+        <div class="df-dot" style="background:#FF5F57"></div>
+        <div class="df-dot" style="background:#FEBC2E"></div>
+        <div class="df-dot" style="background:#28C840"></div>
+        <div class="df-url">novaspace.ops / dashboard — today</div>
+      </div>
+      <div class="df-body">
+        <div class="df-side">
+          <div class="ds-lbl">Operations</div>
+          <div class="ds-it on">📦 Sorting Ops</div>
+          <div class="ds-it">🚚 Deliveries</div>
+          <div class="ds-it">👥 Operators</div>
+          <div class="ds-lbl">Analytics</div>
+          <div class="ds-it">📊 Performance</div>
+          <div class="ds-it">📈 Reports</div>
+          <div class="ds-lbl">System</div>
+          <div class="ds-it">⚙️ Settings</div>
+        </div>
+        <div class="df-main">
+          <div class="df-top">
+            <span class="df-title">Today's Operations — All Regions</span>
+            <span class="df-live"><span class="df-ld"></span>Live</span>
+          </div>
+          <div class="kpi-row">
+            <div class="kpi"><div class="kv">1,035</div><div class="kl">Total Packages</div></div>
+            <div class="kpi"><div class="kv or">87%</div><div class="kl">Completion</div></div>
+            <div class="kpi"><div class="kv">163</div><div class="kl">Active Operators</div></div>
+            <div class="kpi"><div class="kv">99.2%</div><div class="kl">Accuracy</div></div>
+          </div>
+          <table class="dft">
+            <thead><tr>
+              <th>Task / Region</th><th>Ops</th><th>Progress</th><th>Status</th><th>Pkgs</th><th>Lead</th>
+            </tr></thead>
+            <tbody>
+              <tr>
+                <td><div class="tb">SF Bay — Morning Sort</div><div class="ts">San Francisco</div></td>
+                <td>42</td><td><div class="pb"><div class="pf" style="width:100%"></div></div></td>
+                <td><span class="bdg bd">Done</span></td><td class="tb">312</td>
+                <td><div class="av" style="background:var(--orange)">JL</div></td>
+              </tr>
+              <tr>
+                <td><div class="tb">LA Downtown Delivery</div><div class="ts">Los Angeles</div></td>
+                <td>38</td><td><div class="pb"><div class="pf" style="width:72%"></div></div></td>
+                <td><span class="bdg bp">Active</span></td><td class="tb">288</td>
+                <td><div class="av" style="background:var(--dim)">MW</div></td>
+              </tr>
+              <tr>
+                <td><div class="tb">Bay Area Afternoon</div><div class="ts">East Bay</div></td>
+                <td>45</td><td><div class="pb"><div class="pf" style="width:46%"></div></div></td>
+                <td><span class="bdg bp">Active</span></td><td class="tb">134</td>
+                <td><div class="av" style="background:var(--ink)">AK</div></td>
+              </tr>
+              <tr>
+                <td><div class="tb">SF Mission — Final Sort</div><div class="ts">San Francisco</div></td>
+                <td>28</td><td><div class="pb"></div></td>
+                <td><span class="bdg bn">Pending</span></td><td style="color:var(--muted)">—</td>
+                <td><div class="av" style="background:var(--stone2);color:var(--muted)">TC</div></td>
+              </tr>
+              <tr>
+                <td><div class="tb">LA West — Final Mile</div><div class="ts">Los Angeles</div></td>
+                <td>10</td><td><div class="pb"><div class="pf" style="width:100%"></div></div></td>
+                <td><span class="bdg bd">Done</span></td><td class="tb">301</td>
+                <td><div class="av" style="background:var(--orange-lt)">SP</div></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
     </div>
   </div>
 </div>
@@ -454,7 +583,7 @@ footer{background:var(--ink);padding:60px 52px 40px}
       <div class="svc-n">01 —</div>
       <span class="svc-ico">📦</span>
       <div class="svc-title">Sorting Operations</div>
-      <div class="svc-body">High-efficiency package sorting at scale. Our standardized team-based system delivers ~300 packages per operator daily — consistent, accurate, and fully monitored in real time across all sites.</div>
+      <div class="svc-body">High-efficiency package sorting at scale. Our standardized team-based system delivers ~300 packages per operator daily — consistent, accurate, and fully monitored in real time.</div>
       <div class="svc-pills">
         <span class="svc-pill">~300 pkgs/operator</span>
         <span class="svc-pill">Real-time tracking</span>
@@ -465,7 +594,7 @@ footer{background:var(--ink);padding:60px 52px 40px}
       <div class="svc-n">02 —</div>
       <span class="svc-ico">🚚</span>
       <div class="svc-title">Last-Mile Delivery</div>
-      <div class="svc-body">End-to-end urban delivery coverage across SF, Bay Area, and LA. Optimized routing, flexible operator deployment, and full visibility from dispatch to doorstep — every time.</div>
+      <div class="svc-body">End-to-end urban delivery coverage across SF, Bay Area, and LA. Optimized routing, flexible operator deployment, and full visibility from dispatch to doorstep.</div>
       <div class="svc-pills">
         <span class="svc-pill">3 major regions</span>
         <span class="svc-pill">Flexible routing</span>
@@ -473,10 +602,10 @@ footer{background:var(--ink);padding:60px 52px 40px}
       </div>
     </div>
     <div class="svc-card sc-light">
-      <div class="svc-n" style="color:var(--ink);opacity:.2">03 —</div>
+      <div class="svc-n">03 —</div>
       <span class="svc-ico">👷</span>
       <div class="svc-title">Workforce Training & Staffing</div>
-      <div class="svc-body">200+ trained operators ready to deploy. We handle the full cycle — recruitment, onboarding, skills training, and ongoing performance management for your entire logistics workforce.</div>
+      <div class="svc-body">200+ trained operators ready to deploy. We handle full-cycle staffing — recruitment, onboarding, skills training, and ongoing performance management.</div>
       <div class="svc-pills">
         <span class="svc-pill">200+ operators</span>
         <span class="svc-pill">Full onboarding</span>
@@ -497,23 +626,23 @@ footer{background:var(--ink);padding:60px 52px 40px}
       <div class="dark-note">Three advantages that compound into a competitive edge your partners actually feel.</div>
     </div>
     <div class="why-grid">
-      <div class="why-card wc1">
+      <div class="wc wc1">
         <div class="wc-n">01</div>
         <div class="wc-ico">⚡</div>
         <div class="wc-title">Real-Time Dashboard</div>
         <div class="wc-body">Track attendance and performance daily with our proprietary system. Complete operational visibility — know exactly what's happening, right now, across all regions.</div>
       </div>
-      <div class="why-card wc2">
+      <div class="wc wc2">
         <div class="wc-n">02</div>
         <div class="wc-ico">📈</div>
         <div class="wc-title">Data-Driven Optimization</div>
-        <div class="wc-body">Monitor every metric closely and surface issues before they escalate. Every decision is backed by live operational intelligence so efficiency keeps compounding.</div>
+        <div class="wc-body">Monitor every metric closely and surface issues before they escalate. Every decision backed by live operational intelligence so efficiency keeps compounding.</div>
       </div>
-      <div class="why-card wc3">
+      <div class="wc wc3">
         <div class="wc-n">03</div>
         <div class="wc-ico">🤝</div>
         <div class="wc-title">Reliable Partnership</div>
-        <div class="wc-body">Easy to work with, always responsive, and we strictly follow your requirements. We build the kind of trust that makes long-term partnerships not just possible — inevitable.</div>
+        <div class="wc-body">Easy to work with, always responsive, strictly following your requirements. We build the kind of trust that makes long-term partnerships inevitable.</div>
       </div>
     </div>
   </div>
@@ -522,121 +651,108 @@ footer{background:var(--ink);padding:60px 52px 40px}
 <!-- ═══ NUMBERS ═══ -->
 <div class="nums-bg">
   <div class="nums-in">
-    <div class="num-cell">
-      <span class="num-ico">📦</span>
-      <div class="num-v">~300<em>/day</em></div>
-      <div class="num-l">Packages per Operator</div>
-      <div class="num-d">Consistent, high-volume output across all regions — every single day, without exception.</div>
+    <div class="nc">
+      <span class="nc-ico">📦</span>
+      <div class="nc-v">~300<em>/day</em></div>
+      <div class="nc-l">Packages per Operator</div>
+      <div class="nc-d">Consistent, high-volume output across all regions — every single day.</div>
     </div>
-    <div class="num-cell">
-      <span class="num-ico">✓</span>
-      <div class="num-v">99<em>%</em></div>
-      <div class="num-l">Accuracy Rate</div>
-      <div class="num-d">Proven stable performance, verified across all partner operations and delivery routes.</div>
+    <div class="nc">
+      <span class="nc-ico">✓</span>
+      <div class="nc-v">99<em>%</em></div>
+      <div class="nc-l">Accuracy Rate</div>
+      <div class="nc-d">Proven stable performance verified across all partner operations.</div>
     </div>
-    <div class="num-cell">
-      <span class="num-ico">👥</span>
-      <div class="num-v">200<em>+</em></div>
-      <div class="num-l">Operators Ready</div>
-      <div class="num-d">Fully trained, rapidly deployable workforce ready to scale with your demand — no lag.</div>
+    <div class="nc">
+      <span class="nc-ico">👥</span>
+      <div class="nc-v">200<em>+</em></div>
+      <div class="nc-l">Operators Ready</div>
+      <div class="nc-d">Fully trained, rapidly deployable workforce ready to scale with demand.</div>
     </div>
   </div>
 </div>
 
 <!-- ═══ TESTIMONIAL ═══ -->
 <section class="sec">
-  <div class="testi-wrap">
+  <div class="testi-grid">
     <div>
       <div class="testi-ey"><div class="testi-dash"></div><span class="testi-tag">Client Results</span></div>
-      <div class="testi-q">"Nova Space helped us <strong>scale our California operations</strong> without sacrificing accuracy or speed. Their real-time visibility and responsiveness is unlike anything we've experienced from a logistics partner."</div>
+      <div class="testi-q">"Nova Space helped us <strong>scale our California operations</strong> without sacrificing accuracy or speed. Their real-time visibility is unlike anything we've experienced from a logistics partner."</div>
       <div class="testi-who">
-        <div class="testi-pic">OD</div>
+        <div class="testi-av">OD</div>
         <div>
           <div class="testi-name">Operations Director, UniUni</div>
           <div class="testi-role">Strategic Partner · Bay Area, CA</div>
         </div>
       </div>
     </div>
-    <div class="testi-right">
-      <div class="t-row">
-        <div class="tcard feat"><div class="tc-v">99%</div><div class="tc-l">Delivery accuracy maintained</div></div>
-        <div class="tcard"><div class="tc-v">2×</div><div class="tc-l">Volume scaled in 60 days</div></div>
+    <div class="testi-cards">
+      <div class="tc-row">
+        <div class="tc feat"><div class="tc-v">99%</div><div class="tc-l">Delivery accuracy maintained</div></div>
+        <div class="tc"><div class="tc-v">2×</div><div class="tc-l">Volume scaled in 60 days</div></div>
       </div>
-      <div class="tcard"><div class="tc-v" style="font-size:40px">24h</div><div class="tc-l">Average response time for any request or change</div></div>
+      <div class="tc"><div class="tc-v" style="font-size:40px">24h</div><div class="tc-l">Average response time for any request or change</div></div>
     </div>
   </div>
 </section>
 
 <hr class="rule">
 
-<!-- ═══ TEAM — 4 members with photo placeholders ═══ -->
+<!-- ═══ TEAM ═══ -->
 <section id="team" class="sec">
   <div class="eyebrow">Our Team</div>
   <h2 class="sh">Expert <em>leadership.</em></h2>
-  <p class="ss">Four dedicated leads covering every dimension of operations — strategy, execution, people, and data.</p>
+  <p class="ss">Four dedicated leads covering every dimension — from strategy to execution, people to data.</p>
   <div class="team-grid">
 
-    <div class="tm-card">
-      <div class="tm-photo">
-        <div class="tm-photo-inner avatar-1">
-          <!-- Person silhouette -->
-          <svg class="tm-avatar" width="120" height="140" viewBox="0 0 120 140" fill="none">
-            <ellipse cx="60" cy="42" rx="28" ry="28" fill="rgba(255,255,255,0.15)"/>
-            <path d="M5 140 C5 100 20 82 60 82 C100 82 115 100 115 140" fill="rgba(255,255,255,0.12)"/>
-          </svg>
-          <div class="tm-photo-overlay"></div>
-        </div>
+    <div class="tm">
+      <div class="tm-photo" style="background:linear-gradient(150deg,#2D1B0E,#7A3510)">
+        <svg width="110" height="130" viewBox="0 0 110 130" fill="none">
+          <ellipse cx="55" cy="40" rx="26" ry="26" fill="rgba(255,255,255,0.18)"/>
+          <path d="M4 130 C4 92 22 76 55 76 C88 76 106 92 106 130" fill="rgba(255,255,255,0.14)"/>
+        </svg>
       </div>
       <div class="tm-info">
         <div class="tm-role">Business & Operations</div>
         <div class="tm-title">Strategy Lead</div>
-        <div class="tm-desc">Overall operations strategy and long-term planning across all California regions. Owns partnerships and sets direction.</div>
+        <div class="tm-desc">Overall operations strategy and long-term planning. Owns partnerships and sets direction across all California regions.</div>
       </div>
     </div>
 
-    <div class="tm-card">
-      <div class="tm-photo">
-        <div class="tm-photo-inner avatar-2">
-          <svg class="tm-avatar" width="120" height="140" viewBox="0 0 120 140" fill="none">
-            <ellipse cx="60" cy="42" rx="28" ry="28" fill="rgba(255,255,255,0.15)"/>
-            <path d="M5 140 C5 100 20 82 60 82 C100 82 115 100 115 140" fill="rgba(255,255,255,0.12)"/>
-          </svg>
-          <div class="tm-photo-overlay"></div>
-        </div>
+    <div class="tm">
+      <div class="tm-photo" style="background:linear-gradient(150deg,#14202E,#2A4A7A)">
+        <svg width="110" height="130" viewBox="0 0 110 130" fill="none">
+          <ellipse cx="55" cy="40" rx="26" ry="26" fill="rgba(255,255,255,0.18)"/>
+          <path d="M4 130 C4 92 22 76 55 76 C88 76 106 92 106 130" fill="rgba(255,255,255,0.14)"/>
+        </svg>
       </div>
       <div class="tm-info">
         <div class="tm-role">On-site Operations</div>
         <div class="tm-title">Operations Lead</div>
-        <div class="tm-desc">Direct workflow management and team coordination on the ground. Makes sure execution matches the plan — every single day.</div>
+        <div class="tm-desc">Direct workflow management and team coordination on the ground. Makes sure execution matches plan — every day.</div>
       </div>
     </div>
 
-    <div class="tm-card">
-      <div class="tm-photo">
-        <div class="tm-photo-inner avatar-3">
-          <svg class="tm-avatar" width="120" height="140" viewBox="0 0 120 140" fill="none">
-            <ellipse cx="60" cy="42" rx="28" ry="28" fill="rgba(255,255,255,0.15)"/>
-            <path d="M5 140 C5 100 20 82 60 82 C100 82 115 100 115 140" fill="rgba(255,255,255,0.12)"/>
-          </svg>
-          <div class="tm-photo-overlay"></div>
-        </div>
+    <div class="tm">
+      <div class="tm-photo" style="background:linear-gradient(150deg,#0E2418,#1E6640)">
+        <svg width="110" height="130" viewBox="0 0 110 130" fill="none">
+          <ellipse cx="55" cy="40" rx="26" ry="26" fill="rgba(255,255,255,0.18)"/>
+          <path d="M4 130 C4 92 22 76 55 76 C88 76 106 92 106 130" fill="rgba(255,255,255,0.14)"/>
+        </svg>
       </div>
       <div class="tm-info">
         <div class="tm-role">Staffing & HR</div>
         <div class="tm-title">People Lead</div>
-        <div class="tm-desc">Full-cycle staffing — recruitment, scheduling, allocation, and partner-facing communication for the entire operator pool.</div>
+        <div class="tm-desc">Full-cycle staffing — recruitment, scheduling, allocation, and partner-facing communication for the operator pool.</div>
       </div>
     </div>
 
-    <div class="tm-card">
-      <div class="tm-photo">
-        <div class="tm-photo-inner avatar-4">
-          <svg class="tm-avatar" width="120" height="140" viewBox="0 0 120 140" fill="none">
-            <ellipse cx="60" cy="42" rx="28" ry="28" fill="rgba(255,255,255,0.15)"/>
-            <path d="M5 140 C5 100 20 82 60 82 C100 82 115 100 115 140" fill="rgba(255,255,255,0.12)"/>
-          </svg>
-          <div class="tm-photo-overlay"></div>
-        </div>
+    <div class="tm">
+      <div class="tm-photo" style="background:linear-gradient(150deg,#261A00,#7A5810)">
+        <svg width="110" height="130" viewBox="0 0 110 130" fill="none">
+          <ellipse cx="55" cy="40" rx="26" ry="26" fill="rgba(255,255,255,0.18)"/>
+          <path d="M4 130 C4 92 22 76 55 76 C88 76 106 92 106 130" fill="rgba(255,255,255,0.14)"/>
+        </svg>
       </div>
       <div class="tm-info">
         <div class="tm-role">Data & Systems</div>
@@ -653,9 +769,9 @@ footer{background:var(--ink);padding:60px 52px 40px}
   <div class="contact-in">
     <div class="contact-head">
       <div class="eyebrow" style="color:var(--orange-lt)">Get in Touch</div>
-      <h2 class="sh" style="color:#fff;max-width:620px;margin:0 auto 0;letter-spacing:-2.5px">Let's build something <em style="color:var(--orange-lt)">together.</em></h2>
+      <h2 class="sh" style="color:#fff;letter-spacing:-2.5px;max-width:600px;margin:0 auto">Let's build something <em style="color:var(--orange-lt)">together.</em></h2>
     </div>
-    <div class="contact-box">
+    <div class="cbox">
       <div class="cf">
         <h3>Start a conversation</h3>
         <p>Tell us about your logistics needs. We'll respond within 24 hours with a clear, actionable plan.</p>
@@ -690,7 +806,7 @@ footer{background:var(--ink);padding:60px 52px 40px}
           </div>
         </div>
         <div>
-          <div style="font-size:10.5px;font-weight:700;color:var(--muted);text-transform:uppercase;letter-spacing:.6px;margin-bottom:12px">Service Regions</div>
+          <div style="font-size:10px;font-weight:700;color:var(--muted);text-transform:uppercase;letter-spacing:.6px;margin-bottom:12px">Service Regions</div>
           <div class="region-row">
             <div class="rp"><div class="rp-ico">🌉</div><div class="rp-name">SF</div></div>
             <div class="rp"><div class="rp-ico">🌁</div><div class="rp-name">Bay Area</div></div>
@@ -748,7 +864,7 @@ footer{background:var(--ink);padding:60px 52px 40px}
 
 <script>
 const nav = document.getElementById('nav');
-window.addEventListener('scroll', () => nav.classList.toggle('scrolled', scrollY > 20), {passive:true});
+window.addEventListener('scroll',()=>nav.classList.toggle('scrolled',scrollY>20),{passive:true});
 </script>
 </body>
 </html>
