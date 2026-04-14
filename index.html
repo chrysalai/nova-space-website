@@ -6,8 +6,7 @@
     <title>Nova Space - Logistics Operations Support</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.0/chart.umd.min.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     <style>
         * {
             margin: 0;
@@ -16,7 +15,7 @@
         }
 
         body {
-            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            font-family: 'Poppins', -apple-system, BlinkMacSystemFont, sans-serif;
             background: #ffffff;
             color: #1a1a1a;
             line-height: 1.6;
@@ -24,7 +23,6 @@
             -webkit-font-smoothing: antialiased;
         }
 
-        /* Smooth Scroll */
         html { scroll-behavior: smooth; }
 
         /* Navigation */
@@ -40,13 +38,13 @@
         }
 
         nav.scrolled {
-            box-shadow: 0 2px 20px rgba(0, 0, 0, 0.04);
+            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.08);
         }
 
         .nav-container {
             max-width: 1400px;
             margin: 0 auto;
-            padding: 0 60px;
+            padding: 0 50px;
             display: flex;
             justify-content: space-between;
             align-items: center;
@@ -56,134 +54,153 @@
         .logo-section {
             display: flex;
             align-items: center;
-            gap: 16px;
+            gap: 14px;
         }
 
         .logo-icon {
-            width: 48px;
-            height: 48px;
+            width: 44px;
+            height: 44px;
         }
 
         .logo-text h1 {
-            font-size: 20px;
-            font-weight: 600;
+            font-size: 22px;
+            font-weight: 700;
             color: #1a1a1a;
-            letter-spacing: -0.02em;
         }
 
         .logo-text p {
-            font-size: 12px;
-            color: #666;
-            font-weight: 400;
+            font-size: 11px;
+            color: #999;
+            font-weight: 500;
         }
 
         .nav-links {
             display: flex;
-            gap: 40px;
+            gap: 35px;
             align-items: center;
         }
 
         .nav-links a {
-            color: #666;
+            color: #333;
             text-decoration: none;
-            font-size: 14px;
+            font-size: 15px;
             font-weight: 500;
             transition: color 0.3s ease;
-            position: relative;
         }
 
         .nav-links a:hover {
             color: #FF8C00;
         }
 
-        .nav-links a::after {
-            content: '';
-            position: absolute;
-            bottom: -4px;
-            left: 0;
-            width: 0;
-            height: 2px;
-            background: linear-gradient(90deg, #FFD700, #FF8C00);
-            transition: width 0.3s ease;
-        }
-
-        .nav-links a:hover::after {
-            width: 100%;
-        }
-
-        .cta-button {
+        .btn-outline {
             padding: 10px 24px;
-            background: linear-gradient(135deg, #FFD700, #FF8C00);
-            color: #fff;
-            border-radius: 8px;
-            font-size: 14px;
+            border: 2px solid #5B5FFF;
+            color: #5B5FFF;
+            border-radius: 12px;
+            font-size: 15px;
             font-weight: 600;
             text-decoration: none;
             transition: all 0.3s ease;
-            box-shadow: 0 4px 12px rgba(255, 140, 0, 0.2);
         }
 
-        .cta-button:hover {
+        .btn-outline:hover {
+            background: #5B5FFF;
+            color: white;
             transform: translateY(-2px);
-            box-shadow: 0 8px 24px rgba(255, 140, 0, 0.3);
+        }
+
+        .btn-primary {
+            padding: 12px 28px;
+            background: #5B5FFF;
+            color: white;
+            border-radius: 12px;
+            font-size: 15px;
+            font-weight: 600;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 14px rgba(91, 95, 255, 0.3);
+        }
+
+        .btn-primary:hover {
+            background: #4a4ee6;
+            box-shadow: 0 6px 20px rgba(91, 95, 255, 0.4);
+            transform: translateY(-2px);
         }
 
         /* Hero Section */
         .hero {
-            padding: 180px 60px 120px;
+            padding: 150px 50px 100px;
             max-width: 1400px;
             margin: 0 auto;
+            background: linear-gradient(135deg, #f8f9ff 0%, #fff5eb 100%);
+            border-radius: 0 0 40px 40px;
         }
 
         .hero-content {
-            max-width: 800px;
+            max-width: 900px;
             margin: 0 auto;
             text-align: center;
         }
 
         .hero-logo {
-            width: 120px;
-            height: 120px;
-            margin: 0 auto 40px;
-            opacity: 0;
-            animation: fadeInUp 0.8s ease forwards;
+            width: 100px;
+            height: 100px;
+            margin: 0 auto 32px;
+            animation: floatLogo 3s ease-in-out infinite;
+        }
+
+        @keyframes floatLogo {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
         }
 
         .hero h2 {
-            font-size: 64px;
-            font-weight: 700;
-            letter-spacing: -0.03em;
+            font-size: 62px;
+            font-weight: 800;
             color: #1a1a1a;
-            margin-bottom: 24px;
-            opacity: 0;
-            animation: fadeInUp 0.8s ease 0.2s forwards;
+            margin-bottom: 20px;
+            line-height: 1.2;
         }
 
         .hero-subtitle {
             font-size: 20px;
             color: #666;
-            font-weight: 400;
-            margin-bottom: 48px;
-            opacity: 0;
-            animation: fadeInUp 0.8s ease 0.4s forwards;
+            font-weight: 500;
+            margin-bottom: 40px;
+            line-height: 1.6;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 16px;
+            justify-content: center;
+            margin-bottom: 60px;
         }
 
         .hero-stats {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
-            gap: 60px;
+            gap: 40px;
             margin-top: 80px;
-            opacity: 0;
-            animation: fadeInUp 0.8s ease 0.6s forwards;
         }
 
-        .stat-item {
+        .stat-card {
+            background: white;
+            border-radius: 20px;
+            padding: 32px;
             text-align: center;
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.06);
+            transition: all 0.3s ease;
+        }
+
+        .stat-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 12px 40px rgba(0, 0, 0, 0.12);
         }
 
         .stat-number {
-            font-size: 48px;
-            font-weight: 700;
+            font-size: 52px;
+            font-weight: 800;
             background: linear-gradient(135deg, #FFD700, #FF8C00);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
@@ -192,225 +209,324 @@
         }
 
         .stat-label {
-            font-size: 14px;
-            color: #999;
-            font-weight: 500;
-            letter-spacing: 0.05em;
-            text-transform: uppercase;
+            font-size: 15px;
+            color: #666;
+            font-weight: 600;
         }
 
-        /* Section Container */
+        /* Section */
         .section {
-            padding: 120px 60px;
+            padding: 100px 50px;
             max-width: 1400px;
             margin: 0 auto;
         }
 
         .section-header {
             text-align: center;
-            margin-bottom: 80px;
+            margin-bottom: 70px;
         }
 
         .section-tag {
-            font-size: 12px;
-            color: #FF8C00;
-            font-weight: 600;
-            letter-spacing: 0.1em;
-            text-transform: uppercase;
+            display: inline-block;
+            padding: 8px 20px;
+            background: #f0f1ff;
+            color: #5B5FFF;
+            font-size: 13px;
+            font-weight: 700;
+            border-radius: 20px;
             margin-bottom: 16px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
         }
 
         .section-title {
             font-size: 48px;
-            font-weight: 700;
+            font-weight: 800;
             color: #1a1a1a;
-            letter-spacing: -0.02em;
             margin-bottom: 16px;
+            line-height: 1.3;
         }
 
         .section-description {
             font-size: 18px;
             color: #666;
-            max-width: 600px;
+            max-width: 650px;
             margin: 0 auto;
+            line-height: 1.7;
         }
 
-        /* Clients Section */
-        .clients-grid {
+        /* Partners */
+        .partners-grid {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
-            gap: 40px;
+            gap: 30px;
         }
 
-        .client-card {
-            background: #fafafa;
-            border: 1px solid #f0f0f0;
-            border-radius: 16px;
-            padding: 60px 40px;
+        .partner-card {
+            background: white;
+            border: 2px solid #f0f0f0;
+            border-radius: 24px;
+            padding: 50px 30px;
             text-align: center;
             transition: all 0.4s ease;
+            position: relative;
+            overflow: hidden;
         }
 
-        .client-card:hover {
-            background: #fff;
+        .partner-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background: linear-gradient(90deg, #FFD700, #FF8C00);
+            transform: scaleX(0);
+            transition: transform 0.4s ease;
+        }
+
+        .partner-card:hover::before {
+            transform: scaleX(1);
+        }
+
+        .partner-card:hover {
             border-color: #FFD700;
-            transform: translateY(-4px);
-            box-shadow: 0 12px 40px rgba(0, 0, 0, 0.08);
+            transform: translateY(-8px);
+            box-shadow: 0 16px 50px rgba(255, 140, 0, 0.15);
         }
 
-        .client-name {
-            font-size: 32px;
-            font-weight: 700;
+        .partner-name {
+            font-size: 36px;
+            font-weight: 800;
             color: #1a1a1a;
             margin-bottom: 8px;
         }
 
-        .client-tag {
-            font-size: 12px;
+        .partner-tag {
+            font-size: 13px;
             color: #999;
+            font-weight: 600;
             text-transform: uppercase;
-            letter-spacing: 0.1em;
+            letter-spacing: 0.5px;
         }
 
-        /* Capabilities Section */
-        .capabilities-grid {
+        /* Why Choose - Colored Cards */
+        .why-grid {
             display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 80px;
-            margin-top: 60px;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 24px;
         }
 
-        .capability-item {
-            padding: 40px 0;
-            border-top: 1px solid #f0f0f0;
+        .why-card {
+            border-radius: 28px;
+            padding: 50px 40px;
+            position: relative;
+            overflow: hidden;
+            transition: all 0.4s ease;
         }
 
-        .capability-number {
-            font-size: 14px;
-            color: #FF8C00;
-            font-weight: 600;
-            margin-bottom: 24px;
+        .why-card:hover {
+            transform: translateY(-12px);
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.15);
         }
 
-        .capability-title {
-            font-size: 28px;
-            font-weight: 600;
+        .why-card.yellow {
+            background: linear-gradient(135deg, #FFCB00 0%, #FFB800 100%);
+        }
+
+        .why-card.blue {
+            background: linear-gradient(135deg, #E4DAFF 0%, #d0c4ff 100%);
+        }
+
+        .why-card.green {
+            background: linear-gradient(135deg, #a8f5e5 0%, #7de8d3 100%);
+        }
+
+        .why-number {
+            font-size: 80px;
+            font-weight: 900;
+            color: rgba(0, 0, 0, 0.1);
+            margin-bottom: 20px;
+            line-height: 1;
+        }
+
+        .why-title {
+            font-size: 26px;
+            font-weight: 700;
             color: #1a1a1a;
             margin-bottom: 16px;
         }
 
-        .capability-description {
+        .why-description {
             font-size: 16px;
-            color: #666;
-            line-height: 1.8;
-            margin-bottom: 24px;
+            color: #333;
+            line-height: 1.7;
+            font-weight: 500;
         }
 
-        .capability-metric {
-            display: inline-block;
-            padding: 8px 20px;
-            background: #fafafa;
-            border-radius: 24px;
-            font-size: 14px;
-            font-weight: 600;
-            color: #1a1a1a;
-        }
-
-        /* Performance Section */
-        .performance-grid {
+        /* Capabilities */
+        .capabilities-grid {
             display: grid;
-            grid-template-columns: repeat(3, 1fr);
+            grid-template-columns: repeat(2, 1fr);
             gap: 40px;
         }
 
-        .performance-card {
-            background: #fafafa;
+        .capability-card {
+            background: white;
+            border: 2px solid #f5f5f5;
+            border-radius: 24px;
+            padding: 40px;
+            transition: all 0.3s ease;
+        }
+
+        .capability-card:hover {
+            border-color: #5B5FFF;
+            box-shadow: 0 12px 40px rgba(91, 95, 255, 0.1);
+        }
+
+        .capability-icon {
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(135deg, #5B5FFF, #7B7FFF);
             border-radius: 16px;
-            padding: 48px 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 28px;
+            margin-bottom: 24px;
+            box-shadow: 0 8px 20px rgba(91, 95, 255, 0.2);
+        }
+
+        .capability-title {
+            font-size: 24px;
+            font-weight: 700;
+            color: #1a1a1a;
+            margin-bottom: 12px;
+        }
+
+        .capability-description {
+            font-size: 15px;
+            color: #666;
+            line-height: 1.7;
+            margin-bottom: 20px;
+        }
+
+        .capability-metric {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 10px 20px;
+            background: #f8f9ff;
+            border-radius: 20px;
+            font-size: 14px;
+            font-weight: 700;
+            color: #5B5FFF;
+        }
+
+        /* Performance */
+        .performance-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+        }
+
+        .performance-card {
+            background: white;
+            border-radius: 24px;
+            padding: 40px 32px;
             text-align: center;
+            border: 2px solid #f5f5f5;
             transition: all 0.3s ease;
         }
 
         .performance-card:hover {
-            background: #fff;
-            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.06);
+            transform: translateY(-8px);
+            border-color: #FFD700;
+            box-shadow: 0 16px 50px rgba(255, 215, 0, 0.15);
         }
 
         .performance-icon {
-            font-size: 48px;
-            margin-bottom: 24px;
+            font-size: 56px;
+            margin-bottom: 20px;
         }
 
         .performance-value {
             font-size: 56px;
-            font-weight: 700;
-            color: #1a1a1a;
+            font-weight: 800;
+            background: linear-gradient(135deg, #FFD700, #FF8C00);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
             margin-bottom: 8px;
         }
 
         .performance-label {
-            font-size: 14px;
+            font-size: 13px;
             color: #999;
             margin-bottom: 16px;
             text-transform: uppercase;
-            letter-spacing: 0.05em;
+            letter-spacing: 0.5px;
+            font-weight: 700;
         }
 
-        .performance-description {
-            font-size: 15px;
+        .performance-text {
+            font-size: 14px;
             color: #666;
             line-height: 1.6;
+            font-weight: 500;
         }
 
-        /* Team Section */
+        /* Team */
         .team-grid {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
-            gap: 32px;
+            gap: 24px;
         }
 
         .team-card {
-            background: #fff;
-            border: 1px solid #f0f0f0;
-            border-radius: 12px;
-            padding: 32px;
+            background: white;
+            border: 2px solid #f5f5f5;
+            border-radius: 20px;
+            padding: 32px 28px;
             transition: all 0.3s ease;
         }
 
         .team-card:hover {
-            border-color: #FFD700;
-            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.06);
+            border-color: #5B5FFF;
+            transform: translateY(-6px);
+            box-shadow: 0 12px 35px rgba(91, 95, 255, 0.12);
         }
 
         .team-role {
             font-size: 18px;
-            font-weight: 600;
+            font-weight: 700;
             color: #1a1a1a;
-            margin-bottom: 8px;
+            margin-bottom: 6px;
         }
 
         .team-role-zh {
-            font-size: 13px;
+            font-size: 12px;
             color: #FF8C00;
-            margin-bottom: 16px;
+            margin-bottom: 14px;
+            font-weight: 600;
         }
 
         .team-description {
             font-size: 14px;
             color: #666;
-            line-height: 1.7;
+            line-height: 1.6;
         }
 
-        /* Contact Section */
+        /* Contact */
         .contact-container {
-            max-width: 800px;
+            max-width: 900px;
             margin: 0 auto;
         }
 
         .contact-form {
-            background: #fafafa;
-            border-radius: 16px;
-            padding: 60px;
+            background: linear-gradient(135deg, #f8f9ff 0%, #fff5eb 100%);
+            border-radius: 28px;
+            padding: 50px;
         }
 
         .form-row {
@@ -426,23 +542,21 @@
 
         .form-group label {
             display: block;
-            font-size: 13px;
-            font-weight: 600;
+            font-size: 14px;
+            font-weight: 700;
             color: #1a1a1a;
-            margin-bottom: 8px;
-            text-transform: uppercase;
-            letter-spacing: 0.05em;
+            margin-bottom: 10px;
         }
 
         .form-group input,
         .form-group textarea {
             width: 100%;
-            padding: 14px 16px;
-            background: #fff;
-            border: 1px solid #e5e5e5;
-            border-radius: 8px;
+            padding: 16px 18px;
+            background: white;
+            border: 2px solid #e5e5e5;
+            border-radius: 12px;
             font-size: 15px;
-            font-family: 'Inter', sans-serif;
+            font-family: 'Poppins', sans-serif;
             color: #1a1a1a;
             transition: all 0.3s ease;
         }
@@ -450,91 +564,94 @@
         .form-group input:focus,
         .form-group textarea:focus {
             outline: none;
-            border-color: #FFD700;
-            box-shadow: 0 0 0 3px rgba(255, 215, 0, 0.1);
+            border-color: #5B5FFF;
+            box-shadow: 0 0 0 4px rgba(91, 95, 255, 0.1);
         }
 
         .form-group textarea {
             resize: vertical;
-            min-height: 120px;
+            min-height: 130px;
         }
 
         .submit-button {
             width: 100%;
-            padding: 16px;
-            background: linear-gradient(135deg, #FFD700, #FF8C00);
-            color: #fff;
+            padding: 18px;
+            background: #5B5FFF;
+            color: white;
             border: none;
-            border-radius: 8px;
-            font-size: 15px;
-            font-weight: 600;
+            border-radius: 12px;
+            font-size: 16px;
+            font-weight: 700;
             cursor: pointer;
             transition: all 0.3s ease;
+            box-shadow: 0 6px 20px rgba(91, 95, 255, 0.3);
         }
 
         .submit-button:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 8px 24px rgba(255, 140, 0, 0.3);
+            background: #4a4ee6;
+            transform: translateY(-3px);
+            box-shadow: 0 10px 30px rgba(91, 95, 255, 0.4);
         }
 
         .contact-info {
-            margin-top: 60px;
-            padding: 40px;
-            background: #fff;
-            border: 1px solid #f0f0f0;
-            border-radius: 16px;
+            margin-top: 40px;
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 20px;
         }
 
-        .info-item {
-            display: flex;
-            align-items: center;
-            gap: 16px;
-            margin-bottom: 20px;
+        .info-card {
+            background: white;
+            border: 2px solid #f5f5f5;
+            border-radius: 20px;
+            padding: 30px;
+            transition: all 0.3s ease;
+        }
+
+        .info-card:hover {
+            border-color: #FFD700;
+            box-shadow: 0 8px 25px rgba(255, 215, 0, 0.15);
         }
 
         .info-icon {
-            width: 48px;
-            height: 48px;
-            background: #fafafa;
-            border-radius: 12px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 20px;
+            font-size: 32px;
+            margin-bottom: 12px;
         }
 
-        .info-content h4 {
-            font-size: 13px;
+        .info-label {
+            font-size: 12px;
             color: #999;
-            font-weight: 500;
-            margin-bottom: 4px;
+            font-weight: 600;
+            margin-bottom: 6px;
             text-transform: uppercase;
-            letter-spacing: 0.05em;
+            letter-spacing: 0.5px;
         }
 
-        .info-content p {
-            font-size: 16px;
+        .info-value {
+            font-size: 17px;
             color: #1a1a1a;
-            font-weight: 500;
+            font-weight: 700;
         }
 
         /* Footer */
         footer {
             background: #fafafa;
             border-top: 1px solid #f0f0f0;
-            padding: 60px 60px 40px;
+            padding: 60px 50px 40px;
         }
 
         .footer-container {
             max-width: 1400px;
             margin: 0 auto;
+            text-align: center;
         }
 
         .footer-logo {
             display: flex;
             align-items: center;
-            gap: 16px;
-            margin-bottom: 40px;
+            gap: 14px;
+            justify-content: center;
+            margin-bottom: 30px;
         }
 
         .footer-logo-icon {
@@ -542,56 +659,47 @@
             height: 40px;
         }
 
-        .footer-logo-text h3 {
-            font-size: 18px;
-            font-weight: 600;
+        .footer-text h3 {
+            font-size: 20px;
+            font-weight: 700;
             color: #1a1a1a;
         }
 
-        .footer-logo-text p {
+        .footer-text p {
             font-size: 12px;
             color: #999;
+            font-weight: 500;
         }
 
         .footer-bottom {
-            padding-top: 40px;
+            padding-top: 30px;
             border-top: 1px solid #e5e5e5;
-            text-align: center;
         }
 
         .footer-bottom p {
-            font-size: 13px;
+            font-size: 14px;
             color: #999;
-        }
-
-        /* Animations */
-        @keyframes fadeInUp {
-            from {
-                opacity: 0;
-                transform: translateY(30px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
+            font-weight: 500;
         }
 
         /* Responsive */
         @media (max-width: 1024px) {
-            .nav-container { padding: 0 40px; }
-            .section { padding: 80px 40px; }
-            .hero { padding: 140px 40px 80px; }
-            .capabilities-grid { grid-template-columns: 1fr; gap: 40px; }
+            .nav-container { padding: 0 30px; }
+            .section { padding: 70px 30px; }
+            .hero { padding: 130px 30px 70px; }
+            .capabilities-grid { grid-template-columns: 1fr; }
             .performance-grid { grid-template-columns: 1fr; }
             .team-grid { grid-template-columns: 1fr; }
-            .clients-grid { grid-template-columns: 1fr; }
-            .hero-stats { grid-template-columns: 1fr; gap: 40px; }
+            .partners-grid { grid-template-columns: 1fr; }
+            .why-grid { grid-template-columns: 1fr; }
+            .hero-stats { grid-template-columns: 1fr; gap: 20px; }
             .form-row { grid-template-columns: 1fr; }
+            .contact-info { grid-template-columns: 1fr; }
         }
 
         @media (max-width: 768px) {
             .nav-links { display: none; }
-            .hero h2 { font-size: 40px; }
+            .hero h2 { font-size: 36px; }
             .section-title { font-size: 32px; }
         }
     </style>
@@ -622,7 +730,8 @@
             <a href="#capabilities">Capabilities</a>
             <a href="#performance">Performance</a>
             <a href="#team">Team</a>
-            <a href="#contact" class="cta-button">Contact Us</a>
+            <a href="#contact" class="btn-outline">Contact sales</a>
+            <a href="#contact" class="btn-primary">Get Started →</a>
         </div>
     </div>
 </nav>
@@ -642,16 +751,20 @@
         </svg>
         <h2>Logistics Operations<br>Support</h2>
         <p class="hero-subtitle">Trusted partner for scalable, reliable logistics solutions across California</p>
+        <div class="hero-buttons">
+            <a href="#contact" class="btn-primary">Get Started →</a>
+            <a href="#overview" class="btn-outline">Learn more</a>
+        </div>
         <div class="hero-stats">
-            <div class="stat-item">
+            <div class="stat-card">
                 <div class="stat-number">200+</div>
-                <div class="stat-label">Operators</div>
+                <div class="stat-label">Operators Ready</div>
             </div>
-            <div class="stat-item">
+            <div class="stat-card">
                 <div class="stat-number">300</div>
-                <div class="stat-label">Packages/Day</div>
+                <div class="stat-label">Packages Per Day</div>
             </div>
-            <div class="stat-item">
+            <div class="stat-card">
                 <div class="stat-number">3</div>
                 <div class="stat-label">Major Regions</div>
             </div>
@@ -659,25 +772,50 @@
     </div>
 </section>
 
-<!-- Overview -->
-<section id="overview" class="section" style="background: #fafafa;">
+<!-- Partners -->
+<section id="overview" class="section">
     <div class="section-header">
-        <div class="section-tag">Our Partners</div>
-        <h3 class="section-title">Trusted by Industry Leaders</h3>
-        <p class="section-description">Long-term partnerships built on reliability and performance</p>
+        <div class="section-tag">Trusted Partners</div>
+        <h3 class="section-title">Industry Leaders Trust Us</h3>
+        <p class="section-description">Long-term partnerships built on reliability, performance, and excellence</p>
     </div>
-    <div class="clients-grid">
-        <div class="client-card">
-            <div class="client-name">UniUni</div>
-            <div class="client-tag">Strategic Partner</div>
+    <div class="partners-grid">
+        <div class="partner-card">
+            <div class="partner-name">UniUni</div>
+            <div class="partner-tag">Strategic Partner</div>
         </div>
-        <div class="client-card">
-            <div class="client-name">Yanwen</div>
-            <div class="client-tag">Strategic Partner</div>
+        <div class="partner-card">
+            <div class="partner-name">Yanwen</div>
+            <div class="partner-tag">Strategic Partner</div>
         </div>
-        <div class="client-card">
-            <div class="client-name">SwiftX</div>
-            <div class="client-tag">Strategic Partner</div>
+        <div class="partner-card">
+            <div class="partner-name">SwiftX</div>
+            <div class="partner-tag">Strategic Partner</div>
+        </div>
+    </div>
+</section>
+
+<!-- Why Choose Us -->
+<section class="section" style="background: #fafafa; padding: 100px 50px;">
+    <div class="section-header">
+        <div class="section-tag">Why Choose Us</div>
+        <h3 class="section-title">What Makes Us Different</h3>
+    </div>
+    <div class="why-grid">
+        <div class="why-card yellow">
+            <div class="why-number">01</div>
+            <h4 class="why-title">Real-Time Dashboard</h4>
+            <p class="why-description">Track attendance and performance daily with our proprietary dashboard system for complete operational visibility</p>
+        </div>
+        <div class="why-card blue">
+            <div class="why-number">02</div>
+            <h4 class="why-title">Data-Driven Optimization</h4>
+            <p class="why-description">Monitor data closely and identify issues instantly to improve efficiency and operational excellence</p>
+        </div>
+        <div class="why-card green">
+            <div class="why-number">03</div>
+            <h4 class="why-title">Reliable Partnership</h4>
+            <p class="why-description">Easy to work with, responsive, and strictly follow requirements to build long-term trust</p>
         </div>
     </div>
 </section>
@@ -685,33 +823,45 @@
 <!-- Capabilities -->
 <section id="capabilities" class="section">
     <div class="section-header">
-        <div class="section-tag">What We Do</div>
-        <h3 class="section-title">Core Capabilities</h3>
+        <div class="section-tag">Core Services</div>
+        <h3 class="section-title">What We Do Best</h3>
     </div>
     <div class="capabilities-grid">
-        <div class="capability-item">
-            <div class="capability-number">01</div>
+        <div class="capability-card">
+            <div class="capability-icon">📦</div>
             <h4 class="capability-title">Sorting Operations</h4>
-            <p class="capability-description">High-efficiency sorting workflows optimized for volume logistics. Standardized team-based system applied across multiple partners.</p>
-            <span class="capability-metric">300 packages/operator</span>
+            <p class="capability-description">High-efficiency sorting workflows optimized for volume logistics with standardized team-based systems</p>
+            <div class="capability-metric">
+                <span>⚡</span>
+                <span>300 packages/operator</span>
+            </div>
         </div>
-        <div class="capability-item">
-            <div class="capability-number">02</div>
+        <div class="capability-card">
+            <div class="capability-icon">🚚</div>
             <h4 class="capability-title">Last-Mile Delivery</h4>
-            <p class="capability-description">Urban delivery support across San Francisco, Bay Area, and Los Angeles. Designed for complex environments and dynamic workloads.</p>
-            <span class="capability-metric">3 major regions</span>
+            <p class="capability-description">Urban delivery support across SF, Bay Area, and LA designed for complex environments</p>
+            <div class="capability-metric">
+                <span>📍</span>
+                <span>3 major regions</span>
+            </div>
         </div>
-        <div class="capability-item">
-            <div class="capability-number">03</div>
+        <div class="capability-card">
+            <div class="capability-icon">👥</div>
             <h4 class="capability-title">Flexible Workforce</h4>
-            <p class="capability-description">200+ trained operators available for rapid deployment. Scalable team configuration based on operational needs.</p>
-            <span class="capability-metric">200+ operators</span>
+            <p class="capability-description">200+ trained operators available for rapid deployment with scalable team configuration</p>
+            <div class="capability-metric">
+                <span>✓</span>
+                <span>200+ operators ready</span>
+            </div>
         </div>
-        <div class="capability-item">
-            <div class="capability-number">04</div>
+        <div class="capability-card">
+            <div class="capability-icon">📊</div>
             <h4 class="capability-title">Operations Management</h4>
-            <p class="capability-description">Real-time tracking, performance monitoring, and data-driven optimization. Dashboard-powered insights for continuous improvement.</p>
-            <span class="capability-metric">Real-time data</span>
+            <p class="capability-description">Real-time tracking and performance monitoring with data-driven optimization insights</p>
+            <div class="capability-metric">
+                <span>⚡</span>
+                <span>Real-time data</span>
+            </div>
         </div>
     </div>
 </section>
@@ -720,27 +870,27 @@
 <section id="performance" class="section" style="background: #fafafa;">
     <div class="section-header">
         <div class="section-tag">Proven Results</div>
-        <h3 class="section-title">Performance Metrics</h3>
-        <p class="section-description">Demonstrated excellence through ongoing collaboration</p>
+        <h3 class="section-title">Performance That Matters</h3>
+        <p class="section-description">Excellence demonstrated through ongoing collaboration with industry leaders</p>
     </div>
     <div class="performance-grid">
         <div class="performance-card">
             <div class="performance-icon">📦</div>
             <div class="performance-value">~300</div>
-            <div class="performance-label">Packages per Operator</div>
-            <p class="performance-description">Consistent individual productivity across all operations</p>
+            <div class="performance-label">Packages/Operator</div>
+            <p class="performance-text">Consistent productivity across all operations</p>
         </div>
         <div class="performance-card">
             <div class="performance-icon">✓</div>
             <div class="performance-value">100%</div>
-            <div class="performance-label">System Standardized</div>
-            <p class="performance-description">Team-based sorting applied across partners</p>
+            <div class="performance-label">Standardized</div>
+            <p class="performance-text">Team-based sorting system</p>
         </div>
         <div class="performance-card">
             <div class="performance-icon">⭐</div>
             <div class="performance-value">99%</div>
-            <div class="performance-label">Accuracy Rate</div>
-            <p class="performance-description">Proven stable performance</p>
+            <div class="performance-label">Accuracy</div>
+            <p class="performance-text">Proven stable performance</p>
         </div>
     </div>
 </section>
@@ -755,12 +905,12 @@
         <div class="team-card">
             <div class="team-role">Business & Operations</div>
             <div class="team-role-zh">业务架构负责人</div>
-            <p class="team-description">Overall operations, structure, and long-term planning</p>
+            <p class="team-description">Overall operations and long-term planning</p>
         </div>
         <div class="team-card">
             <div class="team-role">On-site Operations</div>
             <div class="team-role-zh">现场运营负责人</div>
-            <p class="team-description">Workflow management and team coordination</p>
+            <p class="team-description">Workflow and team coordination</p>
         </div>
         <div class="team-card">
             <div class="team-role">Staffing & Communication</div>
@@ -770,27 +920,27 @@
         <div class="team-card">
             <div class="team-role">Finance Management</div>
             <div class="team-role-zh">财务管理专员</div>
-            <p class="team-description">Cost tracking and financial control</p>
+            <p class="team-description">Cost tracking and control</p>
         </div>
         <div class="team-card">
             <div class="team-role">System & Data</div>
             <div class="team-role-zh">系统与数据管理员</div>
-            <p class="team-description">Operational systems and tracking</p>
+            <p class="team-description">Operational systems tracking</p>
         </div>
         <div class="team-card">
             <div class="team-role">Quality Assurance</div>
             <div class="team-role-zh">质量保障专员</div>
-            <p class="team-description">Performance monitoring and improvement</p>
+            <p class="team-description">Performance monitoring</p>
         </div>
     </div>
 </section>
 
 <!-- Contact -->
-<section id="contact" class="section" style="background: #fafafa;">
+<section id="contact" class="section">
     <div class="section-header">
         <div class="section-tag">Get in Touch</div>
         <h3 class="section-title">Let's Work Together</h3>
-        <p class="section-description">Partner with us to optimize your logistics operations</p>
+        <p class="section-description">Partner with us to transform your logistics operations</p>
     </div>
     <div class="contact-container">
         <div class="contact-form">
@@ -810,24 +960,20 @@
             </div>
             <div class="form-group">
                 <label>Message</label>
-                <textarea placeholder="Tell us about your needs..."></textarea>
+                <textarea placeholder="Tell us about your logistics needs..."></textarea>
             </div>
-            <button class="submit-button" onclick="alert('Thank you! We will contact you soon.')">Send Message</button>
+            <button class="submit-button" onclick="alert('Thank you! We will contact you soon.')">Send Message →</button>
         </div>
         <div class="contact-info">
-            <div class="info-item">
+            <div class="info-card">
                 <div class="info-icon">📧</div>
-                <div class="info-content">
-                    <h4>Email</h4>
-                    <p>admin@novaspacecorp.com</p>
-                </div>
+                <div class="info-label">Email</div>
+                <div class="info-value">admin@novaspacecorp.com</div>
             </div>
-            <div class="info-item">
+            <div class="info-card">
                 <div class="info-icon">🌐</div>
-                <div class="info-content">
-                    <h4>Website</h4>
-                    <p>www.novaspacecorp.com</p>
-                </div>
+                <div class="info-label">Website</div>
+                <div class="info-value">www.novaspacecorp.com</div>
             </div>
         </div>
     </div>
@@ -847,7 +993,7 @@
                 <circle cx="75" cy="100" r="50" fill="none" stroke="url(#footerGrad)" stroke-width="15" stroke-dasharray="10 5"/>
                 <circle cx="125" cy="100" r="50" fill="none" stroke="url(#footerGrad)" stroke-width="15" stroke-dasharray="10 5"/>
             </svg>
-            <div class="footer-logo-text">
+            <div class="footer-text">
                 <h3>Nova Space</h3>
                 <p>Logistics Operations Support</p>
             </div>
@@ -859,7 +1005,6 @@
 </footer>
 
 <script>
-// Navbar scroll effect
 window.addEventListener('scroll', () => {
     const navbar = document.getElementById('navbar');
     if (window.scrollY > 50) {
