@@ -6,7 +6,7 @@
 <title>Nova Space — Logistics Operations</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
 <style>
 :root {
   --ink: #0D0D0B;
@@ -21,8 +21,8 @@
   --stone2: #E8E6E0;
   --muted: #9B9890;
   --muted2: #6B6964;
-  --serif: 'Instrument Serif', Georgia, serif;
-  --sans: 'Plus Jakarta Sans', sans-serif;
+  --serif: 'Geist', system-ui, sans-serif;
+  --sans: 'Geist', system-ui, sans-serif;
   --ease: cubic-bezier(0.4, 0, 0.2, 1);
 }
 
@@ -113,12 +113,12 @@ nav.shadow { box-shadow: 0 8px 40px rgba(13,13,11,0.08); }
 }
 .hero-badge-dot { width: 7px; height: 7px; border-radius: 50%; background: var(--orange); }
 .hero h1 {
-  font-family: var(--serif);
-  font-size: 80px; font-weight: 400;
-  line-height: 1.02; letter-spacing: -2px;
+  font-family: var(--sans);
+  font-size: 80px; font-weight: 800;
+  line-height: 1.0; letter-spacing: -3.5px;
   color: var(--ink); margin-bottom: 28px;
 }
-.hero h1 em { font-style: italic; color: var(--orange); }
+.hero h1 em { font-style: normal; font-weight: 300; letter-spacing: -2px; color: var(--orange); }
 .hero-sub {
   font-size: 18px; font-weight: 500; color: var(--muted2);
   line-height: 1.72; max-width: 520px; margin-bottom: 40px;
@@ -153,8 +153,8 @@ nav.shadow { box-shadow: 0 8px 40px rgba(13,13,11,0.08); }
 .hc-stats { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin-bottom: 24px; }
 .hc-stat { padding: 18px; background: var(--stone); border-radius: 16px; }
 .hc-val {
-  font-family: var(--serif); font-size: 38px; color: var(--ink);
-  line-height: 1; margin-bottom: 4px; letter-spacing: -1px;
+  font-family: var(--sans); font-size: 38px; font-weight: 800; color: var(--ink);
+  line-height: 1; margin-bottom: 4px; letter-spacing: -2px;
 }
 .hc-val span { color: var(--orange); }
 .hc-label { font-size: 12px; font-weight: 600; color: var(--muted2); }
@@ -282,10 +282,10 @@ nav.shadow { box-shadow: 0 8px 40px rgba(13,13,11,0.08); }
 .section { padding: 96px 48px; max-width: 1360px; margin: 0 auto; }
 .sec-eyebrow { font-size: 11px; font-weight: 700; letter-spacing: 1.2px; text-transform: uppercase; color: var(--orange); margin-bottom: 14px; }
 .sec-h {
-  font-family: var(--serif); font-size: 56px; font-weight: 400;
-  line-height: 1.08; letter-spacing: -1.5px; color: var(--ink); margin-bottom: 18px;
+  font-family: var(--sans); font-size: 54px; font-weight: 800;
+  line-height: 1.05; letter-spacing: -2.5px; color: var(--ink); margin-bottom: 18px;
 }
-.sec-h em { font-style: italic; color: var(--orange); }
+.sec-h em { font-style: normal; font-weight: 300; color: var(--orange); letter-spacing: -1.5px; }
 .sec-sub { font-size: 17px; font-weight: 500; color: var(--muted2); line-height: 1.72; max-width: 540px; }
 
 /* ═══════════════════════════════
@@ -366,9 +366,9 @@ nav.shadow { box-shadow: 0 8px 40px rgba(13,13,11,0.08); }
 .dark-card.c-stone { background: #1E1E1C; border: 1px solid #2E2E2A; }
 .dark-card.c-warm { background: #201F1C; border: 1px solid #2E2E2A; }
 .dc-num {
-  font-family: var(--serif); font-size: 64px; font-weight: 400;
-  line-height: 1; letter-spacing: -2px; margin-bottom: 24px;
-  opacity: 0.18; color: var(--white);
+  font-family: var(--sans); font-size: 64px; font-weight: 800;
+  line-height: 1; letter-spacing: -3px; margin-bottom: 24px;
+  opacity: 0.12; color: var(--white);
 }
 .dark-card.c-orange .dc-num { color: var(--white); }
 .dc-icon { font-size: 32px; margin-bottom: 20px; }
@@ -391,10 +391,10 @@ nav.shadow { box-shadow: 0 8px 40px rgba(13,13,11,0.08); }
 .num-card:hover { background: var(--stone); }
 .num-icon { font-size: 28px; margin-bottom: 20px; }
 .num-val {
-  font-family: var(--serif); font-size: 80px; font-weight: 400;
-  line-height: 1; letter-spacing: -3px; color: var(--ink); margin-bottom: 6px;
+  font-family: var(--sans); font-size: 80px; font-weight: 800;
+  line-height: 1; letter-spacing: -4px; color: var(--ink); margin-bottom: 6px;
 }
-.num-val em { font-style: normal; color: var(--orange); }
+.num-val em { font-style: normal; font-weight: 300; color: var(--orange); }
 .num-lbl {
   font-size: 11px; font-weight: 700; letter-spacing: 0.8px;
   text-transform: uppercase; color: var(--muted); margin-bottom: 16px;
@@ -413,8 +413,9 @@ nav.shadow { box-shadow: 0 8px 40px rgba(13,13,11,0.08); }
 .eyebrow-dash { width: 32px; height: 2px; background: var(--orange); }
 .eyebrow-txt { font-size: 11px; font-weight: 700; letter-spacing: 1.2px; text-transform: uppercase; color: var(--orange); }
 .testi-quote {
-  font-family: var(--serif); font-size: 34px; font-style: italic;
-  line-height: 1.35; color: var(--ink); margin-bottom: 36px; letter-spacing: -0.5px;
+  font-family: var(--sans); font-size: 30px; font-weight: 300;
+  font-style: normal; letter-spacing: -0.5px;
+  line-height: 1.45; color: var(--ink); margin-bottom: 36px;
 }
 .testi-attribution { display: flex; align-items: center; gap: 16px; }
 .testi-avatar {
@@ -432,8 +433,8 @@ nav.shadow { box-shadow: 0 8px 40px rgba(13,13,11,0.08); }
 .testi-stat-card:hover { border-color: var(--orange-mid); box-shadow: 0 8px 32px rgba(232,96,28,0.08); }
 .testi-stat-card.featured { background: var(--orange); border-color: var(--orange); }
 .ts-val {
-  font-family: var(--serif); font-size: 52px; font-weight: 400;
-  color: var(--ink); letter-spacing: -2px; line-height: 1; margin-bottom: 6px;
+  font-family: var(--sans); font-size: 52px; font-weight: 800;
+  color: var(--ink); letter-spacing: -2.5px; line-height: 1; margin-bottom: 6px;
 }
 .testi-stat-card.featured .ts-val { color: var(--white); }
 .ts-lbl { font-size: 13px; font-weight: 600; color: var(--muted2); }
@@ -479,8 +480,8 @@ nav.shadow { box-shadow: 0 8px 40px rgba(13,13,11,0.08); }
 .process-step:last-child { border-right: none; }
 .process-step:hover { background: var(--orange-pale); }
 .ps-num {
-  font-family: var(--serif); font-size: 48px; font-weight: 400;
-  color: var(--stone2); line-height: 1; margin-bottom: 20px; letter-spacing: -1px;
+  font-family: var(--sans); font-size: 48px; font-weight: 800;
+  color: var(--stone2); line-height: 1; margin-bottom: 20px; letter-spacing: -2px;
   transition: color 0.25s;
 }
 .process-step:hover .ps-num { color: var(--orange-mid); }
@@ -525,7 +526,7 @@ nav.shadow { box-shadow: 0 8px 40px rgba(13,13,11,0.08); }
   padding: 56px 48px; background: var(--stone);
   display: flex; flex-direction: column; justify-content: space-between;
 }
-.ci-head h3 { font-family: var(--serif); font-size: 32px; color: var(--ink); margin-bottom: 10px; letter-spacing: -0.5px; }
+.ci-head h3 { font-family: var(--sans); font-size: 28px; font-weight: 800; color: var(--ink); margin-bottom: 10px; letter-spacing: -1px; }
 .ci-head p { font-size: 15px; color: var(--muted2); line-height: 1.7; margin-bottom: 40px; }
 .ci-items { display: flex; flex-direction: column; gap: 0; }
 .ci-row {
@@ -829,7 +830,7 @@ footer { background: var(--ink); padding: 64px 48px 40px; }
 <div class="dark-band">
   <div class="dark-inner">
     <div class="sec-eyebrow" style="color:var(--orange-warm)">Why Choose Us</div>
-    <h2 class="sec-h" style="color:#fff">Built different,<br><em>by design.</em></h2>
+    <h2 class="sec-h" style="color:#fff;font-weight:800;letter-spacing:-2.5px">Built different,<br><em style="font-style:normal;font-weight:300;color:var(--orange-warm)">by design.</em></h2>
     <div class="dark-grid">
       <div class="dark-card c-orange">
         <div class="dc-num">01</div>
