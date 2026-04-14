@@ -1,19 +1,12 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-  <title>Nova Space – Logistics Operations</title>
-
-  <!-- favicon -->
-  <link rel="icon" type="image/svg" href="logo.svg">
-
-  <!-- fonts -->
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Geist:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
-  
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Nova Space — Logistics Operations</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
 <style>
 :root{
   --ink:#0D0D0B;
@@ -72,24 +65,22 @@ nav.scrolled{
 .n-cta:hover{background:var(--orange);transform:translateY(-1px);box-shadow:0 8px 24px rgba(224,90,20,.3)}
 
 /* ══════════════════════════════
-   HERO — two-column, equal breathing room
+   HERO — full-width centered
 ══════════════════════════════ */
 .hero-wrap{
-  padding-top:68px; /* offset for fixed nav */
+  padding-top:68px;
   background:var(--paper);
+  min-height:calc(100vh - 68px);
+  display:flex;align-items:center;
 }
 .hero-inner{
   max-width:var(--max);margin:0 auto;
-  padding:80px var(--pad) 0;
-  display:grid;
-  grid-template-columns:1fr 480px;
-  gap:56px;
-  align-items:center;
-  min-height:calc(100vh - 68px);
-  padding-bottom:0;
+  padding:80px var(--pad);
+  width:100%;
+  text-align:center;
+  display:flex;flex-direction:column;align-items:center;
 }
-/* LEFT */
-.hero-left{padding-bottom:80px}
+.hero-left{width:100%;max-width:820px}
 .hero-tag{
   display:inline-flex;align-items:center;gap:8px;
   padding:6px 14px 6px 8px;border:1px solid var(--stone2);
@@ -98,12 +89,12 @@ nav.scrolled{
 }
 .hero-tag-dot{width:7px;height:7px;border-radius:50%;background:var(--orange);flex-shrink:0}
 .hero-h1{
-  font-size:76px;font-weight:800;line-height:1.0;
-  letter-spacing:-4px;color:var(--ink);margin-bottom:28px;
+  font-size:96px;font-weight:800;line-height:1.0;
+  letter-spacing:-5px;color:var(--ink);margin-bottom:28px;
 }
-.hero-h1 .thin{font-weight:300;color:var(--orange);letter-spacing:-2.5px}
-.hero-sub{font-size:18px;font-weight:400;color:var(--dim);line-height:1.72;max-width:520px;margin-bottom:40px}
-.hero-btns{display:flex;align-items:center;gap:14px;margin-bottom:18px}
+.hero-h1 .thin{font-weight:300;color:var(--orange);letter-spacing:-3px}
+.hero-sub{font-size:19px;font-weight:400;color:var(--dim);line-height:1.72;max-width:560px;margin:0 auto 40px}
+.hero-btns{display:flex;align-items:center;justify-content:center;gap:14px;margin-bottom:18px}
 .btn-fill{
   display:inline-flex;align-items:center;gap:8px;
   padding:14px 28px;background:var(--ink);color:#fff;
@@ -197,34 +188,46 @@ nav.scrolled{
 .av{width:22px;height:22px;border-radius:50%;display:inline-flex;align-items:center;justify-content:center;font-size:8.5px;font-weight:800;color:#fff}
 
 /* ══════════════════════════════
-   PARTNER BAND — standalone, clean
+   PARTNER BAND — premium card grid
 ══════════════════════════════ */
 .partner-band{
   background:var(--white);
+  border-top:1px solid var(--stone2);
   border-bottom:1px solid var(--stone2);
-  padding:32px var(--pad);
+  padding:56px var(--pad);
 }
-.pb-in{
-  max-width:var(--max);margin:0 auto;
-  display:flex;align-items:center;
+.pb-in{max-width:var(--max);margin:0 auto}
+.pb-label-row{text-align:center;margin-bottom:40px}
+.pb-label-txt{font-size:12px;font-weight:600;color:var(--muted);letter-spacing:.8px;text-transform:uppercase}
+.pb-cards{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}
+.pb-card{
+  border:1px solid var(--stone2);border-radius:18px;
+  padding:28px 24px;
+  display:flex;flex-direction:column;align-items:flex-start;gap:16px;
+  transition:all .25s var(--ease);
+  background:var(--white);
+  position:relative;overflow:hidden;
 }
-.pb-label{
-  font-size:12px;font-weight:600;color:var(--muted);
-  white-space:nowrap;flex-shrink:0;
-  padding-right:40px;margin-right:40px;
-  border-right:1px solid var(--stone2);
+.pb-card::after{
+  content:'';position:absolute;bottom:0;left:0;right:0;height:2px;
+  background:var(--orange);transform:scaleX(0);transform-origin:left;
+  transition:transform .3s var(--ease);
 }
-.pb-logos{
-  display:flex;align-items:center;
-  justify-content:space-between;flex:1;
+.pb-card:hover{border-color:var(--orange-mid);box-shadow:0 12px 36px rgba(13,13,11,.08);transform:translateY(-4px)}
+.pb-card:hover::after{transform:scaleX(1)}
+.pb-card-logo{
+  width:44px;height:44px;border-radius:12px;
+  display:flex;align-items:center;justify-content:center;
+  font-size:18px;font-weight:900;color:#fff;flex-shrink:0;
 }
-.pb-logo{
-  font-size:20px;font-weight:900;
-  color:rgba(13,13,11,.15);
-  letter-spacing:-.8px;
-  transition:color .2s;cursor:default;user-select:none;
+.pb-card-name{font-size:20px;font-weight:800;color:var(--ink);letter-spacing:-.5px}
+.pb-card-type{font-size:11px;font-weight:600;color:var(--muted);text-transform:uppercase;letter-spacing:.6px}
+.pb-card-dot{
+  margin-left:auto;margin-top:auto;align-self:flex-end;
+  display:flex;align-items:center;gap:5px;
+  font-size:11px;font-weight:700;color:var(--orange);
 }
-.pb-logo:hover{color:rgba(13,13,11,.5)}
+.pb-card-dot-circle{width:6px;height:6px;border-radius:50%;background:var(--orange)}
 
 /* ══════════════════════════════
    SHARED SECTION STYLES
@@ -299,27 +302,42 @@ nav.scrolled{
 .nc-d{font-size:14px;color:var(--dim);line-height:1.7;max-width:230px}
 
 /* ══════════════════════════════
-   TESTIMONIAL
+   TESTIMONIALS — 2 cards
 ══════════════════════════════ */
-.testi-grid{display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:center}
-.testi-ey{display:flex;align-items:center;gap:14px;margin-bottom:32px}
-.testi-dash{width:32px;height:2px;background:var(--orange);flex-shrink:0}
-.testi-tag{font-size:11px;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:var(--orange)}
-.testi-q{font-size:25px;font-weight:400;line-height:1.55;color:var(--ink);margin-bottom:36px;letter-spacing:-.2px}
-.testi-q strong{font-weight:700}
-.testi-who{display:flex;align-items:center;gap:14px}
-.testi-av{width:46px;height:46px;border-radius:50%;background:var(--orange-mid);display:flex;align-items:center;justify-content:center;font-size:15px;font-weight:800;color:var(--orange);flex-shrink:0}
-.testi-name{font-size:14px;font-weight:700;color:var(--ink)}
-.testi-role{font-size:12px;color:var(--muted)}
-.testi-cards{display:flex;flex-direction:column;gap:14px}
-.tc{background:var(--white);border-radius:20px;padding:28px;border:1px solid var(--stone2);transition:all .22s}
-.tc:hover{border-color:var(--orange-mid);box-shadow:0 8px 28px rgba(224,90,20,.08)}
-.tc.feat{background:var(--orange);border-color:transparent}
-.tc-v{font-size:50px;font-weight:800;letter-spacing:-2.5px;line-height:1;color:var(--ink);margin-bottom:5px}
-.tc.feat .tc-v{color:#fff}
-.tc-l{font-size:13px;font-weight:500;color:var(--dim)}
-.tc.feat .tc-l{color:rgba(255,255,255,.7)}
-.tc-row{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.testi-grid{display:grid;grid-template-columns:1fr 1fr;gap:20px}
+.tcard{
+  background:var(--white);border-radius:24px;
+  border:1px solid var(--stone2);
+  padding:44px 40px;
+  display:flex;flex-direction:column;gap:28px;
+  transition:all .25s var(--ease);
+}
+.tcard:hover{box-shadow:0 16px 48px rgba(13,13,11,.08);border-color:var(--stone2);transform:translateY(-4px)}
+.tcard.dark{background:var(--ink2);border-color:transparent}
+.tc-stars{display:flex;gap:3px;margin-bottom:4px}
+.tc-star{color:var(--orange);font-size:16px}
+.tc-quote{font-size:18px;font-weight:400;line-height:1.65;color:var(--ink);flex:1}
+.tcard.dark .tc-quote{color:rgba(255,255,255,.85)}
+.tc-quote strong{font-weight:700}
+.tc-footer{display:flex;align-items:center;gap:14px;padding-top:24px;border-top:1px solid var(--stone2)}
+.tcard.dark .tc-footer{border-top-color:rgba(255,255,255,.1)}
+.tc-av{
+  width:44px;height:44px;border-radius:50%;flex-shrink:0;
+  display:flex;align-items:center;justify-content:center;
+  font-size:14px;font-weight:800;
+}
+.tc-av.o{background:var(--orange-mid);color:var(--orange)}
+.tc-av.w{background:rgba(255,255,255,.15);color:#fff}
+.tc-name{font-size:14px;font-weight:700;color:var(--ink);margin-bottom:2px}
+.tcard.dark .tc-name{color:#fff}
+.tc-role{font-size:12px;color:var(--muted)}
+.tcard.dark .tc-role{color:rgba(255,255,255,.4)}
+.tc-tag{
+  margin-left:auto;padding:5px 12px;border-radius:20px;
+  font-size:11px;font-weight:700;
+  background:var(--orange-pale);color:var(--orange);flex-shrink:0;
+}
+.tcard.dark .tc-tag{background:rgba(255,255,255,.1);color:rgba(255,255,255,.6)}
 
 /* ══════════════════════════════
    TEAM
@@ -387,13 +405,14 @@ footer{background:var(--ink);padding:60px var(--pad) 40px}
 ══════════════════════════════ */
 @media(max-width:1100px){
   :root{--pad:28px}
-  .hero-inner{grid-template-columns:1fr;min-height:auto;padding-top:60px}
-  .hero-right{display:none}
+  .hero-inner{padding-top:60px;text-align:left;align-items:flex-start}
+  .hero-sub,.hero-btns,.hero-note{margin-left:0;text-align:left}
+  .hero-btns{justify-content:flex-start}
   .hero-h1{font-size:52px;letter-spacing:-2.5px}
   .sh,.dark-h{font-size:38px;letter-spacing:-1.5px}
   .n-links{display:none}
-  .svc-grid,.why-grid,.team-grid{grid-template-columns:1fr 1fr}
-  .nums-in,.testi-grid,.cbox,.foot-top{grid-template-columns:1fr}
+  .svc-grid,.why-grid,.team-grid,.testi-grid,.pb-cards{grid-template-columns:1fr 1fr}
+  .nums-in,.cbox,.foot-top{grid-template-columns:1fr}
   .nc{border-right:none;border-bottom:1px solid var(--stone2)}
   .nc:last-child{border-bottom:none}
   .cf-r{display:none}
@@ -442,11 +461,9 @@ footer{background:var(--ink);padding:60px var(--pad) 40px}
 <!-- ═══ HERO ═══ -->
 <div class="hero-wrap" id="overview">
   <div class="hero-inner">
-
-    <!-- LEFT: headline + CTA -->
     <div class="hero-left">
       <div class="hero-tag"><span class="hero-tag-dot"></span>Trusted across California since 2022</div>
-      <h1 class="hero-h1">Logistics that<br>moves at <span class="thin">your</span><br>speed.</h1>
+      <h1 class="hero-h1">Logistics that moves<br>at <span class="thin">your</span> speed.</h1>
       <p class="hero-sub">Scale your operations across SF, Bay Area, and LA with 200+ trained operators, real-time dashboards, and a team that responds before you even have to ask.</p>
       <div class="hero-btns">
         <a href="#contact" class="btn-fill">Get Started →</a>
@@ -454,47 +471,46 @@ footer{background:var(--ink);padding:60px var(--pad) 40px}
       </div>
       <p class="hero-note">No long-term commitment required &nbsp;·&nbsp; Response within 24h</p>
     </div>
-
-    <!-- RIGHT: stat cards — balanced visual weight -->
-    <div class="hero-right">
-      <div class="hstat dark">
-        <div class="hstat-lbl">Packages / Operator</div>
-        <div class="hstat-val">~300<em>/day</em></div>
-        <div class="hstat-desc">Consistent high-volume output across all California regions</div>
-      </div>
-      <div class="hstat-mini-row">
-        <div class="hstat-mini">
-          <div class="hm-v or">99%</div>
-          <div class="hm-l">Accuracy Rate</div>
-        </div>
-        <div class="hstat-mini">
-          <div class="hm-v">200+</div>
-          <div class="hm-l">Operators Ready</div>
-        </div>
-      </div>
-      <div class="hstat">
-        <div class="hstat-lbl">Active Partners</div>
-        <div class="partner-list">
-          <div class="pl-item"><span class="pl-name">UniUni</span><span class="pl-tag">Active</span></div>
-          <div class="pl-item"><span class="pl-name">Yanwen</span><span class="pl-tag">Active</span></div>
-          <div class="pl-item"><span class="pl-name">SwiftX</span><span class="pl-tag">Active</span></div>
-          <div class="pl-item"><span class="pl-name">GoFo</span><span class="pl-tag">Active</span></div>
-        </div>
-      </div>
-    </div>
-
   </div>
 </div>
 
-<!-- ═══ PARTNER BAND — own full-width row ═══ -->
+<!-- ═══ PARTNER BAND — premium cards ═══ -->
 <div class="partner-band">
   <div class="pb-in">
-    <div class="pb-label">Trusted by</div>
-    <div class="pb-logos">
-      <div class="pb-logo">UniUni</div>
-      <div class="pb-logo">Yanwen</div>
-      <div class="pb-logo">SwiftX</div>
-      <div class="pb-logo">GoFo</div>
+    <div class="pb-label-row"><span class="pb-label-txt">Trusted by leading logistics companies</span></div>
+    <div class="pb-cards">
+      <div class="pb-card">
+        <div class="pb-card-logo" style="background:#1C2340">U</div>
+        <div>
+          <div class="pb-card-name">UniUni</div>
+          <div class="pb-card-type">Last-Mile Carrier</div>
+        </div>
+        <div class="pb-card-dot"><span class="pb-card-dot-circle"></span>Active Partner</div>
+      </div>
+      <div class="pb-card">
+        <div class="pb-card-logo" style="background:#B01A2E">Y</div>
+        <div>
+          <div class="pb-card-name">Yanwen</div>
+          <div class="pb-card-type">Cross-Border Logistics</div>
+        </div>
+        <div class="pb-card-dot"><span class="pb-card-dot-circle"></span>Active Partner</div>
+      </div>
+      <div class="pb-card">
+        <div class="pb-card-logo" style="background:#0A4FA6">S</div>
+        <div>
+          <div class="pb-card-name">SwiftX</div>
+          <div class="pb-card-type">Express Delivery</div>
+        </div>
+        <div class="pb-card-dot"><span class="pb-card-dot-circle"></span>Active Partner</div>
+      </div>
+      <div class="pb-card">
+        <div class="pb-card-logo" style="background:#1A6B3A">G</div>
+        <div>
+          <div class="pb-card-name">GoFo</div>
+          <div class="pb-card-type">Urban Logistics</div>
+        </div>
+        <div class="pb-card-dot"><span class="pb-card-dot-circle"></span>Active Partner</div>
+      </div>
     </div>
   </div>
 </div>
@@ -679,27 +695,47 @@ footer{background:var(--ink);padding:60px var(--pad) 40px}
   </div>
 </div>
 
-<!-- ═══ TESTIMONIAL ═══ -->
+<!-- ═══ TESTIMONIALS — 2 cards ═══ -->
 <section class="sec">
+  <div class="eyebrow">Client Results</div>
+  <h2 class="sh">Trusted by the <em>best.</em></h2>
+  <p class="ss" style="margin-bottom:48px">What our partners say after working with us.</p>
   <div class="testi-grid">
-    <div>
-      <div class="testi-ey"><div class="testi-dash"></div><span class="testi-tag">Client Results</span></div>
-      <div class="testi-q">"Nova Space helped us <strong>scale our California operations</strong> without sacrificing accuracy or speed. Their real-time visibility is unlike anything we've experienced from a logistics partner."</div>
-      <div class="testi-who">
-        <div class="testi-av">OD</div>
+
+    <div class="tcard">
+      <div>
+        <div class="tc-stars">⭐⭐⭐⭐⭐</div>
+      </div>
+      <div class="tc-quote">
+        "Nova Space helped us <strong>scale our California operations</strong> without sacrificing accuracy or speed. Their real-time visibility and responsiveness is unlike anything we've experienced from a logistics partner."
+      </div>
+      <div class="tc-footer">
+        <div class="tc-av o">OD</div>
         <div>
-          <div class="testi-name">Operations Director, UniUni</div>
-          <div class="testi-role">Strategic Partner · Bay Area, CA</div>
+          <div class="tc-name">Operations Director</div>
+          <div class="tc-role">UniUni · Bay Area, CA</div>
         </div>
+        <div class="tc-tag">UniUni</div>
       </div>
     </div>
-    <div class="testi-cards">
-      <div class="tc-row">
-        <div class="tc feat"><div class="tc-v">99%</div><div class="tc-l">Delivery accuracy maintained</div></div>
-        <div class="tc"><div class="tc-v">2×</div><div class="tc-l">Volume scaled in 60 days</div></div>
+
+    <div class="tcard dark">
+      <div>
+        <div class="tc-stars">⭐⭐⭐⭐⭐</div>
       </div>
-      <div class="tc"><div class="tc-v" style="font-size:40px">24h</div><div class="tc-l">Average response time for any request or change</div></div>
+      <div class="tc-quote">
+        "We scaled from 5,000 to <strong>over 30,000 packages per month</strong> in under 60 days. Nova Space's team handled the surge flawlessly — zero drop in accuracy, zero surprises. Exactly what we needed."
+      </div>
+      <div class="tc-footer">
+        <div class="tc-av w">GM</div>
+        <div>
+          <div class="tc-name">General Manager</div>
+          <div class="tc-role">SwiftX · Los Angeles, CA</div>
+        </div>
+        <div class="tc-tag">SwiftX</div>
+      </div>
     </div>
+
   </div>
 </section>
 
@@ -805,7 +841,7 @@ footer{background:var(--ink);padding:60px var(--pad) 40px}
           <p>California's trusted partner for scalable logistics operations — responsive, reliable, and built for long-term growth.</p>
           <div class="ci">
             <div class="ci-ico">📧</div>
-            <div><div class="ci-l">Email</div><div class="ci-v">admin@novaspacecorp.com</div></div>
+            <div><div class="ci-l">Email</div><div class="ci-v"><a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="ee8f8a838780ae8081988f9d9e8f8d8b8d819c9ec08d8183">[email&#160;protected]</a></div></div>
           </div>
           <div class="ci">
             <div class="ci-ico">🌐</div>
@@ -869,9 +905,4 @@ footer{background:var(--ink);padding:60px var(--pad) 40px}
   </div>
 </footer>
 
-<script>
-const nav = document.getElementById('nav');
-window.addEventListener('scroll',()=>nav.classList.toggle('scrolled',scrollY>20),{passive:true});
-</script>
-</body>
-</html>
+<script data-cfasync="false" src="/cdn-cgi/scripts/
