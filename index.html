@@ -234,6 +234,15 @@ td.r,th.r{text-align:right}
 #bandline{stroke-dasharray:420;stroke-dashoffset:0;animation:draw 1.6s ease-out both}
 @keyframes draw{from{stroke-dashoffset:420}to{stroke-dashoffset:0}}
 /* ===== hero band (dark, both themes) ===== */
+.darkband{position:relative;isolation:isolate;--bg:#0a1820; --surface:rgba(255,255,255,.04); --ink:#eef3f5; --muted:#9db0b9; --line:rgba(255,255,255,.11);--accent:#6cc0dc; --accent-soft:rgba(108,192,220,.14); --amber:#eab062; --amber-soft:rgba(234,176,98,.16); --ok:#5cc28c;
+  background:radial-gradient(rgba(157,176,185,.16) 1px,transparent 1.3px) 0 0/40px 40px,radial-gradient(1000px 500px at 85% 0%,#14384a 0%,transparent 60%),#0a1820;color:var(--ink);color-scheme:dark}
+.db-in{padding-block:104px}
+.darkband h2{color:#fff}
+.darkband .seg button[aria-pressed="true"]{background:#fff;color:#0a1820}
+.darkband .dash{background:rgba(12,30,40,.55);border-color:rgba(255,255,255,.13);box-shadow:0 30px 80px -40px rgba(0,0,0,.7)}
+.darkband .dash-note{background:rgba(255,255,255,.03)}
+.darkband .wh:hover{background:rgba(255,255,255,.03)}
+.darkband .ex span{color:var(--ink)}
 .heroband{position:relative;overflow:hidden;isolation:isolate;
   --bg:#0a1820; --surface:rgba(255,255,255,.045); --ink:#eef3f5; --muted:#9db0b9; --line:rgba(255,255,255,.12);
   --accent:#6cc0dc; --accent-soft:rgba(108,192,220,.14); --amber:#eab062; --amber-soft:rgba(234,176,98,.16);
@@ -293,6 +302,24 @@ kbd{font-family:var(--f-mono);font-size:11px;padding:2px 6px;border:1px solid va
 .run.live{color:var(--ok)}
 .clock{font-family:var(--f-mono);font-size:12px;color:var(--muted);font-variant-numeric:tabular-nums}
 @media (max-width:560px){.kbtn{display:none}.st-in .hide-s{display:none}}
+/* section heads, tied to the hero schematic */
+.sec-top>div>.label{display:flex;align-items:center;gap:10px;color:var(--accent)}
+.sec-top>div>.label::before{content:"";width:7px;height:7px;border:1.5px solid var(--amber);flex:0 0 7px}
+.sec-top{position:relative;padding-top:22px;border-top:1px solid var(--line)}
+.sec-top::before{content:"";position:absolute;top:-1px;left:0;width:56px;height:1px;background:var(--accent)}
+/* faint grid on the page ground */
+body{background-image:radial-gradient(color-mix(in srgb,var(--muted) 16%,transparent) 1px,transparent 1.3px);background-size:40px 40px}
+/* cards: mono corner code + crisper edges */
+.svc article,.mem,.lvl,.rv,.card,.radar,.sched,.line,.dash{border-radius:14px}
+.svc .no{display:flex;justify-content:space-between;align-items:center}
+.svc .no::after{content:"SVC";color:var(--muted);letter-spacing:.14em}
+.stats>div{position:relative}
+.stats>div::before{content:"";position:absolute;top:-1px;left:0;width:24px;height:2px;background:var(--accent)}
+.contact{background:radial-gradient(rgba(157,176,185,.14) 1px,transparent 1.3px) 0 0/40px 40px,radial-gradient(800px 400px at 90% 0%,#14384a 0%,transparent 60%),#0a1820;color:#eef3f5;border-radius:18px}
+.contact h2{color:#fff}
+.pillar{position:relative}
+.pillar .n{font-family:var(--f-mono);font-size:13px;font-weight:400;letter-spacing:.12em;color:var(--accent);line-height:1}
+.pillar h3{font-size:19px}
 /* pillars */
 .pillars{display:grid;grid-template-columns:repeat(3,1fr);gap:0;border-top:1px solid var(--line)}
 .pillar{padding:28px 28px 28px 0;display:flex;flex-direction:column;gap:10px;border-bottom:1px solid var(--line)}
@@ -567,6 +594,9 @@ footer{border-top:1px solid var(--line)}
   </div>
 </section>
 
+</main>
+<div class="darkband">
+  <div class="wrap db-in">
 <!-- DASHBOARD -->
 <section class="sec" id="dashboard">
   <div class="sec-top"><div><span class="label">Live operations dashboard</span><h2><span class="zh">每个仓、每条线，实时可见</span><span class="en">Every site, every line, in view.</span></h2></div><p><span class="zh">各分拣项目的人员、班次、人效和异常一屏看完，管理层随时掌握现场。</span><span class="en">Staffing, shifts, productivity and exceptions for every sorting project on one screen.</span></p></div>
@@ -588,6 +618,9 @@ footer{border-top:1px solid var(--line)}
     <div class="dash-note"><span class="zh">现场数据由管理层每日更新。“—” 表示当日未统计。</span><span class="en">Floor data updated daily by our managers. “—” means not reported today.</span></div>
   </div>
 </section>
+  </div>
+</div>
+<main class="wrap">
 
 <!-- WHY -->
 <section class="sec">
