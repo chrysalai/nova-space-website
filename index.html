@@ -31,11 +31,11 @@ body{background:var(--bg);color:var(--ink);font-family:var(--f-sans);font-size:1
 body:not(.lang-en) .en{display:none!important}
 body.lang-en .zh{display:none!important}
 .wrap{max-width:1120px;margin:0 auto;padding-left:max(20px,env(safe-area-inset-left,0px));padding-right:max(20px,env(safe-area-inset-right,0px))}
-main.wrap{padding-block:24px 64px;display:flex;flex-direction:column;gap:112px}
+main.wrap{padding-block:96px 64px;display:flex;flex-direction:column;gap:112px}
 h1,h2,h3{margin:0;font-weight:700;text-wrap:balance;line-height:1.2}
 h2{font-family:var(--f-serif);font-size:clamp(28px,3.6vw,40px);letter-spacing:.01em}
 p{margin:0}
-section{scroll-margin-top:84px}
+section{scroll-margin-top:114px}
 .label{font-family:var(--f-mono);font-size:12px;letter-spacing:.16em;text-transform:uppercase;color:var(--muted)}
 .sec{display:flex;flex-direction:column;gap:36px}
 .sec-top{display:flex;justify-content:space-between;align-items:flex-end;gap:24px;flex-wrap:wrap}
@@ -65,8 +65,10 @@ header{position:sticky;top:env(safe-area-inset-top,0px);z-index:9;background:col
 /* hero */
 .hero{display:grid;grid-template-columns:1.05fr 1fr;gap:56px;align-items:center;padding-top:32px}
 .hero h1{font-family:var(--f-serif);font-size:clamp(36px,5vw,60px);line-height:1.18;letter-spacing:.01em}
-.hero h1 span{color:var(--accent)}
-.hero .lede{margin-top:22px;color:var(--muted);font-size:17px;max-width:27em}
+.hero h1 span span{color:var(--accent)}
+.hsub{margin-top:18px;font-family:var(--f-serif);font-size:clamp(19px,2vw,24px);font-weight:500;letter-spacing:.04em;color:var(--ink);display:flex;align-items:center;gap:14px}
+.hsub::before{content:"";width:28px;height:2px;background:var(--amber);flex:0 0 28px}
+.hero .lede{margin-top:18px;color:var(--muted);font-size:17px;max-width:27em}
 .hero .acts{margin-top:28px;display:flex;gap:12px;flex-wrap:wrap;align-items:center}
 .hero .fine{margin-top:14px;font-size:13px;color:var(--muted)}
 .kpi{background:var(--surface);border:1px solid var(--line);border-radius:20px;padding:32px;display:flex;flex-direction:column;gap:22px}
@@ -76,7 +78,10 @@ header{position:sticky;top:env(safe-area-inset-top,0px);z-index:9;background:col
 @keyframes pulse{50%{opacity:.35}}
 .big{font-family:var(--f-num);font-weight:200;font-size:clamp(88px,12vw,148px);line-height:.85;letter-spacing:-.03em;font-variant-numeric:tabular-nums}
 .big-cap{font-size:14px;color:var(--muted);margin-top:6px}
-.gauge{position:relative;height:56px}
+.gauge{position:relative;height:72px}
+.gauge .m.lo{top:32px}
+.gauge .m.lo::after{display:none}
+.gauge .m.lo::before{content:"";display:block;width:1px;height:12px;background:var(--muted);margin:0 auto 4px;opacity:.6}
 .gauge .track{position:absolute;left:0;right:0;top:22px;height:8px;border-radius:4px;background:var(--line)}
 .gauge .fill{position:absolute;left:0;top:22px;height:8px;border-radius:4px;background:linear-gradient(90deg,var(--accent),var(--amber));width:100%;transform-origin:left;transition:transform 1.4s cubic-bezier(.2,.8,.2,1)}
 .gauge .m{position:absolute;top:0;transform:translateX(-50%);font-family:var(--f-mono);font-size:11px;color:var(--muted);white-space:nowrap}
@@ -84,7 +89,7 @@ header{position:sticky;top:env(safe-area-inset-top,0px);z-index:9;background:col
 .gauge .m.pk{color:var(--amber);transform:translateX(-100%);text-align:right}
 .gauge .m.pk::after{background:var(--amber);opacity:1;margin:4px 0 0 auto}
 .kpi-row{display:grid;grid-template-columns:repeat(3,1fr);border-top:1px solid var(--line);padding-top:20px;gap:12px}
-.kpi-row .n{font-family:var(--f-num);font-weight:300;font-size:34px;line-height:1;font-variant-numeric:tabular-nums}
+.kpi-row .n{font-family:var(--f-num);font-weight:300;font-size:clamp(24px,2.6vw,34px);white-space:nowrap;line-height:1;font-variant-numeric:tabular-nums}
 .kpi-row .n small{font-size:16px;color:var(--muted);margin-left:2px}
 .knote{font-size:13px;color:var(--muted);margin-top:-8px}
 .kpi .seg button{padding:6px 14px}
@@ -102,7 +107,7 @@ header{position:sticky;top:env(safe-area-inset-top,0px);z-index:9;background:col
 /* services */
 .svc{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
 .svc article{background:var(--surface);border:1px solid var(--line);border-radius:20px;padding:28px;display:flex;flex-direction:column;gap:14px;transition:transform .3s,border-color .3s}
-.svc article:hover{transform:translateY(-3px);border-color:var(--accent)}
+.svc article:hover{border-color:var(--accent)}
 .svc .no{font-family:var(--f-mono);font-size:12px;color:var(--accent)}
 .svc h3{font-family:var(--f-serif);font-size:23px}
 .svc p{color:var(--muted);font-size:14.5px}
@@ -228,6 +233,66 @@ td.r,th.r{text-align:right}
 .band .bt{font-family:var(--f-mono);font-size:11px;fill:var(--muted)}
 #bandline{stroke-dasharray:420;stroke-dashoffset:0;animation:draw 1.6s ease-out both}
 @keyframes draw{from{stroke-dashoffset:420}to{stroke-dashoffset:0}}
+/* ===== hero band (dark, both themes) ===== */
+.heroband{position:relative;overflow:hidden;isolation:isolate;
+  --bg:#0a1820; --surface:rgba(255,255,255,.045); --ink:#eef3f5; --muted:#9db0b9; --line:rgba(255,255,255,.12);
+  --accent:#6cc0dc; --accent-soft:rgba(108,192,220,.14); --amber:#eab062; --amber-soft:rgba(234,176,98,.16);
+  background:radial-gradient(1200px 600px at 78% 30%,#14384a 0%,transparent 60%),radial-gradient(900px 500px at 10% 100%,#132a36 0%,transparent 60%),#0a1820;
+  color:var(--ink);color-scheme:dark}
+#flow{position:absolute;inset:0;width:100%;height:100%;z-index:-1;opacity:.9}
+.hb-glow{position:absolute;inset:auto 0 0 0;height:160px;background:linear-gradient(to bottom,transparent,rgba(10,24,32,.85));z-index:-1;pointer-events:none}
+.hb-inner{padding-block:56px 40px}
+.heroband .hero{padding-top:8px}
+.heroband .hero h1{color:#fff}
+.heroband .hero h1 span span{color:var(--accent)}
+.heroband .cta{background:var(--amber);color:#1c1306}
+.heroband .cta.ghost{background:transparent;color:var(--ink);border-color:var(--line)}
+.heroband .kpi{background:rgba(12,30,40,.55);backdrop-filter:blur(14px) saturate(140%);-webkit-backdrop-filter:blur(14px) saturate(140%);border-color:rgba(255,255,255,.14);box-shadow:0 30px 80px -30px rgba(0,0,0,.6),inset 0 1px 0 rgba(255,255,255,.08)}
+.heroband .big{color:#fff}
+.heroband .seg{background:rgba(255,255,255,.06)}
+.heroband .seg button[aria-pressed="true"]{background:#fff;color:#0a1820}
+.heroband .logos{border-top-color:var(--line);margin-top:48px}
+.heroband .logos b{color:rgba(238,243,245,.55);transition:color .3s}
+.heroband .logos b:hover{color:#fff}
+.hb-eyebrow{color:var(--accent)!important}
+/* progress */
+.prog{position:absolute;left:0;bottom:-1px;height:2px;width:100%;transform-origin:left;transform:scaleX(var(--p,0));background:linear-gradient(90deg,var(--accent),var(--amber));z-index:2}
+.links a.cur{color:var(--ink)}
+.links a{position:relative}
+.links a.cur::after{content:"";position:absolute;left:0;right:0;bottom:-6px;height:2px;border-radius:2px;background:var(--accent)}
+/* reveal */
+.rvl{transition:opacity .9s cubic-bezier(.2,.8,.2,1),transform .9s cubic-bezier(.2,.8,.2,1)}
+.rvl.pre{opacity:.15;transform:translateY(32px)}
+/* station pass pulse */
+.st.hit{box-shadow:0 0 0 4px color-mix(in srgb,var(--amber) 25%,transparent)}
+/* status strip */
+.status{border-top:1px solid var(--line);background:color-mix(in srgb,var(--bg) 94%,transparent)}
+.st-in{display:flex;gap:22px;align-items:center;height:30px;font-family:var(--f-mono);font-size:11.5px;color:var(--muted);white-space:nowrap;overflow:hidden;font-variant-numeric:tabular-nums}
+.st-in b{color:var(--ink);font-weight:500}
+.st-in .on{display:inline-flex;align-items:center;gap:7px;color:var(--ok)}
+.st-in .on i{width:6px;height:6px;border-radius:50%;background:var(--ok);animation:pulse 2s infinite}
+.st-in .sep{opacity:.35}
+.kbtn{border:1px solid var(--line);background:var(--surface);border-radius:8px;padding:6px 9px;font-family:var(--f-mono);font-size:12px;color:var(--muted)}
+.kbtn:hover{color:var(--ink);border-color:var(--accent)}
+/* command palette */
+.pal{position:fixed;inset:0;z-index:50;background:rgba(8,14,18,.45);backdrop-filter:blur(4px);display:flex;justify-content:center;align-items:flex-start;padding:calc(12vh + env(safe-area-inset-top,0px)) max(16px,env(safe-area-inset-right,0px)) 16px max(16px,env(safe-area-inset-left,0px))}
+.pal-box{width:100%;max-width:560px;background:var(--surface);border:1px solid var(--line);border-radius:14px;box-shadow:0 30px 80px -20px rgba(0,0,0,.45);overflow:hidden}
+.pal-in{display:flex;align-items:center;gap:10px;padding:14px 16px;border-bottom:1px solid var(--line)}
+.pal-in input{flex:1;border:0;outline:0;background:transparent;font:inherit;font-size:16px;color:var(--ink);min-width:0}
+.mono-k{font-family:var(--f-mono);color:var(--accent);font-size:18px}
+kbd{font-family:var(--f-mono);font-size:11px;padding:2px 6px;border:1px solid var(--line);border-radius:5px;color:var(--muted)}
+.pal ul{list-style:none;margin:0;padding:6px;max-height:50vh;overflow:auto}
+.pal li{display:flex;justify-content:space-between;align-items:center;gap:12px;padding:10px 12px;border-radius:8px;font-size:14.5px;cursor:pointer}
+.pal li span{font-family:var(--f-mono);font-size:11px;color:var(--muted)}
+.pal li[aria-selected="true"]{background:var(--accent-soft)}
+.pal-ft{display:flex;gap:8px;align-items:center;padding:10px 16px;border-top:1px solid var(--line);font-family:var(--f-mono);font-size:11px;color:var(--muted)}
+/* dashboard run state */
+.run{font-family:var(--f-mono);font-size:11.5px;color:var(--muted);display:flex;align-items:center;gap:7px;font-variant-numeric:tabular-nums}
+.run i{width:6px;height:6px;border-radius:50%;background:var(--line);flex:0 0 6px}
+.run.live i{background:var(--ok);animation:pulse 1.6s infinite}
+.run.live{color:var(--ok)}
+.clock{font-family:var(--f-mono);font-size:12px;color:var(--muted);font-variant-numeric:tabular-nums}
+@media (max-width:560px){.kbtn{display:none}.st-in .hide-s{display:none}}
 /* pillars */
 .pillars{display:grid;grid-template-columns:repeat(3,1fr);gap:0;border-top:1px solid var(--line)}
 .pillar{padding:28px 28px 28px 0;display:flex;flex-direction:column;gap:10px;border-bottom:1px solid var(--line)}
@@ -307,7 +372,7 @@ td.r,th.r{text-align:right}
 /* team */
 .team{display:grid;grid-template-columns:1fr 1fr;gap:20px}
 .mem{background:var(--surface);border:1px solid var(--line);border-radius:20px;padding:28px;display:flex;flex-direction:column;gap:10px;transition:transform .3s,border-color .3s}
-.mem:hover{transform:translateY(-3px);border-color:var(--accent)}
+.mem:hover{border-color:var(--accent)}
 .mem .row{display:flex;justify-content:space-between;align-items:baseline;gap:12px}
 .mem .n{font-family:var(--f-num);font-weight:300;font-size:40px;line-height:1;color:var(--accent);white-space:nowrap}
 .mem h3{font-size:22px;font-family:var(--f-serif)}
@@ -421,6 +486,7 @@ footer{border-top:1px solid var(--line)}
 <body>
 
 <header>
+  <div class="prog" id="prog"></div>
   <div class="wrap bar">
     <a class="brand" href="#overview"><span class="mk">N</span><b>Nova Space</b></a>
     <nav class="links">
@@ -432,18 +498,23 @@ footer{border-top:1px solid var(--line)}
     </nav>
     <div class="right">
       <div class="lt" role="group" aria-label="Language"><button id="lz" aria-pressed="true">中</button><button id="le" aria-pressed="false">EN</button></div>
+      <button class="kbtn" id="kopen" aria-label="Command menu"><span>⌘K</span></button>
       <a class="cta" href="#contact"><span class="zh">联系我们</span><span class="en">Contact us</span></a>
     </div>
   </div>
+  <div class="status"><div class="wrap st-in" id="status"></div></div>
 </header>
 
-<main class="wrap">
-
+<div class="heroband" id="top">
+  <canvas id="flow" aria-hidden="true"></canvas>
+  <div class="hb-glow" aria-hidden="true"></div>
+  <div class="wrap hb-inner">
 <!-- HERO -->
 <section class="hero" id="overview">
   <div>
     <div class="label">Logistics operations · California</div>
-    <h1 style="margin-top:16px"><span class="zh">物流运营，<br><span>跟上你的速度。</span></span><span class="en">Logistics that<br><span>moves at your speed.</span></span></h1>
+    <h1 style="margin-top:16px"><span class="zh">物流运营<br><span>跟上你的速度与发展</span></span><span class="en">Logistics that keeps<br><span>pace with your growth</span></span></h1>
+    <p class="hsub"><span class="zh">重新定义仓储分拣的人力标准</span><span class="en">Redefining the standard for warehouse sorting</span></p>
     <p class="lede"><span class="zh">200+ 名受训员工、实时数据看板、覆盖加州三大区域。我们为物流平台提供分拣运营、最后一公里配送和人员培训派遣，用工人画像把对的人放在对的工位上。</span><span class="en">200+ trained operators, real-time dashboards and three California regions. We run sorting operations, last-mile delivery and workforce staffing, and we use worker profiles to put the right person at the right station.</span></p>
     <div class="acts">
       <a class="cta" href="#contact"><span class="zh">开始合作 →</span><span class="en">Get started →</span></a>
@@ -463,7 +534,7 @@ footer{border-top:1px solid var(--line)}
     <div class="gauge" aria-hidden="true">
       <div class="track"></div><div class="fill" id="gfill"></div>
       <span class="m" style="left:0%">0</span>
-      <span class="m" id="kavg" style="left:76%"></span>
+      <span class="m lo" id="kavg" style="left:76%"></span>
       <span class="m pk" id="kpk" style="left:100%"></span>
     </div>
     <p class="knote" id="knote"></p>
@@ -472,6 +543,11 @@ footer{border-top:1px solid var(--line)}
 </section>
 
 <div class="logos" aria-label="Clients"><span class="label"><span class="zh">合作平台</span><span class="en">Trusted by</span></span><b>UniUni</b><b>Yanwen</b><b>SwiftX</b><b>GOFO</b></div>
+  </div>
+</div>
+<main class="wrap">
+
+
 
 <!-- STATS -->
 <section class="stats" aria-label="Key stats">
@@ -499,7 +575,7 @@ footer{border-top:1px solid var(--line)}
       <div class="seg" role="group" aria-label="Project">
         <button aria-pressed="true" data-r="all"><span class="zh">全部</span><span class="en">All</span></button><button aria-pressed="false" data-r="CBT">CBT</button><button aria-pressed="false" data-r="FBT">FBT</button><button aria-pressed="false" data-r="TEMU">TEMU</button><button aria-pressed="false" data-r="SWX">SwiftX</button>
       </div>
-      <span class="live"><i></i><span id="d-date"></span></span>
+      <span class="clock"><span id="d-clock"></span> · <span id="d-date"></span></span>
     </div>
     <div class="dm">
       <div><div class="n" id="d-l">0</div><div class="l"><span class="zh">今日开线</span><span class="en">Lines running</span></div></div>
@@ -727,6 +803,13 @@ footer{border-top:1px solid var(--line)}
   <div class="wrap copyr">© 2026 Nova Space Inc. All rights reserved.</div>
 </footer>
 
+<div class="pal" id="pal" hidden>
+  <div class="pal-box" role="dialog" aria-modal="true" aria-label="Command menu">
+    <div class="pal-in"><span class="mono-k">›</span><input id="palq" type="text" autocomplete="off" spellcheck="false"><kbd>ESC</kbd></div>
+    <ul id="pall" role="listbox"></ul>
+    <div class="pal-ft"><span>↑↓</span><span id="palh1"></span><span>↵</span><span id="palh2"></span></div>
+  </div>
+</div>
 <script>
 (function(){
   /* ===== 联系方式：在这里填写，留空则不显示该行 ===== */
@@ -802,7 +885,7 @@ footer{border-top:1px solid var(--line)}
     function tags(a){return a.map(function(n){return '<span>'+n+'</span>'}).join('')}
     box.innerHTML=W.map(function(w){
       return '<button class="wh'+(region===w.id?' on':'')+'" data-w="'+w.id+'"><div class="hd"><div><div class="nm">'+(w.nm||w.id)+'</div><div class="sub">'+T(w.sub)+'</div></div><div class="times">'+w.times.map(function(t){return '<span class="time">'+t+'</span>'}).join('')+'</div></div>'+
-        '<div class="nums"><div><b>'+w.lines+'</b><span>'+T(DL.lines)+'</span></div><div><b>'+nv(w.ppl)+'</b><span>'+T(DL.ppl)+'</span></div>'+(w.machine?'<div><b>—</b><span>'+(lang==='zh'?'机械线 · 无扫码':'Machine line')+'</span></div>':'<div><b>'+nv(w.sc)+'</b><span>'+T(DL.sc)+'</span></div>')+'</div>'+
+        '<div class="run" data-run="'+w.id+'"></div><div class="nums"><div><b>'+w.lines+'</b><span>'+T(DL.lines)+'</span></div><div><b>'+nv(w.ppl)+'</b><span>'+T(DL.ppl)+'</span></div>'+(w.machine?'<div><b>—</b><span>'+(lang==='zh'?'机械线 · 无扫码':'Machine line')+'</span></div>':'<div><b>'+nv(w.sc)+'</b><span>'+T(DL.sc)+'</span></div>')+'</div>'+
         (w.bk.length?'<div class="bk">'+w.bk.map(function(r){return '<div><b>'+T(r.t)+'</b><span>'+T(r.v)+'</span></div>'}).join('')+'</div>':'')+
         (w.top?'<div class="top1"><div><small>'+T(DL.fast)+'</small><br>#'+w.top.gun+(lang==='zh'?' 号枪':' scanner')+'</div><b>'+w.top.v.toLocaleString('en-US')+'</b></div>':'')+
         '<div class="ppl"><div class="r"><span class="k">'+T(DL.lead)+'</span><div class="av">'+tags(w.leads)+'</div></div><div class="r"><span class="k">'+T(DL.mgr)+'</span><div class="av">'+tags(w.mgr)+'</div></div>'+
@@ -972,18 +1055,164 @@ footer{border-top:1px solid var(--line)}
     pick('.copy',function(b){b.addEventListener('click',function(){var v=b.dataset.v;try{navigator.clipboard.writeText(v).then(function(){b.textContent=lang==='zh'?'已复制':'Copied'},function(){})}catch(e){}})});
   }
 
+  /* LA time helpers */
+  function laNow(){var p=new Intl.DateTimeFormat('en-US',{timeZone:'America/Los_Angeles',hour12:false,hour:'2-digit',minute:'2-digit',second:'2-digit'}).formatToParts(new Date()),o={};p.forEach(function(x){o[x.type]=x.value});var h=+o.hour%24;return {h:h,m:+o.minute,s:+o.second,min:h*60+(+o.minute)}}
+  function pm(t){var a=t.split(':');return (+a[0])*60+(+a[1])}
+  function dur(m){var h=Math.floor(m/60),mm=m%60;return (h?h+'h ':'')+String(mm).padStart(h?2:1,'0')+'m'}
+  function runState(w){
+    var now=laNow().min,best=null;
+    w.times.forEach(function(t){
+      var pr=t.split('–');
+      if(pr.length===2){var a=pm(pr[0]),b=pm(pr[1]),end=b<=a?b+1440:b,n=now<a&&b<=a?now+1440:now;
+        if(n>=a&&n<end)best={live:true,txt:(lang==='zh'?'运行中 ':'Running ')+t+' · '+(lang==='zh'?'已运行 ':'up ')+dur(n-a)};
+        else if(!best||!best.live){var until=(a-now+1440)%1440;if(!best||until<best.u)best={live:false,u:until,txt:(lang==='zh'?'下一班 ':'Next shift ')+pr[0]+' · '+(lang==='zh'?'还有 ':'in ')+dur(until)}}}
+      else{var s0=pm(t);
+        if(now>=s0)best=best&&best.live?best:{live:true,txt:(lang==='zh'?'已开线 ':'Running since ')+t+' · '+dur(now-s0)};
+        else if(!best||!best.live){var u2=s0-now;if(!best||u2<best.u)best={live:false,u:u2,txt:(lang==='zh'?'今日 ':'Today ')+t+(lang==='zh'?' 开线 · 还有 ':' start · in ')+dur(u2)}}}
+    });
+    return best;
+  }
+  function tick(){
+    var n=laNow(),hh=String(n.h).padStart(2,'0')+':'+String(n.m).padStart(2,'0')+':'+String(n.s).padStart(2,'0');
+    var ck=$('d-clock');if(ck)ck.textContent='LA '+hh;
+    var sc=$('st-clock');if(sc)sc.textContent=hh;
+    [].forEach.call(document.querySelectorAll('[data-run]'),function(el){var w=W.filter(function(x){return x.id===el.dataset.run})[0];var r=runState(w);el.className='run'+(r.live?' live':'');el.innerHTML='<i></i>'+r.txt});
+    renderStatus();
+  }
+  function renderStatus(){
+    var live=0,lines=0,ppl=0,pm_=false;W.forEach(function(w){lines+=w.lines;if(w.ppl==null)pm_=true;else ppl+=w.ppl;if(runState(w).live)live++});
+    var Z=lang==='zh';
+    $('status').innerHTML='<span class="on"><i></i>'+(Z?'系统运行中':'All systems normal')+'</span><span class="sep">/</span>'+
+      '<span>'+(Z?'项目':'Projects')+' <b>'+W.length+'</b></span><span>'+(Z?'今日开线':'Lines')+' <b>'+lines+'</b></span>'+
+      '<span class="hide-s">'+(Z?'正在运行':'Running now')+' <b>'+live+'/'+W.length+'</b></span><span class="hide-s">'+(Z?'在岗':'On shift')+' <b>'+ppl+(pm_?'+':'')+'</b></span>'+
+      '<span class="sep hide-s">/</span><span>LA <b id="st-clock"></b></span><span class="hide-s">'+T(UPDATED)+'</span>';
+    var n=laNow();$('st-clock').textContent=String(n.h).padStart(2,'0')+':'+String(n.m).padStart(2,'0')+':'+String(n.s).padStart(2,'0');
+  }
+  setInterval(tick,1000);
+
+  /* command palette */
+  var PAL=[
+    {g:'go',t:{zh:'概览',en:'Overview'},h:'#overview'},{g:'go',t:{zh:'服务',en:'Services'},h:'#services'},{g:'go',t:{zh:'运营看板',en:'Operations dashboard'},h:'#dashboard'},
+    {g:'go',t:{zh:'分拣线工位',en:'Line stations'},h:'#line'},{g:'go',t:{zh:'工人画像与排班',en:'Worker profiles'},h:'#profile'},{g:'go',t:{zh:'核心团队',en:'Team'},h:'#team'},{g:'go',t:{zh:'联系我们',en:'Contact'},h:'#contact'},
+    {g:'do',t:{zh:'切换到 English',en:'Switch to 中文'},f:function(){setLang(lang==='zh'?'en':'zh')}},
+    {g:'do',t:{zh:'查看机械线产能',en:'Show machine line output'},f:function(){km='x';renderHero(true);document.getElementById('overview').scrollIntoView()}},
+    {g:'do',t:{zh:'查看手工台产能',en:'Show manual station output'},f:function(){km='m';renderHero(true);document.getElementById('overview').scrollIntoView()}}
+  ].concat(W.map(function(w){return {g:'do',t:{zh:'看板 · '+(w.nm||w.id),en:'Dashboard · '+(w.nm||w.id)},f:function(){region=w.id;press(rb,rb.filter(function(x){return x.dataset.r===region})[0]);renderDash();document.getElementById('dashboard').scrollIntoView()}}}));
+  var pal=$('pal'),palq=$('palq'),pall=$('pall'),psel=0,pitems=[],lastFocus=null;
+  function palRender(){
+    var q=palq.value.trim().toLowerCase();
+    pitems=PAL.filter(function(x){return !q||T(x.t).toLowerCase().indexOf(q)>-1||(x.h||'').indexOf(q)>-1});
+    if(psel>=pitems.length)psel=0;
+    pall.innerHTML=pitems.map(function(x,i){return '<li role="option" data-i="'+i+'" aria-selected="'+(i===psel)+'">'+T(x.t)+'<span>'+(x.g==='go'?(lang==='zh'?'跳转':'GO TO'):(lang==='zh'?'操作':'ACTION'))+'</span></li>'}).join('')||'<li>'+(lang==='zh'?'没有匹配的结果':'No matches')+'</li>';
+    [].forEach.call(pall.querySelectorAll('[data-i]'),function(li){li.addEventListener('click',function(){psel=+li.dataset.i;palRun()});li.addEventListener('mousemove',function(){if(psel!==+li.dataset.i){psel=+li.dataset.i;palRender()}})});
+  }
+  function palOpen(){lastFocus=document.activeElement;pal.hidden=false;palq.value='';psel=0;palq.placeholder=lang==='zh'?'输入跳转或操作，例如"看板"':'Type a section or action, e.g. "dashboard"';$('palh1').textContent=lang==='zh'?'选择':'select';$('palh2').textContent=lang==='zh'?'执行':'run';palRender();palq.focus()}
+  function palClose(){pal.hidden=true;if(lastFocus&&lastFocus.focus)lastFocus.focus()}
+  function palRun(){var x=pitems[psel];if(!x)return;palClose();if(x.h)document.querySelector(x.h).scrollIntoView();else x.f()}
+  $('kopen').addEventListener('click',palOpen);
+  pal.addEventListener('click',function(e){if(e.target===pal)palClose()});
+  palq.addEventListener('input',function(){psel=0;palRender()});
+  document.addEventListener('keydown',function(e){
+    if((e.metaKey||e.ctrlKey)&&e.key.toLowerCase()==='k'){e.preventDefault();pal.hidden?palOpen():palClose();return}
+    if(e.key==='/'&&pal.hidden&&!/input|textarea/i.test(document.activeElement.tagName)){e.preventDefault();palOpen();return}
+    if(pal.hidden)return;
+    if(e.key==='Escape'){palClose()}
+    else if(e.key==='ArrowDown'){e.preventDefault();psel=(psel+1)%Math.max(1,pitems.length);palRender()}
+    else if(e.key==='ArrowUp'){e.preventDefault();psel=(psel-1+pitems.length)%Math.max(1,pitems.length);palRender()}
+    else if(e.key==='Enter'){e.preventDefault();palRun()}
+  });
+
   /* language switch */
   var lz=$('lz'),le=$('le');
   function setLang(x){
     lang=x;document.body.classList.toggle('lang-en',x==='en');document.documentElement.lang=x==='zh'?'zh-CN':'en';
     press([lz,le],x==='zh'?lz:le);
     $('lg1').textContent=x==='zh'?'货量':'Volume';$('bt1').textContent=x==='zh'?'合作初期':'Start';$('bt2').textContent=x==='zh'?'现在':'Now';$('bt3').textContent=x==='zh'?'稳定区间':'Steady band';$('lg2').textContent=x==='zh'?'我方人员':'Our staff';
-    renderHero(false);renderDash();renderSt();renderCase();renderModelText();renderWk();renderContact();
+    renderHero(false);renderDash();renderSt();renderCase();renderModelText();renderWk();renderContact();tick();
     try{localStorage.setItem('nova-lang',x)}catch(e){}
   }
   lz.addEventListener('click',function(){setLang('zh')});le.addEventListener('click',function(){setLang('en')});
   var saved='zh';try{saved=localStorage.getItem('nova-lang')||'zh'}catch(e){}
   setLang(saved==='en'?'en':'zh');
+})();
+
+/* ===== visual effects ===== */
+(function(){
+  var reduce=window.matchMedia&&matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  /* sorting-flow canvas */
+  var c=document.getElementById('flow');
+  if(c&&c.getContext){
+    var scanCount=128400,ctx=c.getContext('2d'),W=0,H=0,ins=[],outs=[],hub,ps=[],flash=0,run=true,last=0,acc=0;
+    function size(){var d=Math.min(2,window.devicePixelRatio||1);W=c.clientWidth;H=c.clientHeight;c.width=W*d;c.height=H*d;ctx.setTransform(d,0,0,d,0,0);
+      var ni=5,no=9;ctx.textBaseline='alphabetic';hub={x:W*(W>900?.49:.6),y:H*(W>900?.5:.42)};ins=[];outs=[];
+      for(var i=0;i<ni;i++)ins.push(H*(.18+.64*i/(ni-1)));
+      for(var j=0;j<no;j++)outs.push(H*(.08+.84*j/(no-1)));}
+    function bz(p0,p1,p2,p3,t){var u=1-t;return u*u*u*p0+3*u*u*t*p1+3*u*t*t*p2+t*t*t*p3}
+    function pos(p){var t=p.t;
+      if(t<.5){var u=t*2,y0=ins[p.i];return [bz(-20,hub.x*.45,hub.x*.7,hub.x,u),bz(y0,y0,hub.y,hub.y,u)]}
+      var v=(t-.5)*2,y1=outs[p.j],x1=W+20,dx=x1-hub.x;return [bz(hub.x,hub.x+dx*.35,hub.x+dx*.55,x1,v),bz(hub.y,hub.y,y1,y1,v)]}
+    function spawn(){ps.push({i:Math.random()*ins.length|0,j:Math.random()*outs.length|0,t:0,s:.00009+Math.random()*.00007,a:Math.random()<.22,passed:false})}
+    function lines(){
+      ctx.lineWidth=.75;ctx.strokeStyle='rgba(108,192,220,.16)';
+      ins.forEach(function(y){ctx.beginPath();ctx.moveTo(-20,y);ctx.bezierCurveTo(hub.x*.45,y,hub.x*.7,hub.y,hub.x,hub.y);ctx.stroke()});
+      var dx=W+20-hub.x;outs.forEach(function(y){ctx.beginPath();ctx.moveTo(hub.x,hub.y);ctx.bezierCurveTo(hub.x+dx*.35,hub.y,hub.x+dx*.55,y,W+20,y);ctx.stroke()});
+      ctx.strokeStyle='rgba(234,176,98,'+(.35+flash*.45)+')';ctx.strokeRect(hub.x-9,hub.y-9,18,18);
+      ctx.fillStyle='rgba(234,176,98,.9)';ctx.fillRect(hub.x-2,hub.y-2,4,4);
+      ctx.font='10px "DM Mono", ui-monospace, monospace';ctx.fillStyle='rgba(157,176,185,.55)';
+      ins.forEach(function(y,i){ctx.fillText('IN-0'+(i+1),10,y-6)});
+      ctx.fillText('SCAN · '+String(scanCount).padStart(6,'0'),hub.x-28,hub.y-18);
+      // grid ticks
+      ctx.fillStyle='rgba(157,176,185,.18)';for(var gx=40;gx<W;gx+=80)for(var gy=40;gy<H;gy+=80)ctx.fillRect(gx,gy,1,1);
+    }
+    function frame(ts){
+      if(!run){last=0;return}
+      var dt=last?Math.min(50,ts-last):16;last=ts;
+      ctx.clearRect(0,0,W,H);lines();
+      acc+=dt;while(acc>140){acc-=140;spawn()}
+      flash*=.92;
+      for(var k=ps.length-1;k>=0;k--){var p=ps[k];p.t+=p.s*dt;if(!p.passed&&p.t>=.5){p.passed=true;flash=1;scanCount++}
+        if(p.t>=1){ps.splice(k,1);continue}
+        var q=pos(p);ctx.save();
+        ctx.fillStyle=p.a?'rgba(234,176,98,.95)':(p.passed?'rgba(160,220,238,.9)':'rgba(108,192,220,.75)');
+        ctx.fillRect(q[0]-3,q[1]-2,6,4);ctx.restore()}
+      requestAnimationFrame(frame);
+    }
+    size();window.addEventListener('resize',function(){size()});
+    if(reduce){lines()}else{
+      for(var w=0;w<60;w++){spawn();ps[ps.length-1].t=Math.random()}
+      requestAnimationFrame(frame);
+      if('IntersectionObserver' in window){new IntersectionObserver(function(e){var v=e[0].isIntersecting;if(v&&!run){run=true;requestAnimationFrame(frame)}else if(!v)run=false}).observe(c)}
+      document.addEventListener('visibilitychange',function(){if(document.hidden)run=false;else if(!run){run=true;requestAnimationFrame(frame)}});
+    }
+  }
+
+  /* scroll progress + active nav */
+  var prog=document.getElementById('prog'),links=[].slice.call(document.querySelectorAll('.links a'));
+  function onScroll(){var h=document.documentElement,m=h.scrollHeight-h.clientHeight;prog.style.setProperty('--p',m>0?(h.scrollTop/m).toFixed(4):0);
+    var cur=null;links.forEach(function(a){var t=document.querySelector(a.getAttribute('href'));if(t&&t.getBoundingClientRect().top<140)cur=a});
+    links.forEach(function(a){a.classList.toggle('cur',a===cur)})}
+  window.addEventListener('scroll',onScroll,{passive:true});onScroll();
+
+  /* reveal (only elements below the fold; visible if script fails) */
+  if(!reduce&&'IntersectionObserver' in window){
+    var els=[].slice.call(document.querySelectorAll('main .sec, main .stats, main .contact'));
+    var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.remove('pre');io.unobserve(e.target)}})},{rootMargin:'0px 0px -8% 0px'});
+    els.forEach(function(el){el.classList.add('rvl');if(el.getBoundingClientRect().top>window.innerHeight){el.classList.add('pre');io.observe(el)}});
+  }
+
+  /* count-up for stats */
+  if(!reduce&&'IntersectionObserver' in window){
+    var nums=[].slice.call(document.querySelectorAll('.stats .n'));
+    var io2=new IntersectionObserver(function(es){es.forEach(function(e){if(!e.isIntersecting)return;io2.unobserve(e.target);
+      var tn=e.target.firstChild;if(!tn||tn.nodeType!==3)return;var to=parseInt(tn.nodeValue,10);if(!to)return;var t0=null;
+      (function f(t){if(!t0)t0=t;var p=Math.min(1,(t-t0)/1300),k=1-Math.pow(1-p,3);tn.nodeValue=String(Math.round(to*k));if(p<1)requestAnimationFrame(f)})(performance.now())})},{threshold:.4});
+    nums.forEach(function(n){io2.observe(n)});
+  }
+
+  /* belt: pulse stations as parcels pass */
+  if(!reduce){var sts=[].slice.call(document.querySelectorAll('.st')),si=0;
+    setInterval(function(){sts.forEach(function(s){s.classList.remove('hit')});var s=sts[si%sts.length];if(s&&s.getAttribute('aria-selected')!=='true')s.classList.add('hit');si++},1100);}
 })();
 </script>
 
