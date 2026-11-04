@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<meta name="description" content="Nova Space: sorting operations, last-mile delivery and workforce staffing across San Francisco, the Bay Area and Los Angeles.">
+<meta name="description" content="Nova Space: sorting operations, last-mile delivery and workforce staffing across the Bay Area, Los Angeles, Houston and Maryland.">
 <title>Nova Space</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Barlow:wght@200;300;500&family=Noto+Serif+SC:wght@500;700&family=Noto+Sans+SC:wght@400;500;700&family=DM+Mono:wght@400;500&display=swap">
@@ -63,7 +63,7 @@ header{position:sticky;top:env(safe-area-inset-top,0px);z-index:9;background:col
 .cta.ghost{background:transparent;color:var(--ink);border:1px solid var(--line)}
 
 /* hero */
-.hero{display:grid;grid-template-columns:1.05fr 1fr;gap:56px;align-items:center;padding-top:32px}
+.hero{display:grid;grid-template-columns:minmax(0,1.05fr) minmax(0,1fr);gap:56px;align-items:center;padding-top:32px}
 .hero h1{font-family:var(--f-serif);font-size:clamp(34px,4.3vw,54px);line-height:1.18;letter-spacing:.01em}
 .hero h1 span span{color:var(--accent)}
 .hsub{margin-top:18px;font-family:var(--f-serif);font-size:clamp(19px,2vw,24px);font-weight:500;letter-spacing:.04em;color:var(--ink);display:flex;align-items:center;gap:14px}
@@ -76,7 +76,7 @@ header{position:sticky;top:env(safe-area-inset-top,0px);z-index:9;background:col
 .live{display:flex;align-items:center;gap:8px;font-family:var(--f-mono);font-size:12px;color:var(--muted)}
 .live i{width:8px;height:8px;border-radius:50%;background:var(--ok);animation:pulse 2s infinite}
 @keyframes pulse{50%{opacity:.35}}
-.big{font-family:var(--f-num);font-weight:200;font-size:clamp(88px,12vw,148px);line-height:.85;letter-spacing:-.03em;font-variant-numeric:tabular-nums}
+.big{font-family:var(--f-num);font-weight:200;font-size:clamp(72px,9.6vw,124px);line-height:.85;letter-spacing:-.03em;font-variant-numeric:tabular-nums}
 .big-cap{font-size:14px;color:var(--muted);margin-top:6px}
 .gauge{position:relative;height:72px}
 .gauge .m.lo{top:32px}
@@ -225,7 +225,7 @@ td.r,th.r{text-align:right}
 .workers{display:flex!important;flex-direction:row!important;align-items:center;gap:26px}
 .ring{position:relative;flex:0 0 120px;width:120px;height:120px}
 .ring svg{width:100%;height:100%}
-.ring b{position:absolute;inset:0;display:grid;place-items:center;font-family:var(--f-num);font-weight:300;font-size:34px}
+.ring b{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;gap:2px;font-family:var(--f-num);font-weight:300;font-size:34px}
 .ring b small{font-size:16px}
 .wq{font-family:var(--f-serif);font-size:20px;line-height:1.45;margin:8px 0 14px}
 @media (max-width:900px){.rv.wide{grid-template-columns:1fr;gap:28px}.workers{flex-direction:column!important;align-items:flex-start}}
@@ -327,12 +327,15 @@ body{background-image:radial-gradient(color-mix(in srgb,var(--muted) 16%,transpa
 main.wrap{padding-bottom:104px!important}
 .cnote{display:flex;flex-direction:column;gap:10px;padding:24px 26px;border-radius:14px;border:1px solid var(--line);background:rgba(255,255,255,.04)}
 .cnote b{font-family:var(--f-serif);font-size:clamp(20px,2vw,24px);font-weight:700;color:#fff;letter-spacing:.02em}
-.cnote span{font-size:15px;color:var(--muted)}
+.mailrow{display:flex;align-items:center;gap:14px;flex-wrap:wrap}
+.mail{font-family:var(--f-serif);font-size:clamp(20px,2vw,24px);font-weight:700;color:#fff;text-decoration:none;letter-spacing:.02em;word-break:break-all;border-bottom:1px solid rgba(255,255,255,.25);padding-bottom:2px;transition:border-color .2s}
+.mail:hover{border-bottom-color:#fff}
 /* dark bookends as rounded panels on the page */
 .heroband,.endband{margin:12px max(12px,env(safe-area-inset-right,0px)) 0 max(12px,env(safe-area-inset-left,0px));border-radius:24px;overflow:hidden}
 .endband{margin-bottom:12px}
 .hb-glow{display:none}
 @media (max-width:560px){.heroband,.endband{margin-left:8px;margin-right:8px;border-radius:18px}}
+.tags span span{padding:0;border:0;background:none;border-radius:0;font-size:inherit}
 /* pillars */
 .pillars{display:grid;grid-template-columns:repeat(3,1fr);gap:0;border-top:1px solid var(--line)}
 .pillar{padding:28px 28px 28px 0;display:flex;flex-direction:column;gap:10px;border-bottom:1px solid var(--line)}
@@ -466,7 +469,7 @@ main.wrap{padding-bottom:104px!important}
 .ix{flex:0 0 32px;height:32px;border-radius:10px;background:var(--accent-soft);color:var(--accent);display:grid;place-items:center;font-family:var(--f-mono);font-size:12px}
 .season svg{width:100%;height:auto}
 .season .ax{fill:var(--muted);font-size:12px;font-family:var(--f-mono)}
-.regions{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+.regions{display:grid;grid-template-columns:repeat(4,1fr);gap:20px}
 .regions div{border-top:2px solid var(--line);padding-top:14px}
 .regions b{font-family:var(--f-serif);font-size:22px;display:block}
 .regions span{font-size:13.5px;color:var(--muted)}
@@ -514,7 +517,8 @@ footer{border-top:1px solid var(--line)}
   .contact{padding:36px 24px}
 }
 @media (max-width:560px){
-  .svc,.pillars,.regions{grid-template-columns:1fr}
+  .svc,.pillars{grid-template-columns:1fr}
+  .regions{grid-template-columns:1fr 1fr}
   .kpi-row{grid-template-columns:1fr 1fr}
   .lvl ul{grid-template-columns:1fr}
   .dim{grid-template-columns:96px 1fr 30px}
@@ -552,19 +556,18 @@ footer{border-top:1px solid var(--line)}
 <!-- HERO -->
 <section class="hero" id="overview">
   <div>
-    <div class="label">Logistics operations · California</div>
+    <div class="label">Logistics operations · United States</div>
     <h1 style="margin-top:16px"><span class="zh">物流运营<br><span>跟上你的速度与发展</span></span><span class="en">Logistics that keeps<br><span>pace with your growth</span></span></h1>
     <p class="hsub"><span class="zh">重新定义仓储分拣的人力标准</span><span class="en">Redefining the standard for warehouse sorting</span></p>
-    <p class="lede"><span class="zh">200+ 名受训员工、实时数据看板、覆盖加州三大区域。我们为物流平台提供分拣运营、最后一公里配送和人员培训派遣，用工人画像把对的人放在对的工位上。</span><span class="en">200+ trained operators, real-time dashboards and three California regions. We run sorting operations, last-mile delivery and workforce staffing, and we use worker profiles to put the right person at the right station.</span></p>
+    <p class="lede"><span class="zh">200+ 名受训员工、实时数据看板、覆盖全美四大区域。我们为物流平台提供分拣运营、最后一公里配送和人员培训派遣，用员工画像把对的人放在对的工位上。</span><span class="en">200+ trained operators, real-time dashboards and four U.S. regions. We run sorting operations, last-mile delivery and workforce staffing, and we use worker profiles to put the right person at the right station.</span></p>
     <div class="acts">
       <a class="cta" href="#contact"><span class="zh">开始合作 →</span><span class="en">Get started →</span></a>
       <a class="cta ghost" href="#services"><span class="zh">查看服务 ↓</span><span class="en">Explore services ↓</span></a>
     </div>
-    <p class="fine"><span class="zh">无需长期合约 · 24 小时内回复</span><span class="en">No long-term commitment · Response within 24 hours</span></p>
   </div>
   <div class="kpi">
     <div class="top">
-      <div class="seg" role="group" aria-label="Line type"><button aria-pressed="true" data-k="m"><span class="zh">手工台</span><span class="en">Manual</span></button><button aria-pressed="false" data-k="x"><span class="zh">机械线</span><span class="en">Machine</span></button></div>
+      <div class="seg" role="group" aria-label="Line type"><button aria-pressed="true" data-k="m"><span class="zh">流水线</span><span class="en">Line</span></button><button aria-pressed="false" data-k="x"><span class="zh">机器仓</span><span class="en">Machine</span></button></div>
       <span class="live"><i></i><span class="zh">现场实测</span><span class="en">Measured on site</span></span>
     </div>
     <div>
@@ -582,7 +585,7 @@ footer{border-top:1px solid var(--line)}
   </div>
 </section>
 
-<div class="logos" aria-label="Clients"><span class="label"><span class="zh">合作平台</span><span class="en">Trusted by</span></span><b>UniUni</b><b>Yanwen</b><b>SwiftX</b><b>GOFO</b></div>
+<div class="logos" aria-label="Clients"><span class="label"><span class="zh">合作平台</span><span class="en">Trusted by</span></span><b>UniUni</b><b>Yanwen</b><b>SwiftX</b><b>GOFO</b><b>SpeedX</b></div>
   </div>
 </div>
 <main class="wrap">
@@ -593,7 +596,7 @@ footer{border-top:1px solid var(--line)}
 <!-- STATS -->
 <section class="stats" aria-label="Key stats">
   <div><div class="n">200<small>+</small></div><div class="l"><span class="zh">随时可派的受训员工</span><span class="en">Trained operators ready to deploy</span></div></div>
-  <div><div class="n">3</div><div class="l"><span class="zh">服务区域：旧金山 · 湾区 · 洛杉矶</span><span class="en">Regions: SF · Bay Area · LA</span></div></div>
+  <div><div class="n">4</div><div class="l"><span class="zh">服务区域：湾区 · 洛杉矶 · 休斯顿 · 马里兰</span><span class="en">Regions: Bay Area · LA · Houston · Maryland</span></div></div>
   <div><div class="n">10<small><span class="zh">年</span><span class="en">yrs</span></small></div><div class="l"><span class="zh">现场管理经验</span><span class="en">On-site management experience</span></div></div>
   <div><div class="n">300<small>+</small></div><div class="l"><span class="zh">领队在 SwiftX 带过的团队规模</span><span class="en">Team size led at SwiftX</span></div></div>
 </section>
@@ -603,8 +606,8 @@ footer{border-top:1px solid var(--line)}
   <div class="sec-top"><div><span class="label">Core services</span><h2><span class="zh">我们最擅长的三件事</span><span class="en">What we do best.</span></h2></div><p><span class="zh">从仓内分拣到门口配送，再到人员招聘与管理，一个合作伙伴覆盖全链路。</span><span class="en">From the sorting floor to the doorstep to the people who run it, one partner covers the chain.</span></p></div>
   <div class="svc">
     <article><span class="no">01</span><h3><span class="zh">分拣运营</span><span class="en">Sorting Operations</span></h3><p><span class="zh">团队化、标准化的规模分拣。手工台与机械台全流程熟悉，实时追踪效率。</span><span class="en">Team-based, standardized sorting at scale, on both manual and machine lines, tracked in real time.</span></p><ul><li><span class="zh">手工 260–300 件/人/时</span><span class="en">Manual 260–300 pkgs/person/hr</span></li><li><span class="zh">机械 6,000 件/时</span><span class="en">Machine 6,000 pkgs/hr</span></li><li>99% <span class="zh">准确率</span><span class="en">accuracy</span></li><li><span class="zh">手工台 · 机械台</span><span class="en">Manual · Machine</span></li></ul></article>
-    <article><span class="no">02</span><h3><span class="zh">最后一公里配送</span><span class="en">Last-Mile Delivery</span></h3><p><span class="zh">覆盖旧金山、湾区和洛杉矶的城市配送，路线优化、灵活部署，从派单到签收全程可见。</span><span class="en">Urban delivery across SF, the Bay Area and LA with optimized routing, flexible deployment and visibility from dispatch to doorstep.</span></p><ul><li><span class="zh">支持当日达</span><span class="en">Same-day capable</span></li><li><span class="zh">路线优化</span><span class="en">Optimized routing</span></li></ul></article>
-    <article><span class="no">03</span><h3><span class="zh">人员培训与派遣</span><span class="en">Workforce Training &amp; Staffing</span></h3><p><span class="zh">200+ 名受训员工。全周期招聘、入职、技能培训、绩效管理，旺季快速扩员。</span><span class="en">200+ trained operators. Full-cycle recruiting, onboarding, skills training, performance management and rapid scale-up.</span></p><ul><li><span class="zh">工人画像排岗</span><span class="en">Profile-based placement</span></li><li><span class="zh">旺季扩员</span><span class="en">Peak scale-up</span></li></ul></article>
+    <article><span class="no">02</span><h3><span class="zh">最后一公里配送</span><span class="en">Last-Mile Delivery</span></h3><p><span class="zh">覆盖湾区、洛杉矶等城市的配送，路线优化、灵活部署，从派单到签收全程可见。</span><span class="en">Urban delivery across the Bay Area, Los Angeles and beyond with optimized routing, flexible deployment and visibility from dispatch to doorstep.</span></p><ul><li><span class="zh">支持当日达</span><span class="en">Same-day capable</span></li><li><span class="zh">路线优化</span><span class="en">Optimized routing</span></li></ul></article>
+    <article><span class="no">03</span><h3><span class="zh">人员培训与派遣</span><span class="en">Workforce Training &amp; Staffing</span></h3><p><span class="zh">200+ 名受训员工。全周期招聘、入职、技能培训、绩效管理，旺季快速扩员。</span><span class="en">200+ trained operators. Full-cycle recruiting, onboarding, skills training, performance management and rapid scale-up.</span></p><ul><li><span class="zh">员工画像排岗</span><span class="en">Profile-based placement</span></li><li><span class="zh">旺季扩员</span><span class="en">Peak scale-up</span></li></ul></article>
   </div>
 </section>
 
@@ -635,11 +638,11 @@ footer{border-top:1px solid var(--line)}
   <div class="sec-top"><div><span class="label">Why choose us</span><h2><span class="zh">不只提供人数，<br>而是一支能直接上线的团队</span><span class="en">Built different, by design.</span></h2></div></div>
   <div class="pillars">
     <div class="pillar"><div class="n">01</div><h3><span class="zh">开仓即参与</span><span class="en">There from day one</span></h3><p><span class="zh">CBT 项目从开仓起一直由我们的领队带队。</span><span class="en">Our floor lead has run the CBT project since the warehouse opened.</span></p></div>
-    <div class="pillar"><div class="n">02</div><h3><span class="zh">流程共建</span><span class="en">Co-built process</span></h3><p><span class="zh">甲方现行的手工台作业模式，是我们与甲方团队共同打造、改良出来的。</span><span class="en">The client's current manual-station workflow was designed and refined together with our team.</span></p></div>
+    <div class="pillar"><div class="n">02</div><h3><span class="zh">流程共建</span><span class="en">Co-built process</span></h3><p><span class="zh">客户现行的手工台作业模式，是我们与客户团队共同打造、改良出来的。</span><span class="en">The client's current manual-station workflow was designed and refined together with our team.</span></p></div>
     <div class="pillar"><div class="n">03</div><h3><span class="zh">双模式经验</span><span class="en">Manual and machine</span></h3><p><span class="zh">手工台、机械台全部流程都熟悉，管理层两种模式都带过。</span><span class="en">We know every step of both manual and machine lines, and our leads have run both.</span></p></div>
     <div class="pillar"><div class="n">04</div><h3><span class="zh">实时看板</span><span class="en">Real-time dashboard</span></h3><p><span class="zh">每日考勤与效率追踪，所有区域一目了然。</span><span class="en">Daily attendance and performance tracking, visible across all regions.</span></p></div>
     <div class="pillar"><div class="n">05</div><h3><span class="zh">数据驱动优化</span><span class="en">Data-driven</span></h3><p><span class="zh">每人每小时扫码数实时追踪，用数据调岗和排班。</span><span class="en">Hourly scans per person drive placement and scheduling decisions.</span></p></div>
-    <div class="pillar"><div class="n">06</div><h3><span class="zh">可靠的长期伙伴</span><span class="en">Reliable partnership</span></h3><p><span class="zh">响应快，对甲方的需求和管理模式配合度高、完成度高。</span><span class="en">Responsive and requirement-focused, built for long-term partnerships.</span></p></div>
+    <div class="pillar"><div class="n">06</div><h3><span class="zh">可靠的长期伙伴</span><span class="en">Reliable partnership</span></h3><p><span class="zh">响应快，对客户的需求和管理模式配合度高、完成度高。</span><span class="en">Responsive and requirement-focused, built for long-term partnerships.</span></p></div>
   </div>
 </section>
 
@@ -661,7 +664,7 @@ footer{border-top:1px solid var(--line)}
 
 <!-- PROFILE (merged) -->
 <section class="sec" id="profile">
-  <div class="sec-top"><div><span class="label">Worker profiles</span><h2><span class="zh">工人画像：我们怎样排岗</span><span class="en">Worker profiles: how we place and schedule</span></h2></div><p><span class="zh">员工以墨西哥籍为主，岗位分布均衡。每位员工都有一份持续更新的画像，排岗和排班都以画像为依据。</span><span class="en">Our workforce is mostly Mexican and evenly spread across roles. Every worker has a living profile, and both placement and scheduling follow it.</span></p></div>
+  <div class="sec-top"><div><span class="label">Worker profiles</span><h2><span class="zh">员工画像：我们怎样排岗</span><span class="en">Worker profiles: how we place and schedule</span></h2></div><p><span class="zh">员工以墨西哥籍为主，岗位分布均衡。每位员工都有一份持续更新的画像，排岗和排班都以画像为依据。</span><span class="en">Our workforce is mostly Mexican and evenly spread across roles. Every worker has a living profile, and both placement and scheduling follow it.</span></p></div>
   <div class="dim5">
     <div><span class="k">01</span><b><span class="zh">性格</span><span class="en">Temperament</span></b><span><span class="zh">细心、主动、沉稳，适合什么节奏</span><span class="en">Careful, proactive, steady</span></span></div>
     <div><span class="k">02</span><b><span class="zh">优势</span><span class="en">Strengths</span></b><span><span class="zh">体能、手速、专注、语言沟通</span><span class="en">Stamina, speed, focus, language</span></span></div>
@@ -713,15 +716,15 @@ footer{border-top:1px solid var(--line)}
 <section class="sec" id="team">
   <div class="sec-top"><div><span class="label">Expert leadership</span><h2><span class="zh">核心团队</span><span class="en">Our team</span></h2></div><p><span class="zh">四位核心负责人，经营、现场、人事、数据各有专人。</span><span class="en">Four leads covering business, the floor, staffing and data.</span></p></div>
   <div class="team">
-    <div class="mem"><span class="role">BUSINESS &amp; OPERATIONS</span><div class="row"><div class="who2"><span class="ini">J</span><div><h3>Junjie</h3><span class="ttl"><span class="zh">经营与商务</span><span class="en">Business &amp; Operations</span></span></div></div><span class="n">1:1</span></div><p><span class="zh">运营战略与长期规划，统筹各区域方向；专人对接甲方，快速推进合作落地。</span><span class="en">Strategy, long-term planning and partnerships across all regions, with a single point of contact for each client.</span></p></div>
+    <div class="mem"><span class="role">BUSINESS &amp; OPERATIONS</span><div class="row"><div class="who2"><span class="ini">J</span><div><h3>Junjie</h3><span class="ttl"><span class="zh">经营与商务</span><span class="en">Business &amp; Operations</span></span></div></div><span class="n">1:1</span></div><p><span class="zh">运营战略与长期规划，统筹各区域方向；专人对接客户，快速推进合作落地。</span><span class="en">Strategy, long-term planning and partnerships across all regions, with a single point of contact for each client.</span></p></div>
     <div class="mem"><span class="role">ON-SITE OPERATIONS</span><div class="row"><div class="who2"><span class="ini">S</span><div><h3>Sasha</h3><span class="ttl"><span class="zh">现场运营</span><span class="en">On-site Operations</span></span></div></div><span class="n">300+</span></div><p><span class="zh">10 年管理经验，在 SwiftX 带领 300 人以上团队，负责现场流程与团队协调。</span><span class="en">10 years in management, has led 300+ people at SwiftX. Runs workflows and floor coordination.</span></p></div>
-    <div class="mem"><span class="role">STAFFING &amp; HR</span><div class="row"><div class="who2"><span class="ini">F</span><div><h3>Fallon</h3><span class="ttl"><span class="zh">招聘与人事</span><span class="en">Staffing &amp; HR</span></span></div></div><span class="n">200+</span></div><p><span class="zh">招聘、排班、人员分配和工人画像管理，旺季快速扩员。</span><span class="en">Recruiting, scheduling, allocation and worker profiles, with fast peak-season scale-up.</span></p></div>
+    <div class="mem"><span class="role">STAFFING &amp; HR</span><div class="row"><div class="who2"><span class="ini">F</span><div><h3>Fallon</h3><span class="ttl"><span class="zh">招聘与人事</span><span class="en">Staffing &amp; HR</span></span></div></div><span class="n">200+</span></div><p><span class="zh">招聘、排班、人员分配和员工画像管理，旺季快速扩员。</span><span class="en">Recruiting, scheduling, allocation and worker profiles, with fast peak-season scale-up.</span></p></div>
     <div class="mem"><span class="role">DATA &amp; SYSTEMS</span><div class="row"><div class="who2"><span class="ini">J</span><div><h3>Jessie</h3><span class="ttl"><span class="zh">数据与系统</span><span class="en">Data &amp; Systems</span></span></div></div><span class="n">1h</span></div><p><span class="zh">实时看板、每小时数据追踪、运营系统与网站搭建。</span><span class="en">The dashboard, hourly data tracking, operating systems and web.</span></p></div>
   </div>
   <div class="lang">
     <div class="four">4<small><span class="zh">门语言</span><span class="en">LANGUAGES</span></small></div>
     <div>
-      <div class="say" id="say">我们用你的语言沟通，指令从甲方到一线不打折。</div>
+      <div class="say" id="say">我们用你的语言沟通，指令从客户到一线不打折。</div>
       <div class="opts" role="group" aria-label="Languages"><button aria-pressed="true" data-l="0">中文</button><button aria-pressed="false" data-l="1">English</button><button aria-pressed="false" data-l="2">Espanol</button><button aria-pressed="false" data-l="3">粤语</button></div>
     </div>
   </div>
@@ -737,13 +740,13 @@ footer{border-top:1px solid var(--line)}
     <div class="lvl"><div class="hd"><span class="badge">L2</span><h3><span class="zh">小组长</span><span class="en">Team lead</span></h3></div>
       <ul class="zh"><li>精通英语 · 执行力强</li><li>理解力强，准确传达要求</li><li>本组考勤与岗位安排</li><li>现场纪律</li><li>盯效率和质量，及时纠错</li><li>新人上岗带教</li><li>记录本组每日数据</li><li>上报领队</li></ul>
       <ul class="en"><li>Fluent English, strong executor</li><li>Relays client requirements accurately</li><li>Group attendance and positions</li><li>Floor discipline</li><li>Watches speed and quality</li><li>Coaches new hires</li><li>Records daily group data</li><li>Reports to the floor lead</li></ul></div>
-    <div class="mix"><div class="faces" aria-hidden="true"><span>CN</span><span>CN</span><span class="mx">MX</span><span class="mx">MX</span></div><p class="zh"><b>华人 + 墨西哥 leader 均衡配置。</b>华人管理对接甲方，墨西哥 leader 用母语带一线。</p><p class="en"><b>A balanced mix of Chinese and Mexican leaders.</b> Chinese managers work with the client; Mexican leads run the floor in Spanish.</p></div>
+    <div class="mix"><div class="faces" aria-hidden="true"><span>CN</span><span>CN</span><span class="mx">MX</span><span class="mx">MX</span></div><p class="zh"><b>华人 + 墨西哥 leader 均衡配置。</b>华人管理对接客户，墨西哥 leader 用母语带一线。</p><p class="en"><b>A balanced mix of Chinese and Mexican leaders.</b> Chinese managers work with the client; Mexican leads run the floor in Spanish.</p></div>
   </div>
 </section>
 
 <!-- REVIEWS -->
 <section class="sec">
-  <div class="sec-top"><div><span class="label">What people say</span><h2><span class="zh">甲方和工人怎么说</span><span class="en">What clients and workers say</span></h2></div></div>
+  <div class="sec-top"><div><span class="label">What people say</span><h2><span class="zh">客户和员工怎么说</span><span class="en">What clients and workers say</span></h2></div></div>
   <div class="reviews">
     <div class="rv wide">
       <div class="rv-l">
@@ -767,15 +770,15 @@ footer{border-top:1px solid var(--line)}
           <text x="44" y="190" class="bt"><tspan id="bt1">合作初期</tspan></text><text x="346" y="190" text-anchor="end" class="bt"><tspan id="bt2">现在</tspan></text>
           <text x="196" y="40" text-anchor="middle" class="bt" fill="var(--amber)"><tspan id="bt3">稳定区间</tspan></text>
         </svg>
-        <p class="muted"><span class="zh">货量由甲方决定，人效由我们负责。合作后人效持续提升，并稳定在 260–300 件/人/时。</span><span class="en">Volume is the client's call; productivity is ours. It rose steadily and now holds at 260–300 pkgs per person per hour.</span></p>
+        <p class="muted"><span class="zh">货量由客户决定，人效由我们负责。合作后人效持续提升，并稳定在 260–300 件/人/时。</span><span class="en">Volume is the client's call; productivity is ours. It rose steadily and now holds at 260–300 pkgs per person per hour.</span></p>
       </div>
     </div>
     <div class="rv workers" style="grid-column:1/-1">
       <div class="ring" aria-hidden="true"><svg viewBox="0 0 120 120"><circle cx="60" cy="60" r="50" fill="none" stroke="var(--line)" stroke-width="10"/><circle id="ringv" cx="60" cy="60" r="50" fill="none" stroke="var(--amber)" stroke-width="10" stroke-linecap="round" stroke-dasharray="282.7 314.2" transform="rotate(-90 60 60)"/></svg><b>90<small>%</small></b></div>
       <div>
-        <span class="label"><span class="zh">工人怎么说</span><span class="en">What workers say</span></span>
-        <p class="wq"><span class="zh">90% 的工人喜欢 Nova 团队的工作氛围。</span><span class="en">90% of our workers like the way the Nova team works together.</span></p>
-        <div class="tags"><span><span class="zh">有干劲</span><span class="en">Energized</span></span><span><span class="zh">和谐</span><span class="en">Harmonious</span></span><span><span class="zh">友好</span><span class="en">Friendly</span></span></div>
+        <span class="label"><span class="zh">员工怎么说</span><span class="en">What workers say</span></span>
+        <p class="wq"><span class="zh">90% 的员工喜欢 Nova 团队的工作氛围。</span><span class="en">90% of our workers like the way the Nova team works together.</span></p>
+        <div class="tags"><span><span class="zh">有干劲</span><span class="en">Energized</span></span><span><span class="zh">和谐</span><span class="en">Harmonious</span></span><span><span class="zh">友好</span><span class="en">Friendly</span></span><span><span class="zh">稳定</span><span class="en">Stable</span></span></div>
         <p class="muted" style="margin-top:12px"><span class="zh">氛围好，人才留得住，出勤才稳定。</span><span class="en">A good atmosphere keeps people, and that keeps attendance steady.</span></p>
       </div>
     </div>
@@ -784,7 +787,7 @@ footer{border-top:1px solid var(--line)}
 
 <!-- SEASON -->
 <section class="sec">
-  <div class="sec-top"><div><span class="label">Stability &amp; scale</span><h2><span class="zh">平时稳得住，旺季顶得上</span><span class="en">Steady every day. Ready for peak.</span></h2></div><p><span class="zh">黑五临近，稳定性和扩员能力就是产能。</span><span class="en">With Black Friday ahead, stability and scale-up are capacity.</span></p></div>
+  <div class="sec-top"><div><span class="label">Stability &amp; scale</span><h2><span class="zh">平时稳得住，旺季顶得上</span><span class="en">Steady every day. Ready for peak.</span></h2></div><p><span class="zh">从双十一到新年是全年高峰，稳定性和扩员能力就是产能。</span><span class="en">From Singles' Day to New Year is peak season. Stability and scale-up are capacity.</span></p></div>
   <div class="season">
     <ul>
       <li><span class="ix">01</span><div><b><span class="zh">出勤稳定</span><span class="en">Stable attendance</span></b><span><span class="zh">画像掌握每人时间，缺勤提前补位</span><span class="en">We know every schedule and cover absences early</span></span></div></li>
@@ -792,23 +795,28 @@ footer{border-top:1px solid var(--line)}
       <li><span class="ix">03</span><div><b><span class="zh">快速扩员</span><span class="en">Rapid scale-up</span></b><span><span class="zh">200+ 受训员工，货量激增时快速增派</span><span class="en">200+ trained operators to add when volume spikes</span></span></div></li>
       <li><span class="ix">04</span><div><b><span class="zh">夜班加班</span><span class="en">Nights &amp; overtime</span></b><span><span class="zh">可配合夜班、加班安排</span><span class="en">We cover night shifts and overtime</span></span></div></li>
     </ul>
-    <svg viewBox="0 0 520 240" role="img" aria-label="Peak season illustration">
-      <defs><linearGradient id="ga" x1="0" x2="0" y1="0" y2="1"><stop offset="0" stop-color="var(--accent)" stop-opacity=".25"/><stop offset="1" stop-color="var(--accent)" stop-opacity="0"/></linearGradient></defs>
-      <line x1="30" y1="200" x2="500" y2="200" stroke="var(--line)"/>
-      <path d="M30 170 C110 165 170 160 230 140 S320 50 360 40 S440 90 500 140 L500 200 L30 200Z" fill="url(#ga)"/>
-      <path d="M30 170 C110 165 170 160 230 140 S320 50 360 40 S440 90 500 140" fill="none" stroke="var(--accent)" stroke-width="2.5"/>
-      <path d="M30 176 H200 V150 H290 V80 H420 V130 H500" fill="none" stroke="var(--amber)" stroke-width="2" stroke-dasharray="5 5"/>
-      <line x1="345" y1="30" x2="345" y2="200" stroke="var(--amber)"/>
-      <rect x="300" y="8" width="90" height="22" rx="11" fill="var(--amber)"/>
-      <text x="345" y="23" text-anchor="middle" font-size="12" font-family="DM Mono, monospace" fill="var(--surface)">BLACK FRIDAY</text>
-      <g class="ax"><text x="30" y="222">OCT</text><text x="200" y="222">NOV</text><text x="330" y="222">LATE NOV</text><text x="470" y="222">DEC</text></g>
-      <g font-size="12" font-family="Noto Sans SC, sans-serif" fill="var(--muted)"><circle cx="40" cy="20" r="4" fill="var(--accent)"/><text x="50" y="24" id="lg1">货量</text><line x1="100" y1="20" x2="118" y2="20" stroke="var(--amber)" stroke-width="2" stroke-dasharray="4 3"/><text x="124" y="24" id="lg2">我方人员</text></g>
+    <svg viewBox="0 0 520 250" role="img" aria-label="Peak season from Singles' Day through Black Friday, Christmas and New Year, with staffing rising to match volume">
+      <defs><linearGradient id="ga" x1="0" x2="0" y1="0" y2="1"><stop offset="0" stop-color="var(--accent)" stop-opacity=".22"/><stop offset="1" stop-color="var(--accent)" stop-opacity="0"/></linearGradient></defs>
+      <rect x="166" y="44" width="240" height="166" rx="6" fill="var(--amber-soft)" opacity=".75"/>
+      <text x="286" y="203" text-anchor="middle" font-size="10.5" font-family="DM Mono, monospace" letter-spacing=".12em" fill="var(--amber)" id="pkz">高峰期</text>
+      <line x1="30" y1="210" x2="500" y2="210" stroke="var(--line)"/>
+      <path d="M30 180 C100 178 145 172 168 132 S184 88 191 88 S208 122 222 120 S242 52 254 50 S300 78 330 76 S354 64 363 66 S377 104 383 102 S387 86 391 88 S440 160 500 175 L500 210 L30 210Z" fill="url(#ga)"/>
+      <path d="M30 180 C100 178 145 172 168 132 S184 88 191 88 S208 122 222 120 S242 52 254 50 S300 78 330 76 S354 64 363 66 S377 104 383 102 S387 86 391 88 S440 160 500 175" fill="none" stroke="var(--accent)" stroke-width="2.5"/>
+      <path d="M30 186 H162 V118 H232 V68 H408 V150 H500" fill="none" stroke="var(--amber)" stroke-width="2" stroke-dasharray="5 5"/>
+      <g stroke="var(--amber)" stroke-width="1" stroke-dasharray="2 3"><line x1="191" y1="58" x2="191" y2="210"/><line x1="254" y1="40" x2="254" y2="210"/><line x1="363" y1="58" x2="363" y2="210"/><line x1="390" y1="40" x2="390" y2="210"/></g>
+      <g fill="var(--amber)"><circle cx="191" cy="58" r="3"/><circle cx="254" cy="40" r="3"/><circle cx="363" cy="58" r="3"/><circle cx="390" cy="40" r="3"/></g>
+      <g font-size="11.5" font-weight="700" font-family="Noto Sans SC, sans-serif" fill="var(--ink)" text-anchor="middle">
+        <text x="191" y="50" id="pk1">双11</text><text x="254" y="32" id="pk2">黑五</text><text x="363" y="50" id="pk3">圣诞</text><text x="390" y="32" id="pk4">新年</text>
+      </g>
+      <g class="ax"><text x="30" y="232">OCT</text><text x="150" y="232">NOV</text><text x="270" y="232">DEC</text><text x="390" y="232">JAN</text></g>
+      <g font-size="12" font-family="Noto Sans SC, sans-serif" fill="var(--muted)"><circle cx="40" cy="20" r="4" fill="var(--accent)"/><text x="50" y="24" id="lg1">货量</text><line x1="92" y1="20" x2="110" y2="20" stroke="var(--amber)" stroke-width="2" stroke-dasharray="4 3"/><text x="116" y="24" id="lg2">我方人员</text></g>
     </svg>
   </div>
   <div class="regions">
-    <div><b>San Francisco</b><span><span class="zh">分拣 · 配送</span><span class="en">Sorting · Delivery</span></span></div>
     <div><b>Bay Area</b><span><span class="zh">分拣 · 配送</span><span class="en">Sorting · Delivery</span></span></div>
     <div><b>Los Angeles</b><span><span class="zh">分拣 · 配送 · CBT 项目</span><span class="en">Sorting · Delivery · CBT</span></span></div>
+    <div><b>Houston</b><span><span class="zh">分拣</span><span class="en">Sorting</span></span></div>
+    <div><b>Maryland</b><span><span class="zh">分拣</span><span class="en">Sorting</span></span></div>
   </div>
 </section>
 
@@ -817,7 +825,7 @@ footer{border-top:1px solid var(--line)}
   <div class="sec-top"><div><span class="label">Onboarding</span><h2><span class="zh">上岗之前，每个人都已准备好</span><span class="en">Ready before day one</span></h2></div><p><span class="zh">所有员工入职前由公司统一筛选和培训。</span><span class="en">Every worker is screened and trained before placement.</span></p></div>
   <div class="steps">
     <div class="step"><div class="ln"></div><span class="k">STEP 01</span><h3><span class="zh">能力筛选</span><span class="en">Screening</span></h3><p><span class="zh">体能、手速、专注、识码</span><span class="en">Stamina, speed, focus, label reading</span></p></div>
-    <div class="step"><div class="ln"></div><span class="k">STEP 02</span><h3><span class="zh">流程培训</span><span class="en">Training</span></h3><p><span class="zh">甲方流程、扫码枪、异常件</span><span class="en">Client workflow, scanners, exceptions</span></p></div>
+    <div class="step"><div class="ln"></div><span class="k">STEP 02</span><h3><span class="zh">流程培训</span><span class="en">Training</span></h3><p><span class="zh">客户流程、扫码枪、异常件</span><span class="en">Client workflow, scanners, exceptions</span></p></div>
     <div class="step"><div class="ln"></div><span class="k">STEP 03</span><h3><span class="zh">画像定岗</span><span class="en">Placement</span></h3><p><span class="zh">匹配最适合的区域和工位</span><span class="en">Matched to the right station</span></p></div>
     <div class="step"><div class="ln"></div><span class="k">STEP 04</span><h3><span class="zh">带教追踪</span><span class="en">Coaching</span></h3><p><span class="zh">组长带教，每小时数据追踪</span><span class="en">Lead coaching, hourly tracking</span></p></div>
   </div>
@@ -837,10 +845,10 @@ footer{border-top:1px solid var(--line)}
   </div>
 <footer>
   <div class="wrap foot">
-    <div><a class="brand" href="#overview"><span class="mk">N</span><b>Nova Space</b></a><p><span class="zh">加州物流运营支持</span><span class="en">Logistics operations support across California.</span></p></div>
+    <div><a class="brand" href="#overview"><span class="mk">N</span><b>Nova Space</b></a><p><span class="zh">全美物流运营支持</span><span class="en">Logistics operations support across the U.S.</span></p></div>
     <div><h4><span class="zh">服务</span><span class="en">Services</span></h4><ul><li><a href="#services"><span class="zh">分拣运营</span><span class="en">Sorting Operations</span></a></li><li><a href="#services"><span class="zh">最后一公里配送</span><span class="en">Last-Mile Delivery</span></a></li><li><a href="#services"><span class="zh">人员培训</span><span class="en">Workforce Training</span></a></li><li><a href="#team"><span class="zh">招聘与人事</span><span class="en">Staffing &amp; HR</span></a></li></ul></div>
     <div><h4><span class="zh">公司</span><span class="en">Company</span></h4><ul><li><a href="#overview"><span class="zh">关于 Nova Space</span><span class="en">About Nova Space</span></a></li><li><a href="#team"><span class="zh">核心团队</span><span class="en">Our Team</span></a></li><li><a href="#line"><span class="zh">现场能力</span><span class="en">On the Floor</span></a></li><li><a href="#contact"><span class="zh">联系我们</span><span class="en">Contact</span></a></li></ul></div>
-    <div><h4><span class="zh">区域</span><span class="en">Regions</span></h4><ul><li>San Francisco</li><li>Bay Area</li><li>Los Angeles</li></ul></div>
+    <div><h4><span class="zh">区域</span><span class="en">Regions</span></h4><ul><li>Bay Area</li><li>Los Angeles</li><li>Houston</li><li>Maryland</li></ul></div>
   </div>
   <div class="wrap copyr">© 2026 Nova Space Inc. All rights reserved.</div>
 </footer>
@@ -867,13 +875,14 @@ footer{border-top:1px solid var(--line)}
 
   /* hero card: manual / machine */
   var HK={
-    m:{v:8000,fill:1,cap:{zh:'手工台平均扫码量 · 不断货情况下',en:'Manual station average scans · steady supply'},avg:{zh:'平均 8,000',en:'Avg 8,000'},avgL:76,pk:{zh:'峰值 10,000+',en:'Peak 10,000+'},
+    m:{v:8000,cap:{zh:'流水线平均扫码量 · 不断货情况下',en:'Line average scans · steady supply'},avg:{zh:'平均 8,000',en:'Avg 8,000'},avgL:76,pk:{zh:'峰值 10,000+',en:'Peak 10,000+'},
        note:{zh:'',en:''},
-       row:[['260–300',{zh:'手工人效 · 件/人/时',en:'Manual pkgs / person / hr'}],['10,000+',{zh:'峰值扫码量',en:'Peak scans'}],['99<small>%</small>',{zh:'准确率',en:'Accuracy'}]]},
-    x:{v:6000,fill:1,cap:{zh:'机械线效率 · 件 / 小时 · 每条线',en:'Machine line · pkgs per hour · per line'},avg:{zh:'',en:''},avgL:0,pk:{zh:'6,000 件/时',en:'6,000 / hr'},
+       row:[['260–300',{zh:'流水线人效 · 件/人/时',en:'Line pkgs / person / hr'}],['10,000+',{zh:'峰值扫码量',en:'Peak scans'}],['99<small>%</small>',{zh:'准确率',en:'Accuracy'}]]},
+    x:{v:22000,cap:{zh:'机器仓平均效率 · 件 / 小时',en:'Machine warehouse average · pkgs per hour'},avg:{zh:'TEMU 6,000',en:'TEMU 6,000'},avgL:27,pk:{zh:'平均 22,000 件/时',en:'Avg 22,000 / hr'},
        note:{zh:'实际效率取决于传送带速度和是否断货。',en:'Actual rate depends on belt speed and steady supply.'},
-       row:[['12',{zh:'每条线配置人数',en:'Staff per line'}],['≈500',{zh:'折合 件/人/时',en:'≈ pkgs / person / hr'}],['99<small>%</small>',{zh:'准确率',en:'Accuracy'}]]}
+       row:[['22,000',{zh:'平均 件/小时',en:'Avg pkgs / hr'}],['6,000',{zh:'TEMU 件/小时',en:'TEMU pkgs / hr'}],['99<small>%</small>',{zh:'准确率',en:'Accuracy'}]]}
   };
+
   var km='m',kb=[].slice.call(document.querySelectorAll('[data-k]')),cnt=$('count'),g=$('gfill'),kraf;
   function countTo(to){
     cancelAnimationFrame(kraf);
@@ -897,7 +906,7 @@ footer{border-top:1px solid var(--line)}
   /* dashboard — 手动更新：改这里的数字即可 */
   var UPDATED={zh:'11 月 4 日更新',en:'Updated Nov 4'};
   var W=[
-    {id:'CBT',sub:{zh:'跨境手工台',en:'Cross-border · manual'},times:['15:30'],lines:2,ppl:60,sc:20,
+    {id:'CBT',sub:{zh:'流水线',en:'Line'},times:['15:30'],lines:2,ppl:60,sc:20,
      bk:[{t:{zh:'每条线',en:'Per line'},v:{zh:'30 人 · 10 扫码',en:'30 staff · 10 scanners'}}],
      top:{gun:'03',v:1100},leads:['Janeth','David'],mgr:['Leo'],ex:{k:'ok',zh:'无异常',en:'No exceptions'}},
     {id:'FBT',sub:{zh:'手分 + 机械',en:'Manual + machine'},times:['12:30','13:00'],lines:2,ppl:54,sc:7,
@@ -957,7 +966,7 @@ footer{border-top:1px solid var(--line)}
      d:{zh:['捡货时顺手调整货物方向，方便扫码','定期轮换，避免长时间重复动作导致疲劳降速','按扫码进度动态增减捡货人手'],en:['Turn parcels label-up while picking','Rotate regularly to prevent fatigue','Add or move pickers as scanning pace changes']},
      s:{zh:'捡货区选用手速快、反应灵敏的人员，与扫码台合理配比，保证扫码环节持续有货。',en:'Quick, responsive pickers in the right ratio keep every scanner supplied.'}},
     {n:{zh:'扫码台',en:'Scanning'},
-     w:{zh:['扫码数据是甲方最直接看到的核心指标','漏扫、错扫会导致系统数据和实物不符，后续追查成本很高'],en:['Scan counts are the metric clients watch most','Missed or wrong scans break the match between system and stock, and are costly to trace']},
+     w:{zh:['扫码数据是客户最直接看到的核心指标','漏扫、错扫会导致系统数据和实物不符，后续追查成本很高'],en:['Scan counts are the metric clients watch most','Missed or wrong scans break the match between system and stock, and are costly to trace']},
      i:{zh:'每人每小时扫码数实时追踪',en:'Hourly scans tracked per person'},
      t:{zh:['手脚灵活、动作连贯','专注力强，不漏扫不重扫','熟练使用扫码枪','能处理扫不上的码'],en:['Nimble and fluid','Focused, no missed or double scans','Expert with scanners','Handles unreadable labels']},
      c:{zh:'约 80% 扫码位为小件台，安排细心、灵活的人员；约 20% 为大件、重货台，安排体能更好的人员',en:'About 80% small-parcel stations staffed for precision; about 20% heavy-parcel stations staffed for strength'},
@@ -988,7 +997,7 @@ footer{border-top:1px solid var(--line)}
      a:{zh:['主动','责任感强','愿意带人'],en:['Proactive','Responsible','Likes to lead']},b:{zh:['语言沟通好','熟悉流水线全部环节','理解要求快'],en:['Strong communicator','Knows every step of the line','Learns requirements fast']},
      c:{zh:['管理方法需要系统带教'],en:['Needs coaching on management']},d:{zh:['能熬夜，可长期夜班','几乎从不请假'],en:['Comfortable on long-term nights','Rarely takes leave']},hi:[1,0],
      pos:{zh:'提拔为小组长',en:'Promoted to team lead'},
-     why:{zh:'能把甲方和领队的要求准确传达到一线，清楚每个环节容易出问题的地方，又能在夜班守住节奏。',en:'They pass client and lead instructions to the floor accurately, know where each step goes wrong, and hold the pace on night shifts.'},
+     why:{zh:'能把客户和领队的要求准确传达到一线，清楚每个环节容易出问题的地方，又能在夜班守住节奏。',en:'They pass client and lead instructions to the floor accurately, know where each step goes wrong, and hold the pace on night shifts.'},
      res:{zh:'带组后本组考勤、纪律和效率保持稳定，在新岗位上同样表现出色，成为现场管理骨干。',en:'Their groups stayed steady on attendance, discipline and output. They excelled in the new role and became the backbone of floor management.'}},
     {av:'SC',from:{zh:'原岗位：新入职',en:'From: new hire'},
      a:{zh:['细心','安静','专注'],en:['Careful','Quiet','Focused']},b:{zh:['长时间保持准确','不容易分心','动作细致'],en:['Accurate over long shifts','Hard to distract','Precise movements']},
@@ -1081,7 +1090,7 @@ footer{border-top:1px solid var(--line)}
   svb.forEach(function(b){b.addEventListener('click',function(){press(svb,b);sv=b.dataset.sv;renderWk();flash($('wk'))})});
 
   /* language carousel */
-  var L=['我们用你的语言沟通，指令从甲方到一线不打折。','We speak your language, from the client office to the sorting floor.','Hablamos tu idioma, desde el cliente hasta la linea de trabajo.','我哋用你嘅語言溝通，由甲方到前線都唔走樣。'];
+  var L=['我们用你的语言沟通，指令从客户到一线不打折。','We speak your language, from the client office to the sorting floor.','Hablamos tu idioma, desde el cliente hasta la linea de trabajo.','我哋用你嘅語言溝通，由客户到前線都唔走樣。'];
   var lb=[].slice.call(document.querySelectorAll('[data-l]')),lix=0,timer;
   function setL(i){lix=i;press(lb,lb[i]);$('say').textContent=L[i];flash($('say'))}
   lb.forEach(function(b){b.addEventListener('click',function(){clearInterval(timer);setL(+b.dataset.l)})});
@@ -1093,7 +1102,7 @@ footer{border-top:1px solid var(--line)}
     if(CONTACT.email)rows.push(['EMAIL',CONTACT.email]);
     if(CONTACT.phone)rows.push([lang==='zh'?'电话':'PHONE',CONTACT.phone]);
     if(CONTACT.wechat)rows.push([lang==='zh'?'微信':'WECHAT',CONTACT.wechat]);
-    if(!rows.length){$('cbox').innerHTML='<div class="cnote"><b>'+(lang==='zh'?'更多可能，始于联结':'Every possibility begins with a connection')+'</b><span>'+(lang==='zh'?'敬请通过您的 Nova 专属对接人与我们联系':'Please reach us through your dedicated Nova contact')+'</span></div>';return}
+    if(!rows.length){$('cbox').innerHTML='<div class="cnote"><b>'+(lang==='zh'?'更多可能，始于联结':'Every possibility begins with a connection')+'</b><div class="mailrow"><a class="mail" href="mailto:admin@novaspacecorp.com">admin@novaspacecorp.com</a></div></div>';return}
     $('cbox').innerHTML=rows.map(function(r,i){return '<div class="cline"><div><span>'+r[0]+'</span><br><b id="cv'+i+'">'+r[1]+'</b></div>'+((CONTACT.email||CONTACT.phone||CONTACT.wechat)?'<button class="copy" data-v="'+r[1]+'">'+(lang==='zh'?'复制':'Copy')+'</button>':'')+'</div>'}).join('');
     pick('.copy',function(b){b.addEventListener('click',function(){var v=b.dataset.v;try{navigator.clipboard.writeText(v).then(function(){b.textContent=lang==='zh'?'已复制':'Copied'},function(){})}catch(e){}})});
   }
@@ -1136,10 +1145,10 @@ footer{border-top:1px solid var(--line)}
   /* command palette */
   var PAL=[
     {g:'go',t:{zh:'概览',en:'Overview'},h:'#overview'},{g:'go',t:{zh:'服务',en:'Services'},h:'#services'},{g:'go',t:{zh:'运营看板',en:'Operations dashboard'},h:'#dashboard'},
-    {g:'go',t:{zh:'分拣线工位',en:'Line stations'},h:'#line'},{g:'go',t:{zh:'工人画像与排班',en:'Worker profiles'},h:'#profile'},{g:'go',t:{zh:'核心团队',en:'Team'},h:'#team'},{g:'go',t:{zh:'联系我们',en:'Contact'},h:'#contact'},
+    {g:'go',t:{zh:'分拣线工位',en:'Line stations'},h:'#line'},{g:'go',t:{zh:'员工画像与排班',en:'Worker profiles'},h:'#profile'},{g:'go',t:{zh:'核心团队',en:'Team'},h:'#team'},{g:'go',t:{zh:'联系我们',en:'Contact'},h:'#contact'},
     {g:'do',t:{zh:'切换到 English',en:'Switch to 中文'},f:function(){setLang(lang==='zh'?'en':'zh')}},
-    {g:'do',t:{zh:'查看机械线产能',en:'Show machine line output'},f:function(){km='x';renderHero(true);document.getElementById('overview').scrollIntoView()}},
-    {g:'do',t:{zh:'查看手工台产能',en:'Show manual station output'},f:function(){km='m';renderHero(true);document.getElementById('overview').scrollIntoView()}}
+    {g:'do',t:{zh:'查看机器仓产能',en:'Show machine warehouse output'},f:function(){km='x';renderHero(true);document.getElementById('overview').scrollIntoView()}},
+    {g:'do',t:{zh:'查看流水线产能',en:'Show line output'},f:function(){km='m';renderHero(true);document.getElementById('overview').scrollIntoView()}}
   ].concat(W.map(function(w){return {g:'do',t:{zh:'看板 · '+(w.nm||w.id),en:'Dashboard · '+(w.nm||w.id)},f:function(){region=w.id;press(rb,rb.filter(function(x){return x.dataset.r===region})[0]);renderDash();document.getElementById('dashboard').scrollIntoView()}}}));
   var pal=$('pal'),palq=$('palq'),pall=$('pall'),psel=0,pitems=[],lastFocus=null;
   function palRender(){
@@ -1170,7 +1179,7 @@ footer{border-top:1px solid var(--line)}
   function setLang(x){
     lang=x;document.body.classList.toggle('lang-en',x==='en');document.documentElement.lang=x==='zh'?'zh-CN':'en';
     press([lz,le],x==='zh'?lz:le);
-    $('lg1').textContent=x==='zh'?'货量':'Volume';$('bt1').textContent=x==='zh'?'合作初期':'Start';$('bt2').textContent=x==='zh'?'现在':'Now';$('bt3').textContent=x==='zh'?'稳定区间':'Steady band';$('lg2').textContent=x==='zh'?'我方人员':'Our staff';
+    $('lg1').textContent=x==='zh'?'货量':'Volume';var PK=x==='zh'?['双11','黑五','圣诞','新年','高峰期']:['11.11','Black Fri','Xmas','New Year','PEAK SEASON'];['pk1','pk2','pk3','pk4','pkz'].forEach(function(id,i){$(id).textContent=PK[i]});$('bt1').textContent=x==='zh'?'合作初期':'Start';$('bt2').textContent=x==='zh'?'现在':'Now';$('bt3').textContent=x==='zh'?'稳定区间':'Steady band';$('lg2').textContent=x==='zh'?'我方人员':'Our staff';
     renderHero(false);renderDash();renderSt();renderCase();renderModelText();renderWk();renderContact();tick();
     try{localStorage.setItem('nova-lang',x)}catch(e){}
   }
